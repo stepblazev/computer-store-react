@@ -1,0 +1,62 @@
+// COLORS
+$info: #00bcd4;
+$warning: #ffd700;
+$error: #ff0000;
+
+.item {
+	padding: 10px;
+	display: flex;
+	background-color: white;
+	border-radius: 7px;
+	box-shadow: 1px 1px 8px 0px rgba(0, 0, 0, 0.1);
+
+	&__content {
+		position: relative;
+		color: inherit;
+	}
+
+	&__icon {
+		margin-right: 10px;
+		min-width: 35px;
+		height: 35px;
+		fill: inherit;
+	}
+
+	&__title {
+		font-size: 16px;
+		color: inherit;
+	}
+
+	&__message {
+		font-size: 14px;
+	}
+
+	&__remove {
+		position: absolute;
+		top: 0;
+		right: 0;
+		background: transparent;
+
+		svg {
+			width: 15px;
+			height: 15px;
+			fill: lightgray;
+		}
+	}
+
+	&.INFO {
+		color: $info;
+		fill: $info;
+		border-color: $info;
+	}
+	&.WARNING {
+		color: $warning;
+		fill: $warning;
+		border-color: $warning;
+	}
+	&.ERROR {
+		color: $error;
+		fill: $error;
+		border-color: $error;
+	}
+}

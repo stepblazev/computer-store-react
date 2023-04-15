@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800&display=swap');
+@import './reset.scss';
+@import './variables';
+
+* {
+	font-family: 'Montserrat';
+}
+
+.container {
+	margin: 0 auto;
+	max-width: $container_width;
+	padding-left: $container_padding;
+	padding-right: $container_padding;
+}
+
+#root {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+
+	main {
+		flex-grow: 1;
+	}
+}
