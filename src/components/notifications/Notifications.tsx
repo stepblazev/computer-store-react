@@ -7,8 +7,8 @@ import SlideInRight from '../../animations/SlideInLeft';
 import styles from './notifications.module.scss';
 
 const Notifications: FC = () => {
-	const { addNotification } = notificationSlice.actions;
 	const dispatch = useAppDispatch();
+	const { addNotification } = notificationSlice.actions;
 	const { notifications } = useAppSelector((state) => state.notifications);
 
 	return (
@@ -32,7 +32,7 @@ const Notifications: FC = () => {
 								title: Date.now().toString(),
 								message:
 									'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda dolor nesciunt',
-								duration: 10000,
+								duration: 3000,
 								type: NotificationTypes.INFO,
 							})
 						);
@@ -49,7 +49,7 @@ const Notifications: FC = () => {
 								title: Date.now().toString(),
 								message:
 									'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda dolor nesciunt',
-								duration: 10000,
+								duration: 7000,
 								type: NotificationTypes.WARNING,
 							})
 						);
@@ -66,7 +66,7 @@ const Notifications: FC = () => {
 								title: Date.now().toString(),
 								message:
 									'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda dolor nesciunt',
-								duration: 10000,
+								duration: 20000,
 								type: NotificationTypes.ERROR,
 							})
 						);

@@ -6,9 +6,11 @@ $error: #ff0000;
 .item {
 	padding: 10px;
 	display: flex;
+	position: relative;
 	background-color: white;
 	border-radius: 7px;
 	box-shadow: 1px 1px 8px 0px rgba(0, 0, 0, 0.1);
+	overflow: hidden;
 
 	&__content {
 		position: relative;
@@ -44,10 +46,21 @@ $error: #ff0000;
 		}
 	}
 
+	&__underline {
+		border-bottom-width: 4px;
+		border-bottom-style: solid;
+		border-bottom-color: inherit;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		transition-property: width;
+		transition-timing-function: linear;
+	}
+
 	&.INFO {
 		color: $info;
 		fill: $info;
-		border-color: $info;
+		border-color: $info !important;
 	}
 	&.WARNING {
 		color: $warning;

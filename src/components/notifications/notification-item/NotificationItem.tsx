@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
 import { notificationSlice } from '../../../redux/notice/notificationSlice';
 import { INotification } from '../../../models/notificationModels';
@@ -12,13 +12,24 @@ type NotificationItemProps = {
 
 const NotificationItem: FC<NotificationItemProps> = ({ notification }) => {
 	const Icon = NotificationIcons[notification.type];
-	const { removeNotification } = notificationSlice.actions;
+
 	const dispatch = useAppDispatch();
+	const { removeNotification } = notificationSlice.actions;
+
+	const [lineWidth, setLineWidth] = useState(100);
 
 	useEffect(() => {
-		setTimeout(() => {
-			dispatch(removeNotification(notification.id));
-		}, notification.duration);
+		const lineUpdater = setInterval(
+			() =>
+				setLineWidth((value) => {
+					const newValue = value - 1;
+					if (newValue === 0) dispatch(removeNotification(notification.id));
+					return newValue;
+				}),
+			notification.duration / 100
+		);
+
+		return () => clearInterval(lineUpdater);
 	}, []);
 
 	return (
@@ -34,6 +45,13 @@ const NotificationItem: FC<NotificationItemProps> = ({ notification }) => {
 					<AiOutlineClose />
 				</button>
 			</div>
+			<div
+				className={styles.item__underline}
+				style={{
+					width: `${lineWidth}%`,
+					transitionDuration: `${notification.duration / 100 / 1000}s`,
+				}}
+			/>
 		</div>
 	);
 };
