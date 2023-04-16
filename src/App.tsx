@@ -1,12 +1,15 @@
 import { FC } from 'react';
 import Layout from './components/Layout';
-import RouteProvider from './router/RouteProvider';
+import Router from './router/Router';
+import { BrowserRouter } from 'react-router-dom';
 
 const App: FC = () => {
 	return (
-		<Layout>
-			<RouteProvider />
-		</Layout>
+		<BrowserRouter>
+			<Layout>
+				<Router />
+			</Layout>
+		</BrowserRouter>
 	);
 };
 

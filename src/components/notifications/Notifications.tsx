@@ -14,7 +14,7 @@ const Notifications: FC = () => {
 	return (
 		<div className={styles.notifications}>
 			{notifications.map((note) => (
-				<SlideInRight delay={0} key={note.id}>
+				<SlideInRight key={note.id}>
 					<NotificationItem notification={note} />
 				</SlideInRight>
 			))}

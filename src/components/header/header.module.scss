@@ -1,12 +1,188 @@
 @import '../../styles/variables';
 
-.header {
-	padding: 30px 0;
-	background-color: $secondary;
+%svg-link {
+	display: inline-flex;
+	justify-content: end;
+	align-items: center;
+	gap: 5px;
+	font-weight: 500;
 
-	h1 {
-		text-align: center;
-		font-size: 40px;
-		color: $primary;
+	&:hover {
+		text-decoration: underline;
+	}
+
+	svg {
+		fill: $primary;
+	}
+}
+
+.header {
+	background-color: $white;
+
+	&__first {
+		&Desktop {
+			padding: 7px 0;
+			display: flex;
+			align-items: center;
+			gap: 20px;
+			border-bottom: 3px solid $lightgray;
+
+			a {
+				@extend %svg-link;
+			}
+
+			a:last-child {
+				flex-grow: 1;
+			}
+
+			@media (max-width: $breakpoint700) {
+				display: none;
+			}
+		}
+	}
+
+	&__second {
+		&Desktop {
+			padding: 10px 0;
+			display: flex;
+			align-items: center;
+
+			@media (max-width: $breakpoint700) {
+				display: none;
+			}
+		}
+
+		&Logo {
+			margin-right: 20px;
+			span {
+				font-size: 32px;
+				line-height: (32 * 1.5) + px;
+				font-weight: 600;
+				letter-spacing: 3px;
+			}
+			span:first-child {
+				color: $primary;
+			}
+			span:last-child {
+				color: $secondary;
+			}
+		}
+
+		&Search {
+			margin-right: 20px;
+			flex-grow: 1;
+			position: relative;
+			display: flex;
+			border: 2px solid $lightgray;
+			border-radius: 7px;
+			overflow: hidden;
+
+			input {
+				padding: 4px;
+				padding-left: 35px;
+				flex-grow: 1;
+
+				&:focus {
+					outline: none;
+					font-weight: 600;
+					& + svg {
+						fill: $primary;
+					}
+				}
+			}
+
+			svg {
+				height: 22px;
+				width: 22px;
+				fill: $secondary;
+				position: absolute;
+				top: 50%;
+				left: 5px;
+				transform: translateY(-50%);
+			}
+
+			button {
+				padding: 4px 10px;
+				background-color: $primary;
+				color: $white;
+				font-weight: 700;
+			}
+		}
+
+		&Cart {
+			@extend %svg-link;
+			position: relative;
+
+			span {
+				padding: 5px;
+				width: 15px;
+				height: 15px;
+				position: absolute;
+				right: -10px;
+				top: -3px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-weight: 700;
+				font-size: 10px;
+				color: white;
+				background-color: $primary;
+				border-radius: 50%;
+			}
+		}
+	}
+
+	&__third {
+		background-color: $secondary;
+
+		&Desktop {
+			display: flex;
+			align-items: center;
+
+			@media (max-width: $breakpoint700) {
+				display: none;
+			}
+		}
+
+		&Icon {
+			margin-top: 10px;
+			margin-right: 30px;
+			padding: 5px 10px;
+			align-self: end;
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			font-size: 24px;
+			font-weight: 600;
+			line-height: (24 * 1.5) + px;
+			color: white;
+			background-color: $primary;
+			border-radius: 7px 7px 0 0;
+
+			svg {
+				width: 25px;
+				height: 25px;
+				fill: white;
+			}
+		}
+
+		&Nav {
+			ul {
+				display: flex;
+				gap: 20px;
+
+				li {
+					font-weight: 600;
+					color: white;
+					&:hover {
+						color: $primary;
+					}
+
+					a {
+						padding: 5px;
+					}
+				}
+			}
+		}
 	}
 }

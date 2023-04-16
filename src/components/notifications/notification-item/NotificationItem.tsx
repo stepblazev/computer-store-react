@@ -1,4 +1,4 @@
-import { FC, useEffect, useState, useRef } from 'react';
+import { FC, useEffect, useRef } from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
 import { notificationSlice } from '../../../redux/notice/notificationSlice';
 import { INotification } from '../../../models/notificationModels';
