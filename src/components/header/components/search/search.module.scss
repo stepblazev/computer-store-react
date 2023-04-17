@@ -7,6 +7,8 @@ $rounded: 3px;
 	flex-grow: 1;
 	position: relative;
 	display: flex;
+	border-radius: $rounded;
+	overflow: hidden;
 
 	@media (max-width: $breakpoint700) {
 		margin-right: 0;
@@ -15,9 +17,7 @@ $rounded: 3px;
 	&__input {
 		padding: 4px;
 		padding-left: 30px;
-		border-radius: $rounded 0 0 $rounded;
 		border: 2px solid $lightgray;
-		border-right: none;
 		flex-grow: 1;
 
 		&:focus {
@@ -45,15 +45,15 @@ $rounded: 3px;
 		transform: translateY(-50%);
 	}
 
-	&__button {
-		padding: 4px 10px;
-		background-color: $primary;
-		color: $white;
-		font-weight: 700;
-		border-radius: 0 $rounded $rounded 0;
+	// &__button {
+	// 	padding: 4px 10px;
+	// 	background-color: $primary;
+	// 	color: $white;
+	// 	font-weight: 700;
+	// 	border-radius: 0 $rounded $rounded 0;
 
-		@media (max-width: $breakpoint700) {
-			padding: 3px 7px;
-		}
-	}
+	// 	@media (max-width: $breakpoint700) {
+	// 		padding: 3px 7px;
+	// 	}
+	// }
 }

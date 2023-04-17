@@ -11,7 +11,7 @@ const Search: FC = () => {
 				className={styles.search__input}
 			/>
 			<SearchSVG className={styles.search__svg} />
-			<button className={styles.search__button}>Поиск</button>
+			{/* <button className={styles.search__button}>Поиск</button> */}
 		</div>
 	);
 };
