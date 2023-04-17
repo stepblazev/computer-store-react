@@ -1,87 +1,87 @@
-import { FaUserCircle as ProfileSVG, FaShoppingCart as CartSVG } from 'react-icons/fa';
-import { RiLoginCircleLine as LoginSVG } from 'react-icons/ri';
+import { FiMenu as BurgerSVG } from 'react-icons/fi';
 import { HiPhone as PhoneSVG } from 'react-icons/hi';
 import { MdMail as MailSVG } from 'react-icons/md';
-import { BiSearchAlt as SearchSVG } from 'react-icons/bi';
 import { BsFillMotherboardFill as MotherSVG } from 'react-icons/bs';
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
-import { useAppSelector } from '../../hooks/redux';
+import Cart from './components/cart/Cart';
+import Search from './components/search/Search';
+import Logo from './components/logo/Logo';
+import Profile from './components/profile/Profile';
+import SlideIn, { SlideInDirections } from '../../animations/SlideIn';
 import styles from './header.module.scss';
 
-const Header: FC = () => {
-	const { isAuth } = useAppSelector((state) => state.auth);
+interface INavLink {
+	label: string;
+	endpoint: string;
+}
 
-	// FIXME убрать в отдельные компоненты
+// FIXME исправить ссылки
+const navLinks: INavLink[] = [
+	{ label: 'Главная', endpoint: '/' },
+	{ label: 'Компьютеры', endpoint: '/computers' },
+	{ label: 'Ноутбуки', endpoint: '/laptops' },
+	{ label: 'О Нас', endpoint: '/about' },
+];
+
+// FIXME доработать бургер-меню
+const Header: FC = () => {
 	return (
 		<header className={styles.header}>
 			<div className={[styles.header__first, 'container'].join(' ')}>
 				<div className={styles.header__firstDesktop}>
-					<a href='tel:+375447102441'>
+					<a href='tel:+375447102441' className='svg-link'>
 						<PhoneSVG />
 						+375447102441
 					</a>
-					<a href='mailto:ohvatuki@gmail.com'>
+					<a href='mailto:ohvatuki@gmail.com' className='svg-link'>
 						<MailSVG />
 						ohvatuki@gmail.com
 					</a>
-					{isAuth ? (
-						<Link to='/profile'>
-							<ProfileSVG />
-							Профиль
-						</Link>
-					) : (
-						<Link to='/login'>
-							<LoginSVG />
-							Войти в аккаунт
-						</Link>
-					)}
+					<Profile />
 				</div>
-				<div className={styles.header__firstMobile}></div>
+				<div className={styles.header__firstMobile}>
+					<div>
+						<button>
+							<BurgerSVG />
+						</button>
+						<Logo />
+					</div>
+					<div>
+						<Cart />
+						<Profile />
+					</div>
+				</div>
 			</div>
 			<div className={[styles.header__second, 'container'].join(' ')}>
 				<div className={styles.header__secondDesktop}>
-					<Link to='/' className={styles.header__secondLogo}>
-						<span>TECHNO</span>
-						<span>MALL</span>
-					</Link>
-					<div className={styles.header__secondSearch}>
-						<input type='text' placeholder='Поиск по каталогу' />
-						<SearchSVG />
-						<button>Поиск</button>
-					</div>
-					<Link to='/cart' className={styles.header__secondCart}>
-						<CartSVG />
-						Корзина
-						<span>3</span>
-					</Link>
+					<Logo />
+					<Search />
+					<Cart />
 				</div>
-				<div className={styles.header__secondMobile}></div>
+				<div className={styles.header__secondMobile}>
+					<Search />
+				</div>
 			</div>
-			<div className={styles.header__third}>
+			<nav className={styles.header__third}>
 				<div className={[styles.header__thirdDesktop, 'container'].join(' ')}>
-					<div className={styles.header__thirdIcon}>
-						<MotherSVG />
-						Комплектующие
-					</div>
-					<nav className={styles.header__thirdNav}>
-						<ul>
-							<li>
-								<Link to='/'>Главная</Link>
-							</li>
-							<li>
-								<Link to='/'>Компьютеры</Link>
-							</li>
-							<li>
-								<Link to='/'>Ноутбуки</Link>
-							</li>
-							<li>
-								<Link to='/'>О Нас</Link>
-							</li>
+					<SlideIn direction={SlideInDirections.LEFT} delay={0}>
+						<div className={styles.header__thirdIcon}>
+							<MotherSVG />
+							Комплектующие
+						</div>
+					</SlideIn>
+					<SlideIn direction={SlideInDirections.RIGHT} delay={300}>
+						<ul className={styles.header__thirdNav}>
+							{navLinks.map((link) => (
+								<li key={link.endpoint}>
+									<Link to={link.endpoint}>{link.label}</Link>
+								</li>
+							))}
 						</ul>
-					</nav>
+					</SlideIn>
 				</div>
-			</div>
+			</nav>
 		</header>
 	);
 };

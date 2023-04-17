@@ -1,0 +1,24 @@
+@import '../../../../styles/variables';
+
+.profile {
+	padding: 3px;
+	background-color: $primary;
+	border-radius: 3px;
+	display: flex;
+	align-items: center;
+	gap: 2px;
+
+	&:hover {
+		text-decoration: none !important;
+	}
+
+	&__svg {
+		fill: white !important;
+	}
+
+	&__title {
+		display: block;
+		font-weight: 600;
+		color: white;
+	}
+}

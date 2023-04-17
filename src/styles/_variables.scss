@@ -1,5 +1,6 @@
 // COLORS
 $primary: #19d3da;
+$darkprimary: #16b5bb;
 $secondary: #686d76;
 $dark: #373a40;
 $lightgray: #eeeeee;
@@ -15,3 +16,46 @@ $breakpoint900: 992px;
 $breakpoint700: 768px;
 $breakpoint400: 480px;
 $breakpoint300: 320px;
+
+// TEMPLATES
+@mixin lineHeight($fontSize) {
+	line-height: #{$fontSize * 1.5}px !important;
+}
+
+// FIXME попробовать заменить всевдоэлементы на свойство skew
+@mixin parallelogram($blockSize) {
+	position: relative;
+	height: $blockSize;
+	color: white;
+
+	&::before {
+		@extend %parallelogramTemplate;
+		left: -$blockSize;
+		border-top: $blockSize solid transparent;
+		border-right: $blockSize solid transparent;
+	}
+	&::after {
+		@extend %parallelogramTemplate;
+		right: -$blockSize;
+		border-bottom: $blockSize solid transparent;
+		border-left: $blockSize solid transparent;
+	}
+	&:hover {
+		background-color: $primary;
+		&::before,
+		&::after {
+			border-right-color: $primary;
+			border-left-color: $primary;
+		}
+	}
+}
+
+// DONT TOUCH THESE THINGS
+%parallelogramTemplate {
+	content: '';
+	width: 0;
+	height: 0;
+	position: absolute;
+	top: 0;
+	transition: all 0.2s ease;
+}

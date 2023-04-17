@@ -3,7 +3,7 @@ import { useAppSelector, useAppDispatch } from '../../hooks/redux';
 import NotificationItem from './notification-item/NotificationItem';
 import { notificationSlice } from '../../redux/notice/notificationSlice';
 import { NotificationTypes } from '../../models/notificationModels';
-import SlideInRight from '../../animations/SlideInLeft';
+import SlideIn, { SlideInDirections } from '../../animations/SlideIn';
 import styles from './notifications.module.scss';
 
 const Notifications: FC = () => {
@@ -14,17 +14,15 @@ const Notifications: FC = () => {
 	return (
 		<div className={styles.notifications}>
 			{notifications.map((note) => (
-				<SlideInRight key={note.id}>
+				<SlideIn direction={SlideInDirections.RIGHT} key={note.id}>
 					<NotificationItem notification={note} />
-				</SlideInRight>
+				</SlideIn>
 			))}
 
 			{/* FIXME remove the buttons below (only for testing) */}
-			{/* FIXME remove the buttons below (only for testing) */}
-			{/* FIXME remove the buttons below (only for testing) */}
 			<div style={{ display: 'flex', gap: '10px' }}>
 				<button
-					style={{ flexGrow: 1 }}
+					style={{ flexGrow: 1, color: 'white' }}
 					onClick={() => {
 						dispatch(
 							addNotification({
@@ -41,7 +39,7 @@ const Notifications: FC = () => {
 					INFO
 				</button>
 				<button
-					style={{ flexGrow: 1 }}
+					style={{ flexGrow: 1, color: 'white' }}
 					onClick={() => {
 						dispatch(
 							addNotification({
@@ -58,7 +56,7 @@ const Notifications: FC = () => {
 					WARN
 				</button>
 				<button
-					style={{ flexGrow: 1 }}
+					style={{ flexGrow: 1, color: 'white' }}
 					onClick={() => {
 						dispatch(
 							addNotification({

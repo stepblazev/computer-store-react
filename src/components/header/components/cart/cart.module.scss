@@ -1,0 +1,35 @@
+@import '../../../../styles/variables';
+
+.cart {
+	margin-right: 5px;
+	position: relative;
+
+	&__svg {
+		@media (max-width: $breakpoint700) {
+			fill: $secondary !important;
+		}
+	}
+
+	&__title {
+		@media (max-width: $breakpoint700) {
+			display: none;
+		}
+	}
+
+	&__count {
+		padding: 5px;
+		width: 15px;
+		height: 15px;
+		position: absolute;
+		right: -10px;
+		top: -3px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-weight: 700;
+		font-size: 10px;
+		color: white;
+		background-color: $primary;
+		border-radius: 50%;
+	}
+}

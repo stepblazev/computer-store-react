@@ -28,3 +28,19 @@ svg {
 		flex-grow: 1;
 	}
 }
+
+.svg-link {
+	display: inline-flex;
+	justify-content: end;
+	align-items: center;
+	gap: 5px;
+	font-weight: 500;
+
+	&:hover {
+		text-decoration: underline;
+	}
+
+	svg {
+		fill: $primary;
+	}
+}
