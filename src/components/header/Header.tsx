@@ -1,4 +1,3 @@
-import { FiMenu as BurgerSVG } from 'react-icons/fi';
 import { HiPhone as PhoneSVG } from 'react-icons/hi';
 import { MdMail as MailSVG } from 'react-icons/md';
 import { BsFillMotherboardFill as MotherSVG } from 'react-icons/bs';
@@ -9,22 +8,10 @@ import Search from './components/search/Search';
 import Logo from './components/logo/Logo';
 import Profile from './components/profile/Profile';
 import SlideIn, { SlideInDirections } from '../../animations/SlideIn';
+import Burger from './components/burger/Burger';
+import { navLinks } from './navLinks';
 import styles from './header.module.scss';
 
-interface INavLink {
-	label: string;
-	endpoint: string;
-}
-
-// FIXME исправить ссылки
-const navLinks: INavLink[] = [
-	{ label: 'Главная', endpoint: '/' },
-	{ label: 'Компьютеры', endpoint: '/computers' },
-	{ label: 'Ноутбуки', endpoint: '/laptops' },
-	{ label: 'О Нас', endpoint: '/about' },
-];
-
-// FIXME доработать бургер-меню
 const Header: FC = () => {
 	return (
 		<header className={styles.header}>
@@ -38,13 +25,13 @@ const Header: FC = () => {
 						<MailSVG />
 						ohvatuki@gmail.com
 					</a>
-					<Profile />
+					<div style={{ flexGrow: 1 }}>
+						<Profile />
+					</div>
 				</div>
 				<div className={styles.header__firstMobile}>
 					<div>
-						<button>
-							<BurgerSVG />
-						</button>
+						<Burger />
 						<Logo />
 					</div>
 					<div>

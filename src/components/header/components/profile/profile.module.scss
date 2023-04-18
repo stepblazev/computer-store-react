@@ -1,10 +1,11 @@
 @import '../../../../styles/variables';
 
 .profile {
+	float: right;
 	padding: 3px;
 	background-color: $primary;
 	border-radius: 3px;
-	display: flex;
+	display: inline-flex;
 	align-items: center;
 	gap: 2px;
 

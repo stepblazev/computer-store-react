@@ -1,5 +1,5 @@
 import { FC, useEffect, useRef } from 'react';
-import { AiOutlineClose } from 'react-icons/ai';
+import { AiOutlineClose as CloseSVG } from 'react-icons/ai';
 import { notificationSlice } from '../../../redux/notice/notificationSlice';
 import { INotification } from '../../../models/notificationModels';
 import { useAppDispatch } from '../../../hooks/redux';
@@ -36,7 +36,7 @@ const NotificationItem: FC<NotificationItemProps> = ({ notification }) => {
 				<h2 className={styles.item__title}>{notification.title}</h2>
 				<p className={styles.item__message}>{notification.message}</p>
 				<button className={styles.item__remove} onClick={removeHandler}>
-					<AiOutlineClose />
+					<CloseSVG />
 				</button>
 			</div>
 			<div

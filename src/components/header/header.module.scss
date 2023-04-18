@@ -85,16 +85,8 @@ $linkSize: 25px;
 				width: 700%;
 				background: inherit;
 				position: absolute;
-				left: -700%;
-			}
-			&:after {
-				content: '';
-				width: 100%;
-				height: 100%;
-				position: absolute;
 				top: 0;
-				right: -30px;
-				background-color: inherit;
+				left: -590%;
 				transform: skew(-35deg);
 				z-index: -1;
 			}

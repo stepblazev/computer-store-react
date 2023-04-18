@@ -1,0 +1,65 @@
+@import '../../../../styles/variables';
+
+$navSize: 250px;
+
+.burger {
+	&__button {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		svg {
+			width: 30px;
+			height: 30px;
+			fill: $secondary;
+		}
+	}
+	&__menu {
+		display: none;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		background-color: rgba(0, 0, 0, 0);
+		z-index: 1000;
+		transition: background-color 0.3s ease, visibility 0.3s ease;
+		@media (max-width: $breakpoint700) {
+			display: block;
+			visibility: hidden;
+		}
+		&Active {
+			visibility: visible;
+			background-color: rgba(0, 0, 0, 0.3);
+			.burger__menuNav {
+				left: 0;
+			}
+		}
+		&Close {
+			width: 30px;
+			height: 30px;
+			float: right;
+			fill: lightgray;
+		}
+		&Nav {
+			padding: 5px 10px;
+			position: relative;
+			left: -$navSize;
+			height: 100%;
+			width: $navSize;
+			background: rgb(255, 255, 255);
+			border-right: 4px solid $primary;
+			transition: all 0.3s ease;
+			ul {
+				margin: 10px 0 0 10px;
+				display: flex;
+				flex-direction: column;
+				gap: 5px;
+				li a {
+					font-weight: 600;
+					color: $secondary;
+					font-size: 16px;
+				}
+			}
+		}
+	}
+}
