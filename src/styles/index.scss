@@ -23,9 +23,14 @@ svg {
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
-
-	main {
+	.main {
 		flex-grow: 1;
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+		& > div {
+			flex-grow: 1;
+		}
 	}
 }
 
@@ -35,11 +40,9 @@ svg {
 	align-items: center;
 	gap: 5px;
 	font-weight: 500;
-
 	&:hover {
 		text-decoration: underline;
 	}
-
 	svg {
 		fill: $primary;
 	}

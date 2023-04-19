@@ -1,0 +1,21 @@
+.input {
+	display: block;
+	position: relative;
+	cursor: text;
+	&::before {
+		content: attr(data-place);
+		position: absolute;
+		font-weight: 700;
+		top: 50%;
+		transform: translateY(-50%);
+		left: 5px;
+	}
+	input {
+		display: block;
+		padding: 5px 10px;
+		border-radius: 3px;
+		.input::before &:focus {
+			display: none;
+		}
+	}
+}

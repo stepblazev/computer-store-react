@@ -11,7 +11,7 @@ const Layout: FC<layoutProps> = ({ children }) => {
 	return (
 		<Fragment>
 			<Header />
-			<main>{children}</main>
+			<main className='main'>{children}</main>
 			<Footer />
 			<Notifications />
 		</Fragment>

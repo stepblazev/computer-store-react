@@ -19,7 +19,7 @@ $rounded: 3px;
 		padding-left: 30px;
 		border: 2px solid $lightgray;
 		flex-grow: 1;
-
+		transition: all 0.2s ease;
 		&:focus {
 			outline: none;
 			border-color: $primary;
@@ -43,6 +43,7 @@ $rounded: 3px;
 		top: 50%;
 		left: 5px;
 		transform: translateY(-50%);
+		transition: all 0.2s ease;
 	}
 
 	// &__button {

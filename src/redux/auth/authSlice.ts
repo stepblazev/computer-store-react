@@ -45,10 +45,7 @@ export const fetchUser =
 	async (dispatch: AppDispatch) => {
 		try {
 			dispatch(authSlice.actions.fetchUser());
-			const response = await api.post<IAuth>(type, {
-				email,
-				password,
-			});
+			const response = await api.post<IAuth>(type, { email, password });
 			dispatch(authSlice.actions.fetchSuccessUser(response.data));
 		} catch (error: any) {
 			dispatch(authSlice.actions.fetchErrorUser(error.message));
