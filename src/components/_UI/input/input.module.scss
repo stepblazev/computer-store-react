@@ -1,21 +1,42 @@
+@import '../../../styles/variables';
+
 .input {
-	display: block;
+	width: 100%;
 	position: relative;
 	cursor: text;
-	&::before {
-		content: attr(data-place);
+	&__placeholder {
 		position: absolute;
-		font-weight: 700;
+		font-weight: 600;
 		top: 50%;
 		transform: translateY(-50%);
-		left: 5px;
+		left: 10px;
+		transition: all 0.2s ease;
+		background-color: white;
+		color: lightgray;
+		user-select: none;
 	}
 	input {
+		width: 100%;
 		display: block;
-		padding: 5px 10px;
+		padding: 7px 10px;
 		border-radius: 3px;
-		.input::before &:focus {
-			display: none;
+		border: 2px solid $secondary;
+		transition: all 0.2s ease;
+		&:focus {
+			outline: none;
+			border-color: $primary;
+		}
+		&:focus + .input__placeholder {
+			top: -9px;
+			transform: unset;
+			font-size: 12px;
+			color: $primary !important;
+		}
+		&:valid + .input__placeholder {
+			top: -9px;
+			transform: unset;
+			font-size: 12px;
+			color: $secondary;
 		}
 	}
 }

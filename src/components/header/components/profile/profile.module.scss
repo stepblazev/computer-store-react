@@ -1,25 +1,40 @@
 @import '../../../../styles/variables';
+@import '../../../_UI/button/button.module.scss';
 
 .profile {
-	float: right;
+	@extend .button;
+	width: unset;
 	padding: 3px;
-	background-color: $primary;
-	border-radius: 3px;
-	display: inline-flex;
+	display: flex;
 	align-items: center;
-	gap: 2px;
-
+	gap: 5px;
 	&:hover {
 		text-decoration: none !important;
 	}
-
+	&:active {
+		.profile__svg {
+			fill: $primary !important;
+		}
+		.profile__title {
+			color: $primary !important;
+		}
+	}
 	&__svg {
 		fill: white !important;
 	}
-
 	&__title {
 		display: block;
 		font-weight: 600;
 		color: white;
+	}
+}
+
+.logout {
+	float: right;
+	margin-left: 5px;
+	svg {
+		fill: $secondary;
+		width: 25px;
+		height: 25px;
 	}
 }

@@ -1,0 +1,21 @@
+@import '../../../styles/variables';
+
+.button {
+	width: 100%;
+	padding: 3px 10px;
+	background-color: white;
+	border: 2px solid $primary;
+	background-color: $primary;
+	border-radius: 3px;
+	font-weight: 600;
+	color: white;
+	user-select: none;
+	&:hover {
+		background-color: $darkprimary;
+		border-color: $darkprimary;
+	}
+	&:active {
+		background-color: white;
+		color: $primary;
+	}
+}

@@ -13,6 +13,7 @@ $error: #ff0000;
 	overflow: hidden;
 
 	&__content {
+		width: 100%;
 		position: relative;
 		color: inherit;
 	}
@@ -27,6 +28,7 @@ $error: #ff0000;
 	&__title {
 		font-size: 16px;
 		color: inherit;
+		font-weight: 600;
 	}
 
 	&__message {

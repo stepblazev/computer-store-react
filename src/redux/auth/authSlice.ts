@@ -1,19 +1,21 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { FetchAuthTypes, IAuth } from '../../models/authModels';
 import { AppDispatch } from '../store';
-import api from '../../http';
+import AuthService from '../../http/services/AuthService';
+import { AxiosError } from 'axios';
+import { ErrorResponse } from '../../models/axiosModels';
 
 interface AuthState {
+	email: string | null;
 	isAuth: boolean;
 	isLoading: boolean;
-	error: string | null;
-	email: string | null;
+	error: string;
 }
 
 const initialState: AuthState = {
 	isAuth: false,
 	isLoading: false,
-	error: null,
+	error: '',
 	email: null,
 };
 
@@ -23,31 +25,62 @@ export const authSlice = createSlice({
 	reducers: {
 		fetchUser(state) {
 			state.isLoading = true;
+			state.error = '';
 		},
 		fetchSuccessUser(state, action: PayloadAction<IAuth>) {
+			state.isLoading = false;
 			const { email, accessToken } = action.payload;
 			localStorage.setItem('token', accessToken);
-			state.isLoading = false;
 			state.isAuth = true;
 			state.email = email;
 		},
 		fetchErrorUser(state, action: PayloadAction<string>) {
-			state.error = action.payload;
 			state.isLoading = false;
+			state.error = action.payload;
 			state.isAuth = false;
+			state.email = null;
+		},
+		logoutUser(state) {
+			state.isAuth = false;
+			state.isLoading = false;
+			state.error = '';
 			state.email = null;
 		},
 	},
 });
 
+const fetchType = {
+	[FetchAuthTypes.LOGIN]: AuthService.login,
+	[FetchAuthTypes.REGISTRATION]: AuthService.registration,
+};
+
 export const fetchUser =
-	(email: string, password: string, type: FetchAuthTypes) =>
-	async (dispatch: AppDispatch) => {
+	(email: string, password: string, type: FetchAuthTypes) => async (dispatch: AppDispatch) => {
 		try {
 			dispatch(authSlice.actions.fetchUser());
-			const response = await api.post<IAuth>(type, { email, password });
+			const response = await fetchType[type](email, password);
 			dispatch(authSlice.actions.fetchSuccessUser(response.data));
-		} catch (error: any) {
-			dispatch(authSlice.actions.fetchErrorUser(error.message));
+		} catch (error) {
+			const err = error as AxiosError<ErrorResponse>;
+			const message = err.response?.data.message as string;
+			dispatch(authSlice.actions.fetchErrorUser(message));
 		}
 	};
+
+export const refreshUser = () => async (dispatch: AppDispatch) => {
+	try {
+		dispatch(authSlice.actions.fetchUser());
+		const response = await AuthService.refresh();
+		dispatch(authSlice.actions.fetchSuccessUser(response.data));
+	} catch (error) {
+		const err = error as AxiosError<ErrorResponse>;
+		const message = err.response?.data.message as string;
+		dispatch(authSlice.actions.fetchErrorUser(message));
+	}
+};
+
+export const logoutUser = () => async (dispatch: AppDispatch) => {
+	await AuthService.logout();
+	localStorage.removeItem('token');
+	dispatch(authSlice.actions.logoutUser());
+};

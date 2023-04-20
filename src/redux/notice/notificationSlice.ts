@@ -14,7 +14,8 @@ export const notificationSlice = createSlice({
 	initialState,
 	reducers: {
 		addNotification(state, action: PayloadAction<INotification>) {
-			state.notifications.push(action.payload);
+			const id = action.payload.id ?? Date.now();
+			state.notifications.push({ id, ...action.payload });
 		},
 		removeNotification(state, action: PayloadAction<number>) {
 			state.notifications = state.notifications.filter(

@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { useAppSelector, useAppDispatch } from '../../hooks/redux';
 import NotificationItem from './notification-item/NotificationItem';
 import { notificationSlice } from '../../redux/notice/notificationSlice';
@@ -11,6 +11,21 @@ const Notifications: FC = () => {
 	const { addNotification } = notificationSlice.actions;
 	const { notifications } = useAppSelector((state) => state.notifications);
 
+	const authError = useAppSelector((state) => state.auth.error);
+
+	// FIXME рефакторинг
+	useEffect(() => {
+		if (!authError) return;
+		dispatch(
+			addNotification({
+				title: 'Ошибка',
+				message: authError,
+				duration: 10000,
+				type: NotificationTypes.ERROR,
+			})
+		);
+	}, [authError]);
+
 	return (
 		<div className={styles.notifications}>
 			{notifications.map((note) => (
@@ -18,61 +33,6 @@ const Notifications: FC = () => {
 					<NotificationItem notification={note} />
 				</SlideIn>
 			))}
-
-			{/* FIXME remove the buttons below (only for testing) */}
-			<div style={{ display: 'flex', gap: '10px' }}>
-				<button
-					style={{ flexGrow: 1, color: 'white' }}
-					onClick={() => {
-						dispatch(
-							addNotification({
-								id: Date.now() + 1,
-								title: Date.now().toString(),
-								message:
-									'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda dolor nesciunt',
-								duration: 3000,
-								type: NotificationTypes.INFO,
-							})
-						);
-					}}
-				>
-					INFO
-				</button>
-				<button
-					style={{ flexGrow: 1, color: 'white' }}
-					onClick={() => {
-						dispatch(
-							addNotification({
-								id: Date.now() + 1,
-								title: Date.now().toString(),
-								message:
-									'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda dolor nesciunt',
-								duration: 7000,
-								type: NotificationTypes.WARNING,
-							})
-						);
-					}}
-				>
-					WARN
-				</button>
-				<button
-					style={{ flexGrow: 1, color: 'white' }}
-					onClick={() => {
-						dispatch(
-							addNotification({
-								id: Date.now() + 1,
-								title: Date.now().toString(),
-								message:
-									'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda dolor nesciunt',
-								duration: 20000,
-								type: NotificationTypes.ERROR,
-							})
-						);
-					}}
-				>
-					ERROR
-				</button>
-			</div>
 		</div>
 	);
 };

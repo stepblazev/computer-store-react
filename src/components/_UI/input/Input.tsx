@@ -1,33 +1,25 @@
-import { FC, ChangeEvent, MouseEvent, useRef } from 'react';
+import { FC, ChangeEvent, FocusEvent, MouseEvent, useRef } from 'react';
 import styles from './input.module.scss';
 
 type InputProps = {
-	type?: HTMLInputElement['type'];
 	placeholder: string;
-	value: string;
-	onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+	type?: HTMLInputElement['type'];
+	value?: string;
+	onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+	onFocus?: (e: FocusEvent<HTMLInputElement>) => void;
+	onBlur?: (e: FocusEvent<HTMLInputElement>) => void;
 };
 
-const Input: FC<InputProps> = ({
-	type = 'text',
-	placeholder = 'Your text',
-	value,
-	onChange,
-}) => {
+const Input: FC<InputProps> = ({ placeholder = 'Your text', ...otherProps }) => {
 	const inputRef = useRef<HTMLInputElement>(null);
 	const activate = (e: MouseEvent<HTMLDivElement>) => {
 		inputRef.current?.focus();
 	};
 
 	return (
-		<div className={styles.input} data-place={placeholder} onClick={activate}>
-			<input
-				type={type}
-				value={value}
-				onChange={onChange}
-				autoComplete='off'
-				ref={inputRef}
-			/>
+		<div className={styles.input} onClick={activate}>
+			<input autoComplete='off' ref={inputRef} required {...otherProps} />
+			<span className={styles.input__placeholder}>{placeholder}</span>
 		</div>
 	);
 };

@@ -25,7 +25,7 @@ const Header: FC = () => {
 						<MailSVG />
 						ohvatuki@gmail.com
 					</a>
-					<div style={{ flexGrow: 1 }}>
+					<div className={styles.header__firstAccount}>
 						<Profile />
 					</div>
 				</div>
