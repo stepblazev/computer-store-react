@@ -4,7 +4,7 @@ import { RiLockPasswordFill as PasswordSVG } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
 import { useAppDispatch } from '../../../hooks/redux';
 import { notificationSlice } from '../../../redux/notice/notificationSlice';
-import { INotification, NotificationTypes } from '../../../models/notificationModels';
+import { emailWarning, passWarning } from '../../../warnings/formWarnings';
 import { isEmail } from '../../../utils/utils';
 import { fetchUser } from '../../../redux/auth/authSlice';
 import { FetchAuthTypes } from '../../../models/authModels';
@@ -12,24 +12,21 @@ import Input from '../../../components/_UI/input/Input';
 import Button from '../../../components/_UI/button/Button';
 import styles from './login-form.module.scss';
 
-const warning: INotification = {
-	title: 'Некорректные данные',
-	message: 'Проверьте данные, введенные в поле E-Mail, и повторите попытку',
-	duration: 4000,
-	type: NotificationTypes.WARNING,
-};
-
 const LoginForm: FC = () => {
 	const dispatch = useAppDispatch();
 	const { addNotification } = notificationSlice.actions;
 
-	const [email, setEmail] = useState('');
-	const [password, setPassword] = useState('');
+	const [email, setEmail] = useState<string>('');
+	const [password, setPassword] = useState<string>('');
 
 	const submit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		if (!isEmail(email)) {
-			dispatch(addNotification(warning));
+			dispatch(addNotification(emailWarning));
+			return;
+		}
+		if (password.length < 8) {
+			dispatch(addNotification(passWarning));
 			return;
 		}
 		dispatch(fetchUser(email, password, FetchAuthTypes.LOGIN));

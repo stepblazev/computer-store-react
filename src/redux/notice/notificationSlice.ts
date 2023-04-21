@@ -9,6 +9,7 @@ const initialState: NotificationState = {
 	notifications: [],
 };
 
+// FIXME создать класс и дочерние классы для уведомлений
 export const notificationSlice = createSlice({
 	name: 'notification',
 	initialState,
@@ -18,9 +19,7 @@ export const notificationSlice = createSlice({
 			state.notifications.push({ id, ...action.payload });
 		},
 		removeNotification(state, action: PayloadAction<number>) {
-			state.notifications = state.notifications.filter(
-				(note) => note.id !== action.payload
-			);
+			state.notifications = state.notifications.filter((note) => note.id !== action.payload);
 		},
 		clearNotifications(state) {
 			state.notifications = [];

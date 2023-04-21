@@ -6,6 +6,7 @@
 	box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
 	border-radius: 3px;
 	border-top: 5px solid $primary;
+	background-color: white;
 	@media (max-width: $breakpoint400) {
 		width: 100vw;
 		margin-left: -$container_padding;
@@ -14,8 +15,8 @@
 	}
 	&__title {
 		font-size: 20px;
-		text-align: center;
 		margin-bottom: 20px;
+		text-align: center;
 	}
 	&__item {
 		margin-top: 10px;
