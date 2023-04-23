@@ -1,7 +1,7 @@
 import { FC, useEffect } from 'react';
 import { useAppSelector, useAppDispatch } from '../../hooks/redux';
 import NotificationItem from './notification-item/NotificationItem';
-import { notificationSlice } from '../../redux/notice/notificationSlice';
+import { notificationSlice } from '../../redux/notifications/notificationSlice';
 import { NotificationTypes } from '../../models/notificationModels';
 import SlideIn, { SlideInDirections } from '../../animations/SlideIn';
 import styles from './notifications.module.scss';
@@ -16,14 +16,12 @@ const Notifications: FC = () => {
 	// FIXME рефакторинг
 	useEffect(() => {
 		if (!authError) return;
-		dispatch(
-			addNotification({
-				title: 'Ошибка',
-				message: authError,
-				duration: 10000,
-				type: NotificationTypes.ERROR,
-			})
-		);
+		const newNotification = {
+			title: 'Ошибка',
+			message: authError,
+			type: NotificationTypes.ERROR,
+		};
+		dispatch(addNotification(newNotification));
 	}, [authError]);
 
 	return (

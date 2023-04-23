@@ -1,9 +1,9 @@
-import { FC, FormEvent, Fragment, useState } from 'react';
+import { FC, Fragment, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { MdEmail as EmailSVG } from 'react-icons/md';
 import { RiLockPasswordFill as PasswordSVG } from 'react-icons/ri';
 import { useAppDispatch } from '../../../hooks/redux';
-import { notificationSlice } from '../../../redux/notice/notificationSlice';
+import { notificationSlice } from '../../../redux/notifications/notificationSlice';
 import Input from '../../../components/_UI/input/Input';
 import Button from '../../../components/_UI/button/Button';
 import styles from './registration-form.module.scss';
@@ -11,34 +11,36 @@ import { isEmail } from '../../../utils/utils';
 import PasswordStrength from '../../../components/_UI/password-strength/PasswordStrength';
 import { emailWarning } from '../../../warnings/formWarnings';
 
-enum Stages {
-	FIRST = 1,
-	SECOND = 2,
-}
+type Stages = 1 | 2;
 
-// FIXME декомпозировать | валидация на уже существующий аккаунт
+// FIXME декомпозиция | валидация на уже существующий аккаунт
 const RegistrationForm: FC = () => {
+	const formRef = useRef<HTMLFormElement>(null);
+
 	const dispatch = useAppDispatch();
 	const { addNotification } = notificationSlice.actions;
-	const [stage, setStage] = useState<Stages>(Stages.FIRST);
 
+	const [stage, setStage] = useState<Stages>(1);
 	const [email, setEmail] = useState<string>('');
 	const [password, setPassword] = useState<string>('');
 	const [repeatPassword, setRepeatPassword] = useState<string>('');
 
-	const toSecondStage = (e: FormEvent<HTMLButtonElement>) => {
-		e.preventDefault();
-		if (!isEmail(email)) {
-			dispatch(addNotification(emailWarning));
-			return;
-		}
-		setStage(Stages.SECOND);
+	const toSecondStage = () => {
+		if (email.length === 0) return formRef.current!.reportValidity();
+		if (!isEmail(email)) return dispatch(addNotification(emailWarning));
+		setStage(2);
+	};
+
+	const toFirstStage = () => {
+		setStage(1);
+		setPassword('');
+		setRepeatPassword('');
 	};
 
 	return (
-		<form className={styles.form}>
+		<form className={styles.form} ref={formRef}>
 			<h2 className={styles.form__title}>Регистрация. Шаг {stage}</h2>
-			{stage === Stages.FIRST && (
+			{stage === 1 && (
 				<Fragment>
 					<div className={styles.form__item}>
 						<EmailSVG />
@@ -53,8 +55,11 @@ const RegistrationForm: FC = () => {
 					</div>
 				</Fragment>
 			)}
-			{stage === Stages.SECOND && (
+			{stage === 2 && (
 				<Fragment>
+					<button className={styles.form__back} onClick={toFirstStage}>
+						Назад
+					</button>
 					<div className={styles.form__item}>
 						<PasswordSVG />
 						<Input
@@ -73,7 +78,9 @@ const RegistrationForm: FC = () => {
 							onChange={(e) => setRepeatPassword(e.target.value)}
 						/>
 					</div>
-					<PasswordStrength password={password} />
+					<div className={styles.form__strength}>
+						<PasswordStrength password={password} />
+					</div>
 					<div className={styles.form__submit}>
 						<Button type='submit' caption='Зарегестрироваться' />
 					</div>

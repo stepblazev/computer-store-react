@@ -1,9 +1,8 @@
 import { FC, useEffect, useRef } from 'react';
 import { AiOutlineClose as CloseSVG } from 'react-icons/ai';
-import { notificationSlice } from '../../../redux/notice/notificationSlice';
-import { INotification } from '../../../models/notificationModels';
+import { NotificationIcons, INotification } from '../../../models/notificationModels';
 import { useAppDispatch } from '../../../hooks/redux';
-import { NotificationIcons } from './NotificationIcons';
+import { notificationSlice } from '../../../redux/notifications/notificationSlice';
 import styles from './notification-item.module.scss';
 
 type NotificationItemProps = {
@@ -12,22 +11,24 @@ type NotificationItemProps = {
 
 const NotificationItem: FC<NotificationItemProps> = ({ notification }) => {
 	const Icon = NotificationIcons[notification.type];
+	const underline = useRef<HTMLDivElement>(null);
 
 	const dispatch = useAppDispatch();
 	const { removeNotification } = notificationSlice.actions;
-	const underline = useRef<HTMLDivElement>(null);
+
+	const remove = () => {
+		dispatch(removeNotification(notification.id));
+	};
 
 	useEffect(() => {
 		const updater = setInterval(() => {
 			const newWidth = parseInt(underline.current?.style.width as string) - 1;
-			if (newWidth === 0) dispatch(removeNotification(notification.id));
+			if (newWidth === 0) remove();
 			underline.current!.style.width = `${newWidth}%`;
 		}, notification.duration / 100);
 
 		return () => clearInterval(updater);
 	}, []);
-
-	const removeHandler = () => dispatch(removeNotification(notification.id));
 
 	return (
 		<div className={[styles.item, styles[notification.type]].join(' ')}>
@@ -35,7 +36,7 @@ const NotificationItem: FC<NotificationItemProps> = ({ notification }) => {
 			<div className={styles.item__content}>
 				<h2 className={styles.item__title}>{notification.title}</h2>
 				<p className={styles.item__message}>{notification.message}</p>
-				<button className={styles.item__remove} onClick={removeHandler}>
+				<button className={styles.item__remove} onClick={remove}>
 					<CloseSVG />
 				</button>
 			</div>

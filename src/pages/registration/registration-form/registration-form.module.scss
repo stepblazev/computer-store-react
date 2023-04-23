@@ -3,4 +3,20 @@
 
 .form {
 	@extend .form;
+	position: relative;
+
+	&__title {
+		text-align: right;
+	}
+
+	&__back {
+		position: absolute;
+		left: 10px;
+		top: 5px;
+	}
+
+	&__strength {
+		margin-top: 5px;
+		padding-left: 35px;
+	}
 }

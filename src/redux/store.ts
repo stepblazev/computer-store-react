@@ -1,5 +1,5 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
-import { notificationSlice } from './notice/notificationSlice';
+import { notificationSlice } from './notifications/notificationSlice';
 import { authSlice } from './auth/authSlice';
 
 const rootReducer = combineReducers({

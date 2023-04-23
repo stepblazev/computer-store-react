@@ -3,7 +3,7 @@ import { MdEmail as EmailSVG } from 'react-icons/md';
 import { RiLockPasswordFill as PasswordSVG } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
 import { useAppDispatch } from '../../../hooks/redux';
-import { notificationSlice } from '../../../redux/notice/notificationSlice';
+import { notificationSlice } from '../../../redux/notifications/notificationSlice';
 import { emailWarning, passWarning } from '../../../warnings/formWarnings';
 import { isEmail } from '../../../utils/utils';
 import { fetchUser } from '../../../redux/auth/authSlice';
@@ -21,14 +21,8 @@ const LoginForm: FC = () => {
 
 	const submit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		if (!isEmail(email)) {
-			dispatch(addNotification(emailWarning));
-			return;
-		}
-		if (password.length < 8) {
-			dispatch(addNotification(passWarning));
-			return;
-		}
+		if (!isEmail(email)) return dispatch(addNotification(emailWarning));
+		if (password.length < 8) return dispatch(addNotification(passWarning));
 		dispatch(fetchUser(email, password, FetchAuthTypes.LOGIN));
 	};
 
@@ -53,7 +47,7 @@ const LoginForm: FC = () => {
 				/>
 			</div>
 			<div className={styles.form__submit}>
-				<Button caption='Войти' />
+				<Button type='submit' caption='Войти' />
 			</div>
 			<div className={styles.form__redirect}>
 				Еще нет аккаунта? <Link to='/registration'>Создайте его!</Link>
