@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { useAppDispatch } from './hooks/redux';
 import { refreshUser } from './redux/auth/authSlice';
 
+// FIXME вынести все использованные svg в отдельный файл
 const App: FC = () => {
 	const dispatch = useAppDispatch();
 

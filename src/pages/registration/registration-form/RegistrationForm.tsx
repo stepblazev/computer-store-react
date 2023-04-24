@@ -1,15 +1,18 @@
-import { FC, Fragment, useState, useRef } from 'react';
+import { FC, Fragment, useState, useRef, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
-import { MdEmail as EmailSVG } from 'react-icons/md';
+import { FaAt as EmailSVG } from 'react-icons/fa';
 import { RiLockPasswordFill as PasswordSVG } from 'react-icons/ri';
+import { IoMdArrowRoundBack as BackSVG } from 'react-icons/io';
 import { useAppDispatch } from '../../../hooks/redux';
 import { notificationSlice } from '../../../redux/notifications/notificationSlice';
 import Input from '../../../components/_UI/input/Input';
 import Button from '../../../components/_UI/button/Button';
-import styles from './registration-form.module.scss';
 import { isEmail } from '../../../utils/utils';
+import { passWarning, emailWarning, equalsWarning } from '../../../warnings/formWarnings';
 import PasswordStrength from '../../../components/_UI/password-strength/PasswordStrength';
-import { emailWarning } from '../../../warnings/formWarnings';
+import { fetchUser } from '../../../redux/auth/authSlice';
+import styles from './registration-form.module.scss';
+import { FetchAuthTypes } from '../../../models/authModels';
 
 type Stages = 1 | 2;
 
@@ -37,9 +40,18 @@ const RegistrationForm: FC = () => {
 		setRepeatPassword('');
 	};
 
+	const submit = (e: FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		if (password.length < 8) return dispatch(addNotification(passWarning));
+		if (password !== repeatPassword) return dispatch(addNotification(equalsWarning));
+		dispatch(fetchUser(email, password, FetchAuthTypes.REGISTRATION));
+	};
+
 	return (
-		<form className={styles.form} ref={formRef}>
-			<h2 className={styles.form__title}>Регистрация. Шаг {stage}</h2>
+		<form className={styles.form} ref={formRef} onSubmit={submit}>
+			<h2 className={styles.form__title}>
+				Регистрация. <span className={styles.form__titlePrimary}>Шаг {stage}</span>
+			</h2>
 			{stage === 1 && (
 				<Fragment>
 					<div className={styles.form__item}>
@@ -58,6 +70,7 @@ const RegistrationForm: FC = () => {
 			{stage === 2 && (
 				<Fragment>
 					<button className={styles.form__back} onClick={toFirstStage}>
+						<BackSVG />
 						Назад
 					</button>
 					<div className={styles.form__item}>

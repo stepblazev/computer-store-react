@@ -7,7 +7,6 @@ import { setupStore } from './redux/store';
 import { API_URL } from './_config';
 
 axios.defaults.baseURL = `${API_URL}/api`;
-
 const store = setupStore();
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(

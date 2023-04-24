@@ -11,3 +11,9 @@ export const passWarning: INotificationProps = {
 	message: 'Минимальная длина пароля составляет 8 символов',
 	type: NotificationTypes.WARNING,
 };
+
+export const equalsWarning: INotificationProps = {
+	title: 'Некорректные данные',
+	message: 'Ввееденные пароли не совпадают. Повторите попытку',
+	type: NotificationTypes.WARNING,
+};

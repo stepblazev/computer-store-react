@@ -8,7 +8,7 @@ import styles from './profile.module.scss';
 
 // FIXME исправить стили | убрать logout
 const Profile: FC = () => {
-	const { isAuth } = useAppSelector((state) => state.auth);
+	const { isAuth, isLoading } = useAppSelector((state) => state.auth);
 
 	return isAuth ? (
 		<>
