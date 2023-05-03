@@ -1,10 +1,12 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { notificationSlice } from './notifications/notificationSlice';
+import { searchSlice } from './search/searchSlice';
 import { authSlice } from './auth/authSlice';
 
 const rootReducer = combineReducers({
 	auth: authSlice.reducer,
 	notifications: notificationSlice.reducer,
+	search: searchSlice.reducer,
 });
 
 export const setupStore = () => {

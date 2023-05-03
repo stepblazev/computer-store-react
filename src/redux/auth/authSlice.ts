@@ -27,14 +27,14 @@ export const authSlice = createSlice({
 			state.isLoading = true;
 			state.error = '';
 		},
-		fetchSuccessUser(state, action: PayloadAction<IAuth>) {
+		fetchUserSuccess(state, action: PayloadAction<IAuth>) {
 			state.isLoading = false;
 			const { email, accessToken } = action.payload;
 			localStorage.setItem('token', accessToken);
 			state.isAuth = true;
 			state.email = email;
 		},
-		fetchErrorUser(state, action: PayloadAction<string>) {
+		fetchUserError(state, action: PayloadAction<string>) {
 			state.isLoading = false;
 			state.error = action.payload;
 			state.isAuth = false;
@@ -59,11 +59,11 @@ export const fetchUser =
 		try {
 			dispatch(authSlice.actions.fetchUser());
 			const response = await fetchType[type](email, password);
-			dispatch(authSlice.actions.fetchSuccessUser(response.data));
+			dispatch(authSlice.actions.fetchUserSuccess(response.data));
 		} catch (error) {
 			const err = error as AxiosError<ErrorResponse>;
 			const message = err.response?.data.message as string;
-			dispatch(authSlice.actions.fetchErrorUser(message));
+			dispatch(authSlice.actions.fetchUserError(message));
 		}
 	};
 
@@ -71,11 +71,12 @@ export const refreshUser = () => async (dispatch: AppDispatch) => {
 	try {
 		dispatch(authSlice.actions.fetchUser());
 		const response = await AuthService.refresh();
-		dispatch(authSlice.actions.fetchSuccessUser(response.data));
+		dispatch(authSlice.actions.fetchUserSuccess(response.data));
 	} catch (error) {
+		localStorage.removeItem('token');
 		const err = error as AxiosError<ErrorResponse>;
 		const message = err.response?.data.message as string;
-		dispatch(authSlice.actions.fetchErrorUser(message));
+		dispatch(authSlice.actions.fetchUserError(message));
 	}
 };
 

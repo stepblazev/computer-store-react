@@ -1,0 +1,31 @@
+.list {
+	display: flex;
+	flex-direction: column;
+	&__header {
+		display: flex;
+		align-items: center;
+		gap: 3px;
+		padding: 5px;
+		color: lightgray;
+		font-weight: 600;
+
+		svg {
+			width: 15px;
+			height: 15px;
+			fill: lightgray;
+		}
+	}
+}
+
+.type {
+	padding: 5px;
+	padding-left: 20px;
+	cursor: pointer;
+	&:hover {
+		text-decoration: underline;
+		background-color: rgb(243, 243, 243);
+	}
+	&::first-letter {
+		text-transform: uppercase;
+	}
+}
