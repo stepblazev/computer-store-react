@@ -11,7 +11,7 @@ function stopPropagation(e: MouseEvent<HTMLDivElement>): void {
 	e.stopPropagation();
 }
 
-// FIXME (refactoring)
+// FIXME рефакторинг бургер меню
 const Burger: FC = () => {
 	const [burger, setBurger] = useState<boolean>(false);
 

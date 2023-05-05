@@ -1,19 +1,22 @@
 import { BiSearchAlt as SearchSVG } from 'react-icons/bi';
 import { ChangeEvent, FC, useEffect, useState, FocusEvent } from 'react';
-import styles from './search.module.scss';
 import SearchResult from '../search-result/SearchResult';
 import { useAppDispatch } from '../../../../hooks/redux';
 import { fetchSearch } from '../../../../redux/search/searchSlice';
+import { searchSlice } from '../../../../redux/search/searchSlice';
 import useDebounce from '../../../../hooks/useDebounce';
+import styles from './search.module.scss';
 
 const Search: FC = () => {
 	const dispatch = useAppDispatch();
+	const { searchClear } = searchSlice.actions;
 
 	const [search, setSearch] = useState<string>('');
-	const debounceSearch = useDebounce(search, 500);
+	const debounceSearch = useDebounce(search, 300);
 
 	useEffect(() => {
 		if (debounceSearch.length > 0) dispatch(fetchSearch(debounceSearch));
+		else dispatch(searchClear());
 	}, [debounceSearch]);
 
 	const searchHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -21,7 +24,7 @@ const Search: FC = () => {
 	};
 
 	const blurHandler = (e: FocusEvent<HTMLInputElement>) => {
-		setSearch('');
+		dispatch(searchClear());
 	};
 
 	return (

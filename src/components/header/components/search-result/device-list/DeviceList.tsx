@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { IDevice } from '../../../../../models/deviceModels';
 import { BsMotherboard as DeviceSVG } from 'react-icons/bs';
-import { IImage } from '../../../../../models/deviceModels';
+import noimages from '../../../../../assets/noimage.png';
 import styles from './device-list.module.scss';
 
 type DeviceListProps = {
@@ -9,6 +9,7 @@ type DeviceListProps = {
 };
 
 // FIXME вставить ссылку
+// FIXME доработать адаптив
 const DeviceList: FC<DeviceListProps> = ({ devices }) => {
 	if (!devices.length) return null;
 
@@ -20,11 +21,9 @@ const DeviceList: FC<DeviceListProps> = ({ devices }) => {
 			</li>
 			{devices.map((device) => (
 				<li key={device.id} className={styles.device}>
-					{/* {typeof device.images[0] === 'string' && (
-						<div className={styles.device__image}>
-							<img src={device.images[0].url_preview} alt='' />
-						</div>
-					)} */}
+					<div className={styles.device__image}>
+						<img src={device.images[0]?.url_preview ?? noimages} alt='Нет картинки' />
+					</div>
 					<div className={styles.device__content}>
 						<div className={styles.device__title}>
 							<span>

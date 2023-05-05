@@ -1,3 +1,5 @@
+@import '../../../../../styles/variables';
+
 .list {
 	display: flex;
 	flex-direction: column;
@@ -20,19 +22,35 @@
 
 .device {
 	padding: 5px;
+	display: flex;
+	gap: 10px;
 	cursor: pointer;
 
 	&:hover {
 		background-color: rgb(243, 243, 243);
 	}
 
+	&__image {
+		width: 100px;
+		height: 100px;
+
+		img {
+			object-fit: cover;
+			object-position: center;
+		}
+	}
+
 	&__content {
+		flex-grow: 1;
 	}
 
 	&__title {
 		display: flex;
 		justify-content: space-between;
 		font-weight: 700;
+		&::first-letter {
+			text-transform: uppercase;
+		}
 	}
 
 	&__exists {
@@ -43,5 +61,12 @@
 
 	&__description {
 		text-align: justify;
+		&::first-letter {
+			text-transform: uppercase;
+		}
+	}
+
+	@media (max-width: $breakpoint700) {
+		flex-direction: column;
 	}
 }

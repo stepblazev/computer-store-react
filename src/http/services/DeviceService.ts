@@ -1,13 +1,13 @@
 import { AxiosResponse } from 'axios';
-import { ISearch } from '../../models/deviceModels';
 import api from '..';
+import { IGetDeviceParams, OrderTypes } from '../../models/filterModels';
+import { IDevice } from '../../models/deviceModels';
 
 export default class DeviceService {
-	static async search(search: string): Promise<AxiosResponse<ISearch>> {
-		return api.get<ISearch>(`/device/search`, {
-			params: {
-				search,
-			},
+	static async search(search: string): Promise<AxiosResponse<IDevice[]>> {
+		const filters: IGetDeviceParams = { search, _order: OrderTypes.QUANTITY, _page: 1 };
+		return api.get<IDevice[]>(`/device`, {
+			params: filters,
 		});
 	}
 }

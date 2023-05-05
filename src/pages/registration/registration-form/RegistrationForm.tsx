@@ -11,12 +11,12 @@ import { isEmail } from '../../../utils/utils';
 import { passWarning, emailWarning, equalsWarning } from '../../../warnings/formWarnings';
 import PasswordStrength from '../../../components/_UI/password-strength/PasswordStrength';
 import { fetchUser } from '../../../redux/auth/authSlice';
-import styles from './registration-form.module.scss';
 import { FetchAuthTypes } from '../../../models/authModels';
+import styles from './registration-form.module.scss';
 
 type Stages = 1 | 2;
 
-// FIXME декомпозиция | валидация на уже существующий аккаунт
+// FIXME декомпозиция + рефакторинг
 const RegistrationForm: FC = () => {
 	const formRef = useRef<HTMLFormElement>(null);
 

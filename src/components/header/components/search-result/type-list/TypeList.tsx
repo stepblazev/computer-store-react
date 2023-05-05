@@ -1,13 +1,12 @@
 import { FC } from 'react';
-import { IType } from '../../../../../models/deviceModels';
+import { Link } from 'react-router-dom';
 import { BiCategory as TypeSVG } from 'react-icons/bi';
 import styles from './type-list.module.scss';
 
 type TypeListProps = {
-	types: IType[];
+	types: string[];
 };
 
-// FIXME вставить ссылку
 const TypeList: FC<TypeListProps> = ({ types }) => {
 	if (!types.length) return null;
 
@@ -18,8 +17,8 @@ const TypeList: FC<TypeListProps> = ({ types }) => {
 				Категории:
 			</li>
 			{types.map((type) => (
-				<li key={type.id} className={styles.type}>
-					{type.name}
+				<li key={type} className={styles.type}>
+					<Link to={`/device?type=${type}`}>{type}</Link>
 				</li>
 			))}
 		</ul>

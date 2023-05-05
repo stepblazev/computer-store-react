@@ -12,17 +12,18 @@ const Notifications: FC = () => {
 	const { notifications } = useAppSelector((state) => state.notifications);
 
 	const authError = useAppSelector((state) => state.auth.error);
+	const searchError = useAppSelector((state) => state.search.error);
 
 	// FIXME рефакторинг
 	useEffect(() => {
-		if (!authError) return;
+		if (!authError && !searchError) return;
 		const newNotification = {
 			title: 'Ошибка',
-			message: authError,
+			message: 'Произошла непредвиденная ошибка. Пожалуйста, повторите попытку.',
 			type: NotificationTypes.ERROR,
 		};
 		dispatch(addNotification(newNotification));
-	}, [authError]);
+	}, [authError, searchError]);
 
 	return (
 		<div className={styles.notifications}>

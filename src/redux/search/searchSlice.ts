@@ -2,10 +2,12 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { AxiosError } from 'axios';
 import { ErrorResponse } from '../../models/axiosModels';
 import { AppDispatch } from '../store';
-import { ISearch } from '../../models/deviceModels';
 import DeviceService from '../../http/services/DeviceService';
+import { IDevice } from '../../models/deviceModels';
 
-interface SearchState extends ISearch {
+interface SearchState {
+	types: string[];
+	devices: IDevice[];
 	isLoading: boolean;
 	error: string | null;
 }
@@ -27,14 +29,22 @@ export const searchSlice = createSlice({
 			state.devices = [];
 			state.error = null;
 		},
-		fetchSearchSuccess(state, action: PayloadAction<ISearch>) {
+		fetchSearchSuccess(state, action: PayloadAction<IDevice[]>) {
 			state.isLoading = false;
-			state.types = action.payload.types;
-			state.devices = action.payload.devices;
+			state.devices = action.payload;
+			const types = action.payload.map((device) => device.type);
+			const uniqueTypes = [...new Set(types)];
+			state.types = uniqueTypes;
 		},
 		fetchSearchError(state, action: PayloadAction<string>) {
 			state.isLoading = false;
 			state.error = action.payload;
+		},
+		searchClear(state) {
+			state.types = [];
+			state.devices = [];
+			state.isLoading = false;
+			state.error = null;
 		},
 	},
 });

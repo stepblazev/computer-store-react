@@ -18,8 +18,3 @@ export interface IDevice {
 	properties: string;
 	images: IImage[];
 }
-
-export interface ISearch {
-	types: IType[];
-	devices: IDevice[];
-}
