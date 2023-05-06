@@ -17,4 +17,5 @@ export interface IDevice {
 	quantity: number;
 	properties: string;
 	images: IImage[];
+	preview: string;
 }

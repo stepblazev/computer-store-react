@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { IDevice } from '../../../../../models/deviceModels';
 import { BsMotherboard as DeviceSVG } from 'react-icons/bs';
+import { API_URL } from '../../../../../_config';
 import noimages from '../../../../../assets/noimage.png';
 import styles from './device-list.module.scss';
 
@@ -22,7 +23,10 @@ const DeviceList: FC<DeviceListProps> = ({ devices }) => {
 			{devices.map((device) => (
 				<li key={device.id} className={styles.device}>
 					<div className={styles.device__image}>
-						<img src={device.images[0]?.url_preview ?? noimages} alt='Нет картинки' />
+						<img
+							src={device.preview ? `${API_URL}/${device.preview}` : noimages}
+							alt='Нет картинки'
+						/>
 					</div>
 					<div className={styles.device__content}>
 						<div className={styles.device__title}>

@@ -11,20 +11,25 @@ const Search: FC = () => {
 	const dispatch = useAppDispatch();
 	const { searchClear } = searchSlice.actions;
 
+	const [showResults, setShowResults] = useState<boolean>(false);
+
 	const [search, setSearch] = useState<string>('');
 	const debounceSearch = useDebounce(search, 300);
 
 	useEffect(() => {
-		if (debounceSearch.length > 0) dispatch(fetchSearch(debounceSearch));
-		else dispatch(searchClear());
+		if (debounceSearch.length > 0) {
+			setShowResults(true);
+			dispatch(fetchSearch(debounceSearch));
+		} else dispatch(searchClear());
 	}, [debounceSearch]);
 
-	const searchHandler = (e: ChangeEvent<HTMLInputElement>) => {
-		setSearch(e.target.value);
-	};
+	useEffect(() => {
+		if (!showResults) dispatch(searchClear());
+	}, [showResults]);
 
+	const searchHandler = (e: ChangeEvent<HTMLInputElement>) => setSearch(e.target.value);
 	const blurHandler = (e: FocusEvent<HTMLInputElement>) => {
-		dispatch(searchClear());
+		setShowResults(false);
 	};
 
 	return (
@@ -38,7 +43,7 @@ const Search: FC = () => {
 				className={styles.search__input}
 			/>
 			<SearchSVG className={styles.search__svg} />
-			{Boolean(search.length) && <SearchResult />}
+			{showResults && <SearchResult />}
 		</div>
 	);
 };
