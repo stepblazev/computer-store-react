@@ -1,7 +1,7 @@
 import { FC, useEffect } from 'react';
-import Checkbox from '../../../components/_UI/checkbox/Checkbox';
 import { useAppSelector, useAppDispatch } from '../../../hooks/redux';
 import { fetchFilter } from '../../../redux/filter/filterSlice';
+import Property from './property/Property';
 import styles from './filter.module.scss';
 
 type FilterType = {
@@ -18,16 +18,15 @@ const Filter: FC<FilterType> = ({ type }) => {
 
 	useEffect(() => {
 		dispatch(fetchFilter(type));
-	}, []);
+	}, [type]);
 
 	return (
 		<div className={styles.filter}>
-			{JSON.stringify(allBrands)}
-			{allBrands.map((brand) => (
-				<Checkbox key={brand.id} label={brand.name} checked={false} />
-			))}
-			{allBrands.map((brand) => (
+			{/* {allBrands.map((brand) => (
 				<Checkbox key={brand.id} label={brand.name} checked={true} />
+			))} */}
+			{allProperties.map((property) => (
+				<Property property={property} />
 			))}
 		</div>
 	);

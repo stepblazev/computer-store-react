@@ -4,6 +4,16 @@
 }
 
 .property {
+	margin-bottom: 10px;
+
 	h3 {
+		&::first-letter {
+			text-transform: uppercase;
+		}
+	}
+	ul {
+		display: flex;
+		flex-direction: column;
+		gap: 5px;
 	}
 }

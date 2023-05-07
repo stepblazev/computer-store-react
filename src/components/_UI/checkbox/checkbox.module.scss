@@ -1,24 +1,22 @@
+@import '../../../styles/variables';
+
 .checkbox {
 	display: flex;
 	align-items: center;
 	gap: 5px;
 	cursor: pointer;
 	user-select: none;
-
 	input[type='checkbox'] {
 		display: none;
 	}
-
 	input[type='checkbox']:checked + &__label {
-		font-weight: 700;
+		color: $primary;
 	}
-
 	&:hover {
 		.checkbox__icon {
 			border-color: gray;
 		}
 	}
-
 	&__icon {
 		width: 20px;
 		height: 20px;
@@ -28,8 +26,8 @@
 		align-items: center;
 		justify-content: center;
 		transition: all 0.2s ease;
-
 		svg {
+			fill: $primary;
 			width: 20px;
 			height: 20px;
 		}
