@@ -16,14 +16,14 @@ const Notifications: FC = () => {
 
 	// FIXME рефакторинг
 	useEffect(() => {
-		if (!authError && !searchError) return;
+		if (!authError) return;
 		const newNotification = {
 			title: 'Ошибка',
-			message: 'Произошла непредвиденная ошибка. Пожалуйста, повторите попытку.',
+			message: authError,
 			type: NotificationTypes.ERROR,
 		};
 		dispatch(addNotification(newNotification));
-	}, [authError, searchError]);
+	}, [authError]);
 
 	return (
 		<div className={styles.notifications}>

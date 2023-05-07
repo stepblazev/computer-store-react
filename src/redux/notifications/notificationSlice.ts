@@ -22,7 +22,7 @@ export const notificationSlice = createSlice({
 			const newNotification: INotification = {
 				id: Date.now(),
 				type: props.type ?? NotificationTypes.INFO,
-				duration: props.duration ?? 5000,
+				duration: props.duration ?? 3000,
 				...action.payload,
 			};
 			state.notifications.push(newNotification);

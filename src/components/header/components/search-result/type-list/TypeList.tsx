@@ -5,9 +5,10 @@ import styles from './type-list.module.scss';
 
 type TypeListProps = {
 	types: string[];
+	hideResults: () => void;
 };
 
-const TypeList: FC<TypeListProps> = ({ types }) => {
+const TypeList: FC<TypeListProps> = ({ types, hideResults }) => {
 	if (!types.length) return null;
 
 	return (
@@ -17,7 +18,7 @@ const TypeList: FC<TypeListProps> = ({ types }) => {
 				Категории:
 			</li>
 			{types.map((type) => (
-				<li key={type} className={styles.type}>
+				<li key={type} className={styles.type} onClick={hideResults}>
 					<Link to={`/device?type=${type}`}>{type}</Link>
 				</li>
 			))}

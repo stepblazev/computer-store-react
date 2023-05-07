@@ -7,11 +7,12 @@ import styles from './device-list.module.scss';
 
 type DeviceListProps = {
 	devices: IDevice[];
+	hideResults: () => void;
 };
 
 // FIXME вставить ссылку
 // FIXME доработать адаптив
-const DeviceList: FC<DeviceListProps> = ({ devices }) => {
+const DeviceList: FC<DeviceListProps> = ({ devices, hideResults }) => {
 	if (!devices.length) return null;
 
 	return (
@@ -21,7 +22,7 @@ const DeviceList: FC<DeviceListProps> = ({ devices }) => {
 				Товары:
 			</li>
 			{devices.map((device) => (
-				<li key={device.id} className={styles.device}>
+				<li key={device.id} className={styles.device} onClick={hideResults}>
 					<div className={styles.device__image}>
 						<img
 							src={device.preview ? `${API_URL}/${device.preview}` : noimages}

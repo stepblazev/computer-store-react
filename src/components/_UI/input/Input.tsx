@@ -10,7 +10,7 @@ type InputProps = {
 	onBlur?: (e: FocusEvent<HTMLInputElement>) => void;
 };
 
-const Input: FC<InputProps> = ({ placeholder = 'Your text', ...otherProps }) => {
+const Input: FC<InputProps> = ({ placeholder = 'Ваш текст', ...otherProps }) => {
 	const inputRef = useRef<HTMLInputElement>(null);
 	const activate = (e: MouseEvent<HTMLDivElement>) => {
 		inputRef.current?.focus();
