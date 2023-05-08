@@ -1,0 +1,12 @@
+.list {
+	padding: 5px;
+	display: flex;
+	flex-direction: column;
+	h2 {
+		padding: 10px;
+		color: lightgray;
+		font-size: 24px;
+		font-weight: 700;
+		text-align: center;
+	}
+}
