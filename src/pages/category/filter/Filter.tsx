@@ -3,30 +3,32 @@ import { useAppSelector, useAppDispatch } from '../../../hooks/redux';
 import { fetchFilter } from '../../../redux/filter/filterSlice';
 import Property from './property/Property';
 import styles from './filter.module.scss';
+import Brands from './brands/Brands';
+import PriceChanger from './price/PriceChanger';
+import Search from './search/Search';
 
-type FilterType = {
+type FilterProps = {
 	type: string;
 };
 
-const Filter: FC<FilterType> = ({ type }) => {
+const Filter: FC<FilterProps> = ({ type }) => {
 	const dispatch = useAppDispatch();
 
-	const { brands: allBrands, properties: allProperties } = useAppSelector(
-		(state) => state.filter
-	);
-	const { brands, properties, price } = useAppSelector((state) => state.filter.filter);
+	const { brands, properties } = useAppSelector((state) => state.filter);
 
 	useEffect(() => {
 		dispatch(fetchFilter(type));
 	}, [type]);
 
+	if (!brands.length) return null;
+
 	return (
 		<div className={styles.filter}>
-			{/* {allBrands.map((brand) => (
-				<Checkbox key={brand.id} label={brand.name} checked={true} />
-			))} */}
-			{allProperties.map((property) => (
-				<Property property={property} />
+			<Search />
+			{Boolean(brands.length) && <Brands brands={brands} />}
+			<PriceChanger />
+			{properties.map((property) => (
+				<Property key={property.property_name} property={property} />
 			))}
 		</div>
 	);

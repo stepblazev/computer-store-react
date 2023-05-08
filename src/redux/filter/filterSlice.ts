@@ -79,9 +79,14 @@ export const filterSlice = createSlice({
 		},
 		removeProperty(state, action: PayloadAction<IPropertyValue>) {
 			const newProperty = action.payload;
+
 			state.filter.properties[newProperty.name] = state.filter.properties[
 				newProperty.name
 			].filter((property) => property !== newProperty.value);
+
+			if (state.filter.properties[newProperty.name].length === 0) {
+				delete state.filter.properties[newProperty.name];
+			}
 		},
 	},
 });

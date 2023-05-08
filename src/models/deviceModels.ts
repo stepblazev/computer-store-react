@@ -16,6 +16,11 @@ export interface IDevice {
 	brand: string;
 	quantity: number;
 	properties: string;
-	images: IImage[];
+	images: string[];
 	preview: string;
 }
+
+export type IDevicesResponse = {
+	devices: IDevice[];
+	total: number;
+};

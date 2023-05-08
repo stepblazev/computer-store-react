@@ -3,12 +3,14 @@ import { notificationSlice } from './notifications/notificationSlice';
 import { searchSlice } from './search/searchSlice';
 import { authSlice } from './auth/authSlice';
 import { filterSlice } from './filter/filterSlice';
+import { devicesSlice } from './device/deviceSlice';
 
 const rootReducer = combineReducers({
 	auth: authSlice.reducer,
 	notifications: notificationSlice.reducer,
 	search: searchSlice.reducer,
 	filter: filterSlice.reducer,
+	devices: devicesSlice.reducer,
 });
 
 export const setupStore = () => {

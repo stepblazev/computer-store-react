@@ -1,34 +1,33 @@
 import { FC, ChangeEvent, useState } from 'react';
 import Checkbox from '../../../../components/_UI/checkbox/Checkbox';
 import { useAppDispatch } from '../../../../hooks/redux';
-import { IPropertyValue } from '../../../../models/filterModels';
 import { filterSlice } from '../../../../redux/filter/filterSlice';
 
-type PropertyItemProps = {
-	property: IPropertyValue;
+type BrandItemProps = {
+	brand: string;
 };
 
-const PropertyItem: FC<PropertyItemProps> = ({ property }) => {
+const BrandItem: FC<BrandItemProps> = ({ brand }) => {
 	const dispatch = useAppDispatch();
-	const { addProperty, removeProperty } = filterSlice.actions;
+	const { addBrand, removeBrand } = filterSlice.actions;
 
 	const [checked, setChecked] = useState<boolean>(false);
 
 	const onChange = (e: ChangeEvent<HTMLInputElement>) => {
 		if (checked) {
-			dispatch(removeProperty(property));
+			dispatch(removeBrand(brand));
 			setChecked(false);
 		} else {
-			dispatch(addProperty(property));
+			dispatch(addBrand(brand));
 			setChecked(true);
 		}
 	};
 
 	return (
 		<li>
-			<Checkbox label={property.value} checked={checked} onChange={onChange} />
+			<Checkbox label={brand} checked={checked} onChange={onChange} />
 		</li>
 	);
 };
 
-export default PropertyItem;
+export default BrandItem;

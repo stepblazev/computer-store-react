@@ -1,5 +1,6 @@
 .filter {
-	width: 240px;
+	padding-top: 10px;
+	padding-right: 20px;
 	border-right: 1px solid lightgray;
 }
 
@@ -15,5 +16,17 @@
 		display: flex;
 		flex-direction: column;
 		gap: 5px;
+	}
+}
+
+.search {
+	margin-bottom: 10px;
+	input {
+		padding: 5px;
+		border: 1px solid lightgray;
+		&:focus {
+			border-color: gray;
+			outline: none;
+		}
 	}
 }

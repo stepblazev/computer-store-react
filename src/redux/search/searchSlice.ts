@@ -3,7 +3,7 @@ import { AxiosError } from 'axios';
 import { ErrorResponse } from '../../models/axiosModels';
 import { AppDispatch } from '../store';
 import DeviceService from '../../http/services/DeviceService';
-import { IDevice } from '../../models/deviceModels';
+import { IDevice, IDevicesResponse } from '../../models/deviceModels';
 
 interface SearchState {
 	types: string[];
@@ -29,11 +29,11 @@ export const searchSlice = createSlice({
 			state.devices = [];
 			state.error = null;
 		},
-		fetchSearchSuccess(state, action: PayloadAction<IDevice[]>) {
+		fetchSearchSuccess(state, action: PayloadAction<IDevicesResponse>) {
 			state.isLoading = false;
-			state.devices = action.payload;
-			const types = action.payload.map((device) => device.type);
-			const uniqueTypes = [...new Set(types)];
+			state.devices = action.payload.devices;
+			const types: string[] = action.payload.devices.map((device) => device.type);
+			const uniqueTypes: string[] = [...new Set(types)];
 			state.types = uniqueTypes;
 		},
 		fetchSearchError(state, action: PayloadAction<string>) {
