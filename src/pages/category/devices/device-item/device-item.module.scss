@@ -10,6 +10,7 @@ $imgSize: 120px;
 	background-color: white;
 	transition: all 0.2s ease;
 	cursor: pointer;
+	border-bottom: 1px solid lightgray;
 
 	&__image {
 		padding: 5px;
@@ -26,6 +27,10 @@ $imgSize: 120px;
 	}
 	&__content {
 		flex-grow: 1;
+	}
+	&__title {
+		display: flex;
+		justify-content: space-between;
 	}
 	&__exists {
 		margin-left: 5px;

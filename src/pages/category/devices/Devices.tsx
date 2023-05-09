@@ -16,16 +16,17 @@ const Devices: FC<DevicesProps> = ({ type }) => {
 	const { resetDevices } = devicesSlice.actions;
 
 	const { devices, order, page, isLoading } = useAppSelector((state) => state.devices);
-	const { filter } = useAppSelector((state) => state.filter);
+	const { filter, brands } = useAppSelector((state) => state.filter);
 
-	const debounceFitler = useDebounce(filter, 700);
+	const debounceFilter = useDebounce(filter, 0);
 
 	useEffect(() => {
-		dispatch(fetchDevices(type, filter, order, page));
-		return () => {
-			dispatch(resetDevices());
-		};
-	}, [debounceFitler, order, page, type]);
+		dispatch(fetchDevices(type, debounceFilter, order, page));
+	}, [debounceFilter, order, page]);
+
+	useEffect(() => {
+		dispatch(resetDevices());
+	}, [type]);
 
 	return (
 		<div className={styles.devices}>

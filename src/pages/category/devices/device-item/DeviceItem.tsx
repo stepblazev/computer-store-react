@@ -18,16 +18,19 @@ const DeviceItem: FC<DeviceItemProps> = ({ device }) => {
 				/>
 			</div>
 			<div className={styles.item__content}>
-				<h3>
-					{device.title}
-					<span
-						className={[
-							styles.item__exists,
-							device.quantity > 0 ? 'green' : 'red',
-						].join(' ')}
-					>
-						{device.quantity > 0 ? 'В наличии' : 'Нет на складе'}
+				<h3 className={styles.item__title}>
+					<span>
+						{device.title}
+						<span
+							className={[
+								styles.item__exists,
+								device.quantity > 0 ? 'green' : 'red',
+							].join(' ')}
+						>
+							{device.quantity > 0 ? 'В наличии' : 'Нет на складе'}
+						</span>
 					</span>
+					<span>{device.price} руб.</span>
 				</h3>
 				<p>{device.properties}</p>
 			</div>

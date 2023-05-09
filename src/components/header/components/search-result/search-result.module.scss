@@ -3,13 +3,14 @@
 $rounded: 3px;
 
 .result {
+	max-height: 500px;
 	width: 100%;
 	position: absolute;
 	top: calc(100% + 10px);
 	background-color: #ffffff;
 	border-radius: $rounded;
 	box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.2);
-	overflow: hidden;
+	overflow-y: scroll;
 	z-index: 20;
 
 	&__nothing {

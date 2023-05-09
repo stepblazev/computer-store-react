@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import styles from './category.module.scss';
 import Filter from './filter/Filter';
 import Devices from './devices/Devices';
+import CategoryHeader from './header/CategoryHeader';
 
 const Category: FC = () => {
 	const location = useLocation();
@@ -11,7 +12,7 @@ const Category: FC = () => {
 
 	return (
 		<div className={[styles.category, 'container'].join(' ')}>
-			<h1 className={styles.category__title}>Поиск по категории "{type}"</h1>
+			<CategoryHeader type={type} />
 			<div className={styles.category__content}>
 				<Filter type={type} />
 				<Devices type={type} />

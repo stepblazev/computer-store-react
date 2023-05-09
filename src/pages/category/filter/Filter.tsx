@@ -14,7 +14,7 @@ type FilterProps = {
 const Filter: FC<FilterProps> = ({ type }) => {
 	const dispatch = useAppDispatch();
 
-	const { brands, properties } = useAppSelector((state) => state.filter);
+	const { brands, properties, isLoading } = useAppSelector((state) => state.filter);
 
 	useEffect(() => {
 		dispatch(fetchFilter(type));
@@ -22,14 +22,20 @@ const Filter: FC<FilterProps> = ({ type }) => {
 
 	return (
 		<div className={styles.filter}>
-			<Search />
-			{Boolean(brands.length) && <Brands brands={brands} />}
-			<PriceChanger />
-			<div className={styles.property_list}>
-				{properties.map((property) => (
-					<Property key={property.property_name} property={property} />
-				))}
-			</div>
+			{isLoading ? (
+				<h2>Загрузка фильтров...</h2>
+			) : (
+				<>
+					<Search />
+					{Boolean(brands.length) && <Brands brands={brands} />}
+					<PriceChanger />
+					<div className={styles.property_list}>
+						{properties.map((property) => (
+							<Property key={property.property_name} property={property} />
+						))}
+					</div>
+				</>
+			)}
 		</div>
 	);
 };
