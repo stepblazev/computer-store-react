@@ -47,6 +47,12 @@ export const devicesSlice = createSlice({
 		setOrder(state, action: PayloadAction<OrderTypes>) {
 			state.order = action.payload;
 		},
+		resetDevices(state) {
+			state.total = 0;
+			state.devices = [];
+			state.page = 1;
+			state.order = OrderTypes.QUANTITY;
+		},
 	},
 });
 

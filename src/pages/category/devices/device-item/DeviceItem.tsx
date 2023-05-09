@@ -20,7 +20,12 @@ const DeviceItem: FC<DeviceItemProps> = ({ device }) => {
 			<div className={styles.item__content}>
 				<h3>
 					{device.title}
-					<span className={styles.item__exists}>
+					<span
+						className={[
+							styles.item__exists,
+							device.quantity > 0 ? 'green' : 'red',
+						].join(' ')}
+					>
 						{device.quantity > 0 ? 'В наличии' : 'Нет на складе'}
 					</span>
 				</h3>

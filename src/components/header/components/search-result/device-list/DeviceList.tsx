@@ -33,9 +33,14 @@ const DeviceList: FC<DeviceListProps> = ({ devices, hideResults }) => {
 						<div className={styles.device__title}>
 							<span>
 								{device.title}
-								{Boolean(device.quantity) && (
-									<span className={styles.device__exists}>В наличии</span>
-								)}
+								<span
+									className={[
+										styles.device__exists,
+										device.quantity > 0 ? 'green' : 'red',
+									].join(' ')}
+								>
+									{device.quantity > 0 ? 'В наличии' : 'Нет на складе'}
+								</span>
 							</span>
 							<span>{Number(device.price).toFixed(2)} руб.</span>
 						</div>

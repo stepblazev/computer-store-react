@@ -3,16 +3,21 @@
 $imgSize: 120px;
 
 .item {
+	width: 100%;
 	padding: 5px;
 	display: flex;
 	gap: 5px;
+	background-color: white;
+	transition: all 0.2s ease;
 	cursor: pointer;
 
 	&__image {
+		padding: 5px;
 		min-width: $imgSize;
 		max-width: $imgSize;
 		min-height: $imgSize;
 		max-height: $imgSize;
+		background-color: white;
 
 		img {
 			object-fit: contain;
@@ -21,5 +26,9 @@ $imgSize: 120px;
 	}
 	&__content {
 		flex-grow: 1;
+	}
+	&__exists {
+		margin-left: 5px;
+		font-size: 12px;
 	}
 }

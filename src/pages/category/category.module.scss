@@ -1,3 +1,5 @@
+@import '../../styles/variables';
+
 .category {
 	width: 100%;
 	&__title {
@@ -7,5 +9,8 @@
 	}
 	&__content {
 		display: flex;
+		@media (max-width: $breakpoint700) {
+			flex-direction: column;
+		}
 	}
 }

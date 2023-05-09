@@ -12,7 +12,7 @@ const DeviceList: FC<DeviceListProps> = ({ devices }) => {
 		<div className={styles.list}>
 			{Boolean(!devices.length) && <h2>Поиск не дал результатов</h2>}
 			{devices.map((device) => (
-				<DeviceItem device={device} />
+				<DeviceItem key={device.id} device={device} />
 			))}
 		</div>
 	);

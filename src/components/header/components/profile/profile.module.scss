@@ -27,11 +27,14 @@
 		font-weight: 600;
 		color: white;
 	}
+
+	@media (max-width: $breakpoint700) {
+		padding: 2px;
+	}
 }
 
 .logout {
 	margin-left: 5px;
-
 	svg {
 		fill: $secondary;
 		width: 100%;

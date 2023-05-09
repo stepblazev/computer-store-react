@@ -41,6 +41,8 @@ export const filterSlice = createSlice({
 	initialState,
 	reducers: {
 		fetchFilter(state) {
+			state.brands = [];
+			state.properties = [];
 			state.isLoading = true;
 			state.error = null;
 		},
@@ -88,11 +90,23 @@ export const filterSlice = createSlice({
 				delete state.filter.properties[newProperty.name];
 			}
 		},
+		resetFilter(state) {
+			state.filter = {
+				search: '',
+				price: {
+					from: 0,
+					to: 9999,
+				},
+				brands: [],
+				properties: {},
+			};
+		},
 	},
 });
 
 export const fetchFilter = (type: string) => async (dispatch: AppDispatch) => {
 	try {
+		dispatch(filterSlice.actions.resetFilter());
 		dispatch(filterSlice.actions.fetchFilter());
 		const response = await DeviceService.getProperies(type);
 		dispatch(filterSlice.actions.fetchFilterSuccess(response.data));

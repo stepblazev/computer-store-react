@@ -9,6 +9,7 @@ $rounded: 3px;
 	display: flex;
 
 	@media (max-width: $breakpoint700) {
+		margin-top: 10px;
 		margin-right: 0;
 	}
 

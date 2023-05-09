@@ -1,12 +1,21 @@
+@import '../../../styles/variables';
+
 .filter {
+	max-width: 300px;
+	min-width: 300px;
 	padding-top: 10px;
 	padding-right: 20px;
 	border-right: 1px solid lightgray;
+	@media (max-width: $breakpoint700) {
+		min-width: 100%;
+		padding-right: 0;
+		border-right: unset;
+		border-bottom: 1px solid lightgray;
+	}
 }
 
 .property {
 	margin-bottom: 10px;
-
 	h3 {
 		&::first-letter {
 			text-transform: uppercase;
@@ -16,12 +25,17 @@
 		display: flex;
 		flex-direction: column;
 		gap: 5px;
+		@media (max-width: $breakpoint700) {
+			flex-direction: row;
+			gap: 20px;
+		}
 	}
 }
 
 .search {
 	margin-bottom: 10px;
 	input {
+		width: 100%;
 		padding: 5px;
 		border: 1px solid lightgray;
 		&:focus {
@@ -29,4 +43,9 @@
 			outline: none;
 		}
 	}
+}
+
+.property_list {
+	display: flex;
+	flex-direction: column;
 }

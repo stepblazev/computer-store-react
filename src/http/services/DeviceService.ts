@@ -25,6 +25,7 @@ export default class DeviceService {
 		page: number
 	): Promise<AxiosResponse<IDevicesResponse>> {
 		const filters: IGetDeviceParams = {
+			type,
 			search: filter.search,
 			brands: filter.brands.join(','),
 			filters: JSON.stringify(filter.properties),

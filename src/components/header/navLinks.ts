@@ -6,7 +6,7 @@ interface INavLink {
 // FIXME исправить ссылки
 export const navLinks: INavLink[] = [
 	{ label: 'Главная', endpoint: '/' },
-	{ label: 'Компьютеры', endpoint: '/device?type=компьютер' },
 	{ label: 'Процессоры', endpoint: '/device?type=процессор' },
+	{ label: 'Видеокарты', endpoint: '/device?type=видеокарта' },
 	{ label: 'О Нас', endpoint: '/about' },
 ];
