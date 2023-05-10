@@ -7,10 +7,11 @@ $imgSize: 120px;
 	padding: 5px;
 	display: flex;
 	gap: 5px;
+	position: relative;
 	background-color: white;
 	transition: all 0.2s ease;
-	cursor: pointer;
 	border-bottom: 1px solid lightgray;
+	cursor: pointer;
 
 	&__image {
 		padding: 5px;
@@ -35,5 +36,10 @@ $imgSize: 120px;
 	&__exists {
 		margin-left: 5px;
 		font-size: 12px;
+	}
+	&__cart {
+		position: absolute;
+		bottom: 5px;
+		right: 5px;
 	}
 }

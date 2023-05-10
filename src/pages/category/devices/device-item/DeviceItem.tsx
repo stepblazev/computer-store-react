@@ -3,6 +3,7 @@ import { IDevice } from '../../../../models/deviceModels';
 import noimages from '../../../../assets/noimage.png';
 import styles from './device-item.module.scss';
 import { API_URL } from '../../../../_config';
+import Button from '../../../../components/_UI/button/Button';
 
 type DeviceItemProps = {
 	device: IDevice;
@@ -33,6 +34,9 @@ const DeviceItem: FC<DeviceItemProps> = ({ device }) => {
 					<span>{device.price} руб.</span>
 				</h3>
 				<p>{device.properties}</p>
+				<div className={styles.item__cart}>
+					<Button caption='В корзину' />
+				</div>
 			</div>
 		</div>
 	);

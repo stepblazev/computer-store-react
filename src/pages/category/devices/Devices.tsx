@@ -18,11 +18,16 @@ const Devices: FC<DevicesProps> = ({ type }) => {
 	const { devices, order, page, isLoading } = useAppSelector((state) => state.devices);
 	const { filter, brands } = useAppSelector((state) => state.filter);
 
+	// FIXME
 	const debounceFilter = useDebounce(filter, 0);
 
 	useEffect(() => {
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth',
+		});
 		dispatch(fetchDevices(type, debounceFilter, order, page));
-	}, [debounceFilter, order, page]);
+	}, [debounceFilter, type, order, page]);
 
 	useEffect(() => {
 		dispatch(resetDevices());
