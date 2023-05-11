@@ -8,6 +8,7 @@ import {
 	IPropertiesResponse,
 	IProperty,
 	IPropertyValue,
+	OrderTypes,
 } from '../../models/filterModels';
 import { AppDispatch } from '../store';
 import DeviceService from '../../http/services/DeviceService';
@@ -29,6 +30,8 @@ const initialState: FilterState = {
 		},
 		brands: [],
 		properties: {},
+		order: OrderTypes.QUANTITY,
+		page: 1,
 	},
 	brands: [],
 	properties: [],
@@ -99,7 +102,15 @@ export const filterSlice = createSlice({
 				},
 				brands: [],
 				properties: {},
+				order: OrderTypes.QUANTITY,
+				page: 1,
 			};
+		},
+		setPage(state, action: PayloadAction<number>) {
+			state.filter.page = action.payload;
+		},
+		setOrder(state, action: PayloadAction<OrderTypes>) {
+			state.filter.order = action.payload;
 		},
 	},
 });

@@ -20,9 +20,7 @@ export default class DeviceService {
 
 	static async getDevices(
 		type: string,
-		filter: IFilter,
-		order: OrderTypes,
-		page: number
+		filter: IFilter
 	): Promise<AxiosResponse<IDevicesResponse>> {
 		const filters: IGetDeviceParams = {
 			type,
@@ -30,8 +28,8 @@ export default class DeviceService {
 			brands: filter.brands.join(','),
 			filters: JSON.stringify(filter.properties),
 			price: `${filter.price.from}-${filter.price.to}`,
-			_order: order,
-			_page: page,
+			_order: filter.order,
+			_page: filter.page,
 		};
 		return api.get<IDevicesResponse>(`/device`, {
 			params: filters,

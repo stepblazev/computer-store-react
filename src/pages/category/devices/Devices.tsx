@@ -1,10 +1,11 @@
-import { FC, useEffect } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { useAppSelector, useAppDispatch } from '../../../hooks/redux';
 import { fetchDevices } from '../../../redux/device/deviceSlice';
 import DeviceList from './device-list/DeviceList';
 import Loader from '../../../components/_UI/loader/Loader';
 import useDebounce from '../../../hooks/useDebounce';
 import { devicesSlice } from '../../../redux/device/deviceSlice';
+import { IFilter } from '../../../models/filterModels';
 import styles from './devices.module.scss';
 
 type DevicesProps = {
@@ -15,22 +16,30 @@ const Devices: FC<DevicesProps> = ({ type }) => {
 	const dispatch = useAppDispatch();
 	const { resetDevices } = devicesSlice.actions;
 
-	const { devices, order, page, isLoading } = useAppSelector((state) => state.devices);
-	const { filter, brands } = useAppSelector((state) => state.filter);
+	const [delay, setDelay] = useState<number>(600);
 
-	// FIXME
-	const debounceFilter = useDebounce(filter, 0);
+	const { devices, isLoading } = useAppSelector((state) => state.devices);
+	const { filter } = useAppSelector((state) => state.filter);
+
+	// NOTE рефакторинг задержки при изменении фильтров
+	const debounceFilter = useDebounce<IFilter>(filter, delay);
 
 	useEffect(() => {
 		window.scrollTo({
 			top: 0,
 			behavior: 'smooth',
 		});
-		dispatch(fetchDevices(type, debounceFilter, order, page));
-	}, [debounceFilter, type, order, page]);
+		dispatch(fetchDevices(type, filter));
+		setDelay(600);
+	}, [debounceFilter]);
+
+	useEffect(() => {
+		setDelay(0);
+	}, [filter.order, filter.page]);
 
 	useEffect(() => {
 		dispatch(resetDevices());
+		setDelay(0);
 	}, [type]);
 
 	return (

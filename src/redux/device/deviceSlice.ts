@@ -7,10 +7,8 @@ import DeviceService from '../../http/services/DeviceService';
 import { IDevice, IDevicesResponse } from '../../models/deviceModels';
 
 interface DevicesState {
-	total: number;
 	devices: IDevice[];
-	page: number;
-	order: OrderTypes;
+	total: number;
 	isLoading: boolean;
 	error: string | null;
 }
@@ -18,8 +16,6 @@ interface DevicesState {
 const initialState: DevicesState = {
 	total: 0,
 	devices: [],
-	page: 1,
-	order: OrderTypes.QUANTITY,
 	isLoading: false,
 	error: null,
 };
@@ -41,31 +37,21 @@ export const devicesSlice = createSlice({
 			state.isLoading = false;
 			state.error = action.payload;
 		},
-		setPage(state, action: PayloadAction<number>) {
-			state.page = action.payload;
-		},
-		setOrder(state, action: PayloadAction<OrderTypes>) {
-			state.order = action.payload;
-		},
 		resetDevices(state) {
-			state.total = 0;
 			state.devices = [];
-			state.page = 1;
-			state.order = OrderTypes.QUANTITY;
+			state.total = 0;
 		},
 	},
 });
 
-export const fetchDevices =
-	(type: string, filter: IFilter, order: OrderTypes, page: number) =>
-	async (dispatch: AppDispatch) => {
-		try {
-			dispatch(devicesSlice.actions.fetchDevices());
-			const response = await DeviceService.getDevices(type, filter, order, page);
-			dispatch(devicesSlice.actions.fetchDevicesSuccess(response.data));
-		} catch (error) {
-			const err = error as AxiosError<ErrorResponse>;
-			const message = err.response?.data.message as string;
-			dispatch(devicesSlice.actions.fetchDevicesError(message));
-		}
-	};
+export const fetchDevices = (type: string, filter: IFilter) => async (dispatch: AppDispatch) => {
+	try {
+		dispatch(devicesSlice.actions.fetchDevices());
+		const response = await DeviceService.getDevices(type, filter);
+		dispatch(devicesSlice.actions.fetchDevicesSuccess(response.data));
+	} catch (error) {
+		const err = error as AxiosError<ErrorResponse>;
+		const message = err.response?.data.message as string;
+		dispatch(devicesSlice.actions.fetchDevicesError(message));
+	}
+};

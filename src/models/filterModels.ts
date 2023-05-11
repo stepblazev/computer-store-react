@@ -44,4 +44,6 @@ export interface IFilter {
 	price: IPrice;
 	brands: string[];
 	properties: Record<string, string[]>;
+	order: OrderTypes;
+	page: number;
 }
