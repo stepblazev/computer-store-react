@@ -47,7 +47,7 @@ const LoginForm: FC = () => {
 				/>
 			</div>
 			<div className={styles.form__submit}>
-				<Button type='submit' caption='Войти' />
+				<Button type='submit' label='Войти' />
 			</div>
 			<div className={styles.form__redirect}>
 				Еще нет аккаунта? <Link to='/registration'>Создайте его!</Link>

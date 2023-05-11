@@ -59,22 +59,27 @@ export const filterSlice = createSlice({
 			state.error = action.payload;
 		},
 		setSearch(state, action: PayloadAction<string>) {
+			state.filter.page = 1;
 			state.filter.search = action.payload;
 		},
 		setPrice(state, action: PayloadAction<IPrice>) {
+			state.filter.page = 1;
 			const { from, to } = action.payload;
 			state.filter.price.from = from;
 			state.filter.price.to = to;
 		},
 		addBrand(state, action: PayloadAction<string>) {
+			state.filter.page = 1;
 			const newBrand = action.payload;
 			state.filter.brands.push(newBrand);
 		},
 		removeBrand(state, action: PayloadAction<string>) {
+			state.filter.page = 1;
 			const newBrand = action.payload;
 			state.filter.brands = state.filter.brands.filter((brand) => brand !== newBrand);
 		},
 		addProperty(state, action: PayloadAction<IPropertyValue>) {
+			state.filter.page = 1;
 			const newProperty = action.payload;
 			if (state.filter.properties[newProperty.name]) {
 				state.filter.properties[newProperty.name].push(newProperty.value);
@@ -83,6 +88,7 @@ export const filterSlice = createSlice({
 			}
 		},
 		removeProperty(state, action: PayloadAction<IPropertyValue>) {
+			state.filter.page = 1;
 			const newProperty = action.payload;
 
 			state.filter.properties[newProperty.name] = state.filter.properties[
@@ -110,6 +116,7 @@ export const filterSlice = createSlice({
 			state.filter.page = action.payload;
 		},
 		setOrder(state, action: PayloadAction<OrderTypes>) {
+			state.filter.page = 1;
 			state.filter.order = action.payload;
 		},
 	},

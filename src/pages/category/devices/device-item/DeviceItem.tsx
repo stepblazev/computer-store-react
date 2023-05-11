@@ -35,7 +35,7 @@ const DeviceItem: FC<DeviceItemProps> = ({ device }) => {
 				</h3>
 				<p>{device.properties}</p>
 				<div className={styles.item__cart}>
-					<Button caption='В корзину' />
+					<Button label='В корзину' />
 				</div>
 			</div>
 		</div>

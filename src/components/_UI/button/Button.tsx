@@ -4,15 +4,15 @@ import styles from './button.module.scss';
 type ButtonType = 'button' | 'submit' | 'reset';
 
 type ButtonProps = {
-	caption: string;
+	label: string;
 	type?: ButtonType;
 	onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
 };
 
-const Button: FC<ButtonProps> = ({ caption, type = 'button', ...otherProps }) => {
+const Button: FC<ButtonProps> = ({ label, type = 'button', ...otherProps }) => {
 	return (
 		<button className={styles.button} type={type} {...otherProps}>
-			{caption}
+			{label}
 		</button>
 	);
 };

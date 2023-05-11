@@ -25,6 +25,8 @@
 		display: flex;
 		flex-direction: column;
 		gap: 5px;
+		overflow-y: auto;
+		max-height: 100px;
 		@media (max-width: $breakpoint700) {
 			flex-direction: row;
 			gap: 20px;

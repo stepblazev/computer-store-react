@@ -63,7 +63,7 @@ const RegistrationForm: FC = () => {
 						/>
 					</div>
 					<div className={styles.form__submit}>
-						<Button caption='Далее' onClick={toSecondStage} />
+						<Button label='Далее' onClick={toSecondStage} />
 					</div>
 				</Fragment>
 			)}
@@ -95,7 +95,7 @@ const RegistrationForm: FC = () => {
 						<PasswordStrength password={password} />
 					</div>
 					<div className={styles.form__submit}>
-						<Button type='submit' caption='Зарегестрироваться' />
+						<Button type='submit' label='Зарегестрироваться' />
 					</div>
 				</Fragment>
 			)}
