@@ -38,7 +38,7 @@ const Filter: FC<FilterProps> = ({ type }) => {
 							<Property key={property.property_name} property={property} />
 						))}
 					</div>
-					<Button label='Сбросить' onClick={resetHandler} />
+					<Button label='Сбросить фильтры' onClick={resetHandler} />
 				</>
 			)}
 		</div>
