@@ -6,6 +6,7 @@ import Loader from '../../../components/_UI/loader/Loader';
 import useDebounce from '../../../hooks/useDebounce';
 import { devicesSlice } from '../../../redux/device/deviceSlice';
 import { IFilter } from '../../../models/filterModels';
+import DevicePagination from './device-pagination/DevicePagination';
 import styles from './devices.module.scss';
 
 type DevicesProps = {
@@ -49,7 +50,10 @@ const Devices: FC<DevicesProps> = ({ type }) => {
 					<Loader />
 				</div>
 			) : (
-				<DeviceList devices={devices} />
+				<>
+					<DeviceList devices={devices} />
+					<DevicePagination />
+				</>
 			)}
 		</div>
 	);

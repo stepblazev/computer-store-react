@@ -4,7 +4,6 @@ import styles from './category.module.scss';
 import Filter from './filter/Filter';
 import Devices from './devices/Devices';
 import CategoryHeader from './header/CategoryHeader';
-import { Link } from 'react-router-dom';
 
 const Category: FC = () => {
 	const location = useLocation();
