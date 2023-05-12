@@ -9,12 +9,24 @@ type PaginationProps = {
 	setPage: (page: number) => void;
 };
 
+const getPagesArray = (totalPages: number, current: number): number[] => {
+	const startPage =
+		current === totalPages && totalPages > 2 ? totalPages - 3 : Math.max(current - 2, 0);
+	const endPage = current === 1 ? 3 : Math.min(current + 1, totalPages);
+
+	const nearPages = Array.from({ length: totalPages }, (_, index) => index + 1).slice(
+		startPage,
+		endPage
+	);
+
+	return nearPages;
+};
+
 const Pagination: FC<PaginationProps> = ({ total, current, setPage }) => {
 	const totalPages = getPages(total);
-	const nearPages = Array.from({ length: getPages(total) }, (_, index) => index + 1).slice(
-		current === totalPages ? totalPages - 3 : Math.max(current - 2, 0),
-		current === 1 ? 3 : Math.min(current + 1, totalPages)
-	);
+	if (totalPages < 2) return null;
+
+	const nearPages = getPagesArray(totalPages, current);
 
 	return (
 		<ul className={styles.pagination}>

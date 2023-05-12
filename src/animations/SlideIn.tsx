@@ -14,11 +14,7 @@ type SlideInProps = {
 	children: React.ReactNode;
 };
 
-const SlideIn: FC<SlideInProps> = ({
-	delay = 0,
-	direction = SlideInDirections.LEFT,
-	children,
-}) => {
+const SlideIn: FC<SlideInProps> = ({ delay = 0, direction = SlideInDirections.LEFT, children }) => {
 	const props = useSpring({
 		from: { opacity: 0, transform: direction },
 		to: { opacity: 1, transform: 'translate(0, 0)' },

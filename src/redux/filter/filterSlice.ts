@@ -26,7 +26,7 @@ const initialState: FilterState = {
 		search: '',
 		price: {
 			from: 0,
-			to: 2000,
+			to: 3000,
 		},
 		brands: [],
 		properties: {},
@@ -104,7 +104,7 @@ export const filterSlice = createSlice({
 				search: '',
 				price: {
 					from: 0,
-					to: 2000,
+					to: 3000,
 				},
 				brands: [],
 				properties: {},
