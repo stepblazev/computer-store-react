@@ -34,7 +34,7 @@ const Search: FC = () => {
 				type='text'
 				value={search}
 				onChange={searchHandler}
-				placeholder='Поиск по каталогу'
+				placeholder='Поиск по каталогу. Например intel, geforce и т.д.'
 				className={styles.search__input}
 			/>
 			<SearchSVG className={styles.search__svg} />

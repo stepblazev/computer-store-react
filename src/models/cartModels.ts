@@ -1,6 +1,5 @@
 import { IDevice } from './deviceModels';
 
-export interface ICartDevice {
-	device: IDevice;
+export interface ICartDevice extends IDevice {
 	amount: number;
 }

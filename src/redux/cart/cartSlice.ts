@@ -4,6 +4,8 @@ import { AppDispatch } from '../store';
 import { ErrorResponse } from '../../models/axiosModels';
 import { ICartDevice } from '../../models/cartModels';
 import CartService from '../../http/services/cartService';
+import { notificationSlice } from '../notifications/notificationSlice';
+import { cartAddSuccess, cartRemoveSuccess } from '../../warnings/cartWarnings';
 
 interface CartState {
 	devices: ICartDevice[];
@@ -33,6 +35,10 @@ export const cartSlice = createSlice({
 			state.isLoading = false;
 			state.error = action.payload;
 		},
+		resetCart(state) {
+			state.devices = [];
+			state.error = null;
+		},
 	},
 });
 
@@ -50,8 +56,9 @@ export const fetchCart = () => async (dispatch: AppDispatch) => {
 
 export const addToCart = (deviceId: number) => async (dispatch: AppDispatch) => {
 	try {
-		await CartService.postDevice(deviceId);
+		await CartService.postDevice(deviceId, 1);
 		dispatch(fetchCart());
+		dispatch(notificationSlice.actions.addNotification(cartAddSuccess));
 	} catch (error) {
 		console.log(error);
 	}
@@ -61,6 +68,7 @@ export const removeFromCart = (deviceId: number) => async (dispatch: AppDispatch
 	try {
 		await CartService.deleteDevice(deviceId);
 		dispatch(fetchCart());
+		dispatch(notificationSlice.actions.addNotification(cartRemoveSuccess));
 	} catch (error) {
 		console.log(error);
 	}

@@ -2,6 +2,7 @@
 $info: #00bcd4;
 $warning: #ffd700;
 $error: #ff0000;
+$success: #00c020;
 
 .item {
 	padding: 10px;
@@ -73,5 +74,10 @@ $error: #ff0000;
 		color: $error;
 		fill: $error;
 		border-color: $error;
+	}
+	&.SUCCESS {
+		color: $success;
+		fill: $success;
+		border-color: $success;
 	}
 }

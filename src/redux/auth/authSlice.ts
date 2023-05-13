@@ -4,6 +4,8 @@ import { AppDispatch } from '../store';
 import AuthService from '../../http/services/AuthService';
 import { AxiosError } from 'axios';
 import { ErrorResponse } from '../../models/axiosModels';
+import { notificationSlice } from '../notifications/notificationSlice';
+import { loginSuccess } from '../../warnings/authWarnings';
 
 interface AuthState {
 	email: string | null;
@@ -13,7 +15,7 @@ interface AuthState {
 }
 
 const initialState: AuthState = {
-	isAuth: false,
+	isAuth: Boolean(localStorage.getItem('token')),
 	isLoading: false,
 	error: '',
 	email: null,
@@ -60,6 +62,7 @@ export const fetchUser =
 			dispatch(authSlice.actions.fetchUser());
 			const response = await fetchType[type](email, password);
 			dispatch(authSlice.actions.fetchUserSuccess(response.data));
+			dispatch(notificationSlice.actions.addNotification(loginSuccess));
 		} catch (error) {
 			const err = error as AxiosError<ErrorResponse>;
 			const message = err.response?.data.message as string;

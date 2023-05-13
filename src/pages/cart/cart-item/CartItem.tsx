@@ -1,22 +1,21 @@
 import { FC } from 'react';
-import { IDevice } from '../../../../models/deviceModels';
-import noimages from '../../../../assets/noimage.png';
-import styles from './device-item.module.scss';
-import { API_URL } from '../../../../_config';
-import Button from '../../../../components/_UI/button/Button';
-import { useAppDispatch } from '../../../../hooks/redux';
-import { cartSlice } from '../../../../redux/cart/cartSlice';
-import { addToCart } from '../../../../redux/cart/cartSlice';
+import { ICartDevice } from '../../../models/cartModels';
+import noimages from '../../../assets/noimage.png';
+import { API_URL } from '../../../_config';
+import Button from '../../../components/_UI/button/Button';
+import { removeFromCart } from '../../../redux/cart/cartSlice';
+import { useAppDispatch } from '../../../hooks/redux';
+import styles from './cart-item.module.scss';
 
-type DeviceItemProps = {
-	device: IDevice;
+type CartItemProps = {
+	device: ICartDevice;
 };
 
-const DeviceItem: FC<DeviceItemProps> = ({ device }) => {
+const CartItem: FC<CartItemProps> = ({ device }) => {
 	const dispatch = useAppDispatch();
 
 	return (
-		<div className={styles.item}>
+		<li className={styles.item}>
 			<div className={styles.item__image}>
 				<img
 					src={device.preview ? `${API_URL}/${device.preview}` : noimages}
@@ -36,20 +35,20 @@ const DeviceItem: FC<DeviceItemProps> = ({ device }) => {
 							{device.quantity > 0 ? 'В наличии' : 'Нет на складе'}
 						</span>
 					</span>
-					<span>{device.price} руб.</span>
+					<span className={styles.item__price}>{device.price} руб.</span>
 				</h3>
 				<p>{device.properties}</p>
 				<div className={styles.item__cart}>
 					<Button
-						label='В корзину'
+						label='Удалить из корзины'
 						onClick={() => {
-							dispatch(addToCart(device.id));
+							dispatch(removeFromCart(device.id));
 						}}
 					/>
 				</div>
 			</div>
-		</div>
+		</li>
 	);
 };
 
-export default DeviceItem;
+export default CartItem;

@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import styles from './category.module.scss';
 import Filter from './filter/Filter';
 import Devices from './devices/Devices';
-import CategoryHeader from './header/CategoryHeader';
+import CategoryHeader from './category-header/CategoryHeader';
 
 const Category: FC = () => {
 	const location = useLocation();
