@@ -16,7 +16,6 @@ export interface IDevice {
 	brand: string;
 	quantity: number;
 	properties: string;
-	images: string[];
 	preview: string;
 }
 

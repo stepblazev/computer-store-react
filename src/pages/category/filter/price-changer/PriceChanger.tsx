@@ -20,7 +20,7 @@ const PriceChanger: FC = () => {
 			<Range
 				label={`От ${price.from} до ${price.to} руб.`}
 				min={0}
-				max={2000}
+				max={3000}
 				values={[price.from, price.to]}
 				onChange={onChange}
 			/>

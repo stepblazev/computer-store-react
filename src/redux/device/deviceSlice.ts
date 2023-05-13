@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ErrorResponse } from '../../models/axiosModels';
 import { AxiosError } from 'axios';
-import { IFilter, OrderTypes } from '../../models/filterModels';
+import { IFilter } from '../../models/filterModels';
 import { AppDispatch } from '../store';
 import DeviceService from '../../http/services/DeviceService';
 import { IDevice, IDevicesResponse } from '../../models/deviceModels';

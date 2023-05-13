@@ -4,7 +4,7 @@ import { fetchFilter } from '../../../redux/filter/filterSlice';
 import Button from '../../../components/_UI/button/Button';
 import Property from './property/Property';
 import Brands from './brands/Brands';
-import PriceChanger from './price/PriceChanger';
+import PriceChanger from './price-changer/PriceChanger';
 import Search from './search/Search';
 import styles from './filter.module.scss';
 
