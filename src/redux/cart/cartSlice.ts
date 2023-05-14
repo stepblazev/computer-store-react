@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AxiosError } from 'axios';
 import { AppDispatch } from '../store';
 import { ErrorResponse } from '../../models/axiosModels';
-import { ICartDevice } from '../../models/cartModels';
+import { ICartDevice, ISetPage } from '../../models/cartModels';
 import CartService from '../../http/services/cartService';
 import { notificationSlice } from '../notifications/notificationSlice';
 import { cartAddSuccess, cartRemoveSuccess } from '../../warnings/cartWarnings';
@@ -38,6 +38,10 @@ export const cartSlice = createSlice({
 		resetCart(state) {
 			state.devices = [];
 			state.error = null;
+		},
+		setAmount(state, action: PayloadAction<ISetPage>) {
+			state.devices.find((device) => device.id === action.payload.id)!.amount =
+				action.payload.amount;
 		},
 	},
 });

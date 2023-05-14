@@ -3,11 +3,11 @@ import { INotificationProps, NotificationTypes } from '../models/notificationMod
 export const cartAddSuccess: INotificationProps = {
 	title: 'Добавлено',
 	message: 'Вы добавили товар в корзину',
-	type: NotificationTypes.SUCCESS,
+	type: NotificationTypes.INFO,
 };
 
 export const cartRemoveSuccess: INotificationProps = {
 	title: 'Удалено',
 	message: 'Вы удалили товар из корзины',
-	type: NotificationTypes.SUCCESS,
+	type: NotificationTypes.INFO,
 };

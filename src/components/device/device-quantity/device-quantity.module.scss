@@ -1,0 +1,14 @@
+%quantity-template {
+	font-size: 12px !important;
+	font-weight: 700;
+}
+
+.exists {
+	@extend %quantity-template;
+	color: rgb(0, 220, 0);
+}
+
+.not {
+	@extend %quantity-template;
+	color: rgb(220, 0, 0);
+}

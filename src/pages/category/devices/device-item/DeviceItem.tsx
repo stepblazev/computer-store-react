@@ -5,7 +5,7 @@ import styles from './device-item.module.scss';
 import { API_URL } from '../../../../_config';
 import Button from '../../../../components/_UI/button/Button';
 import { useAppDispatch } from '../../../../hooks/redux';
-import { cartSlice } from '../../../../redux/cart/cartSlice';
+import DeviceQuantity from '../../../../components/device/device-quantity/DeivceQuantity';
 import { addToCart } from '../../../../redux/cart/cartSlice';
 
 type DeviceItemProps = {
@@ -27,14 +27,7 @@ const DeviceItem: FC<DeviceItemProps> = ({ device }) => {
 				<h3 className={styles.item__title}>
 					<span>
 						{device.title}
-						<span
-							className={[
-								styles.item__exists,
-								device.quantity > 0 ? 'green' : 'red',
-							].join(' ')}
-						>
-							{device.quantity > 0 ? 'В наличии' : 'Нет на складе'}
-						</span>
+						<DeviceQuantity quantity={device.quantity} />
 					</span>
 					<span>{device.price} руб.</span>
 				</h3>

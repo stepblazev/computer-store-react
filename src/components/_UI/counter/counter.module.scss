@@ -1,0 +1,52 @@
+@import '../../../styles/variables';
+
+$buttonSize: 30px;
+
+%button-template {
+	width: $buttonSize;
+	height: $buttonSize;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: $primary;
+	color: white;
+	font-weight: 700;
+	font-size: 20px;
+	user-select: none;
+	cursor: pointer;
+
+	&:hover {
+		background-color: $darkprimary;
+	}
+}
+%button-disabled {
+	background-color: lightgray !important;
+	cursor: default;
+}
+
+.counter {
+	display: inline-flex;
+	align-items: center;
+	border-radius: 3px;
+	overflow: hidden;
+
+	&__value {
+		width: 50px;
+		text-align: center;
+		align-self: stretch;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-weight: 500;
+		border-top: 1px solid lightgray;
+		border-bottom: 1px solid lightgray;
+	}
+
+	&__decrease,
+	&__increase {
+		@extend %button-template;
+		&Not {
+			@extend %button-disabled;
+		}
+	}
+}

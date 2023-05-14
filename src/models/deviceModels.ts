@@ -17,6 +17,7 @@ export interface IDevice {
 	quantity: number;
 	properties: string;
 	preview: string;
+	rating: string | number;
 }
 
 export type IDevicesResponse = {

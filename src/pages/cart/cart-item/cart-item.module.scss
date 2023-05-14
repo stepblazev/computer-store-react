@@ -1,17 +1,16 @@
-$imgSize: 160px;
-$spacing: 15px;
-$fontSize: 18px;
+$imgSize: 80px;
+$spacing: 7.5px;
+$fontSize: 16px;
 
 .item {
 	width: 100%;
 	padding: $spacing;
-	display: flex;
 	gap: $spacing;
+	display: flex;
 	position: relative;
 	background-color: white;
-	// border: 1px solid lightgray;
-	box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.2);
-	border-radius: 10px;
+	border: 1px solid lightgray;
+	box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.1);
 
 	&__image {
 		padding: 5px;
@@ -30,6 +29,8 @@ $fontSize: 18px;
 	}
 	&__content {
 		flex-grow: 1;
+		display: flex;
+		flex-direction: column;
 	}
 	&__title {
 		display: flex;
@@ -39,15 +40,12 @@ $fontSize: 18px;
 			font-size: inherit;
 		}
 	}
-	&__exists {
-		margin-left: 10px;
-		font-size: 14px !important;
+	&__counter {
 	}
-	&__price {
-		font-size: $fontSize;
-	}
-
-	&__cart {
-		float: right;
+	&__remove {
+		flex-grow: 1;
+		align-self: end;
+		display: flex;
+		align-items: end;
 	}
 }

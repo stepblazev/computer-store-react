@@ -4,6 +4,7 @@ import { BsMotherboard as DeviceSVG } from 'react-icons/bs';
 import { API_URL } from '../../../../../_config';
 import noimages from '../../../../../assets/noimage.png';
 import styles from './device-list.module.scss';
+import DeviceQuantity from '../../../../device/device-quantity/DeivceQuantity';
 
 type DeviceListProps = {
 	devices: IDevice[];
@@ -33,14 +34,7 @@ const DeviceList: FC<DeviceListProps> = ({ devices, hideResults }) => {
 						<div className={styles.device__title}>
 							<span>
 								{device.title}
-								<span
-									className={[
-										styles.device__exists,
-										device.quantity > 0 ? 'green' : 'red',
-									].join(' ')}
-								>
-									{device.quantity > 0 ? 'В наличии' : 'Нет на складе'}
-								</span>
+								<DeviceQuantity quantity={device.quantity} />
 							</span>
 							<span>{Number(device.price).toFixed(2)} руб.</span>
 						</div>
