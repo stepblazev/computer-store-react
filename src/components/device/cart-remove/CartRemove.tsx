@@ -1,13 +1,12 @@
 import { FC } from 'react';
 import { MdDeleteOutline as RemoveSVG } from 'react-icons/md';
-import { ICartDevice } from '../../../models/cartModels';
+import { IDevice } from '../../../models/deviceModels';
 import { useAppDispatch } from '../../../hooks/redux';
 import { removeFromCart } from '../../../redux/cart/cartSlice';
-import TrashBin from '../../../animations/trash-bin/TrashBin';
 import styles from './cart-remove.module.scss';
 
 type CartRemoveProps = {
-	device: ICartDevice;
+	device: IDevice;
 };
 
 const CartRemove: FC<CartRemoveProps> = ({ device }) => {

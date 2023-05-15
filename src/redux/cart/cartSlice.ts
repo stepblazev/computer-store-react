@@ -3,7 +3,7 @@ import { AxiosError } from 'axios';
 import { AppDispatch } from '../store';
 import { ErrorResponse } from '../../models/axiosModels';
 import { ICartDevice, ISetPage } from '../../models/cartModels';
-import CartService from '../../http/services/cartService';
+import CartService from '../../http/services/СartService';
 import { notificationSlice } from '../notifications/notificationSlice';
 import { cartAddSuccess, cartRemoveSuccess } from '../../warnings/cartWarnings';
 

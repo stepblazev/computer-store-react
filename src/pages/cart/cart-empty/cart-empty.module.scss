@@ -1,0 +1,19 @@
+$svgSize: 60px;
+$color: lightgray;
+
+.empty {
+	margin-top: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
+	font-size: 40px;
+	font-weight: 700;
+	color: $color;
+
+	svg {
+		width: $svgSize;
+		height: $svgSize;
+		fill: $color;
+	}
+}

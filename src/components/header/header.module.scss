@@ -85,6 +85,7 @@ $linkSize: 25px;
 			font-weight: 600;
 			color: white;
 			background-color: $primary;
+			// background: linear-gradient(0deg, $darkprimary 0%, $primary 100%);
 			position: relative;
 			&:before {
 				content: '';

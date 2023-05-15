@@ -4,7 +4,7 @@ import noimages from '../../../assets/noimage.png';
 import { API_URL } from '../../../_config';
 import styles from './cart-item.module.scss';
 import CartCounter from '../cart-counter/CartCounter';
-import CartRemove from '../cart-remove/CartRemove';
+import CartRemove from '../../../components/device/cart-remove/CartRemove';
 import DeviceQuantity from '../../../components/device/device-quantity/DeivceQuantity';
 
 type CartItemProps = {
@@ -23,7 +23,7 @@ const CartItem: FC<CartItemProps> = ({ device }) => {
 			</div>
 			<div className={styles.item__content}>
 				<h3 className={styles.item__title}>
-					<span>{device.title}</span>
+					<span className={styles.item__titleText}>{device.title}</span>
 					<span className={styles.item__price}>{device.price} руб.</span>
 				</h3>
 				<DeviceQuantity quantity={device.quantity} />

@@ -1,0 +1,20 @@
+@import '../../../styles/variables';
+
+.cart {
+	padding: 5px;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	background-color: $primary;
+	border-radius: 3px;
+	&:hover {
+		background-color: $darkprimary;
+	}
+	svg {
+		fill: white;
+	}
+	&__label {
+		color: white;
+		font-weight: 700;
+	}
+}

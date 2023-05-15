@@ -1,6 +1,6 @@
 $imgSize: 80px;
 $spacing: 7.5px;
-$fontSize: 16px;
+$priceSize: 16px;
 
 .item {
 	width: 100%;
@@ -9,8 +9,7 @@ $fontSize: 16px;
 	display: flex;
 	position: relative;
 	background-color: white;
-	border: 1px solid lightgray;
-	box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.1);
+	border-bottom: 1px solid lightgray;
 
 	&__image {
 		padding: 5px;
@@ -35,10 +34,13 @@ $fontSize: 16px;
 	&__title {
 		display: flex;
 		justify-content: space-between;
-		font-size: $fontSize;
-		span {
-			font-size: inherit;
+
+		&Text {
+			font-size: 14px !important;
 		}
+	}
+	&__price {
+		font-size: $priceSize;
 	}
 	&__counter {
 	}

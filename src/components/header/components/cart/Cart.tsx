@@ -20,7 +20,9 @@ const Cart: FC = () => {
 		<Link to={isAuth ? '/cart' : '/login'} className={[styles.cart, 'svg-link'].join(' ')}>
 			<CartSVG className={styles.cart__svg} />
 			<span className={styles.cart__title}>Корзина</span>
-			{isAuth && <span className={styles.cart__count}>{devices.length}</span>}
+			{isAuth && devices.length > 0 && (
+				<span className={styles.cart__count}>{devices.length}</span>
+			)}
 		</Link>
 	);
 };
