@@ -11,3 +11,9 @@ export const cartRemoveSuccess: INotificationProps = {
 	message: 'Вы удалили товар из корзины',
 	type: NotificationTypes.INFO,
 };
+
+export const purchaseSuccess: INotificationProps = {
+	title: 'Заказа',
+	message: 'Вы успешно оформили заказ. В скором времени с вами свяжется наш работник',
+	type: NotificationTypes.SUCCESS,
+};

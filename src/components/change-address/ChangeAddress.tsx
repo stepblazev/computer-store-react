@@ -1,8 +1,8 @@
 import { FC, useState, useEffect, ChangeEvent } from 'react';
-import useFetching from '../../../hooks/useFetching';
-import useDebounce from '../../../hooks/useDebounce';
-import { IAddress } from '../../../models/addressModels';
-import AddressService from '../../../http/services/AddressService';
+import useFetching from '../../hooks/useFetching';
+import useDebounce from '../../hooks/useDebounce';
+import { IAddress } from '../../models/addressModels';
+import AddressService from '../../http/services/AddressService';
 import styles from './change-address.module.scss';
 
 // FIXME доработать
