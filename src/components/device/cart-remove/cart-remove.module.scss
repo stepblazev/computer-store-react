@@ -13,18 +13,3 @@ $redColor: rgb(255, 76, 76);
 		color: $redColor;
 	}
 }
-.lid {
-	transform-origin: top center;
-	animation-name: open-lid;
-	animation-duration: 1s;
-	animation-fill-mode: forwards;
-}
-
-@keyframes open-lid {
-	from {
-		transform: rotate(0deg);
-	}
-	to {
-		transform: rotate(-45deg);
-	}
-}

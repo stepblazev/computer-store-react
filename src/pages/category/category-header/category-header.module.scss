@@ -15,5 +15,6 @@
 
 	@media (max-width: $breakpoint700) {
 		flex-direction: column;
+		align-items: end;
 	}
 }

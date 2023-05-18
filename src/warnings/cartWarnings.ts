@@ -13,7 +13,8 @@ export const cartRemoveSuccess: INotificationProps = {
 };
 
 export const purchaseSuccess: INotificationProps = {
-	title: 'Заказа',
-	message: 'Вы успешно оформили заказ. В скором времени с вами свяжется наш работник',
+	title: 'Заказ',
+	message: 'Вы успешно оформили заказ',
 	type: NotificationTypes.SUCCESS,
+	duration: 7000,
 };

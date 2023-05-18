@@ -1,5 +1,12 @@
+@import '../../../../styles/variables';
+
 .list {
 	padding: 5px;
 	display: flex;
 	flex-direction: column;
+
+	@media (max-width: $breakpoint700) {
+		margin: $container_padding 0;
+		padding: 0;
+	}
 }

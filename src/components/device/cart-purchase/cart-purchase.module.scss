@@ -1,0 +1,15 @@
+@import '../../../styles/variables';
+
+.purchase {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+
+	svg {
+		fill: $primary;
+	}
+	span {
+		font-weight: 500;
+		color: $primary;
+	}
+}

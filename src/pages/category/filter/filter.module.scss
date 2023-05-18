@@ -26,9 +26,10 @@
 		flex-direction: column;
 		gap: 5px;
 		overflow-y: auto;
-		max-height: 100px;
+		max-height: 110px;
 		@media (max-width: $breakpoint700) {
 			flex-direction: row;
+			flex-wrap: wrap;
 			gap: 20px;
 		}
 	}

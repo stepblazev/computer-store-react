@@ -18,6 +18,7 @@ export interface IDevice {
 	properties: string;
 	preview: string;
 	rating: string | number;
+	warranty: string | number;
 }
 
 export type IDevicesResponse = {

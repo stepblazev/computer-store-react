@@ -9,6 +9,7 @@ import { useAppDispatch } from '../../../hooks/redux';
 import { purchaseSlice } from '../../../redux/purchase/purchaseSlice';
 import Button from '../../../components/_UI/button/Button';
 import styles from './cart-item.module.scss';
+import CartPurchase from '../../../components/device/cart-purchase/CartPurchase';
 
 type CartItemProps = {
 	device: ICartDevice;
@@ -43,7 +44,7 @@ const CartItem: FC<CartItemProps> = ({ device }) => {
 					</div>
 				)}
 				<div className={styles.item__controls}>
-					<Button label='Заказать отдельно' onClick={purchase} />
+					<CartPurchase device={device} />
 					<CartRemove device={device} />
 				</div>
 			</div>

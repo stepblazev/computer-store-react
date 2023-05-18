@@ -1,3 +1,5 @@
+@import '../../../styles/variables';
+
 $imgSize: 80px;
 $spacing: 7.5px;
 $priceSize: 16px;
@@ -10,6 +12,10 @@ $priceSize: 16px;
 	position: relative;
 	background-color: white;
 	border-bottom: 1px solid lightgray;
+
+	@media (max-width: $breakpoint700) {
+		flex-direction: column;
+	}
 
 	&__image {
 		padding: 5px;
@@ -34,12 +40,16 @@ $priceSize: 16px;
 	&__title {
 		display: flex;
 		justify-content: space-between;
-
 		&Text {
 			font-size: 14px !important;
 		}
+
+		@media (max-width: $breakpoint700) {
+			flex-direction: column;
+		}
 	}
 	&__price {
+		align-self: flex-end;
 		font-size: $priceSize;
 	}
 	&__counter {
@@ -49,8 +59,11 @@ $priceSize: 16px;
 		display: flex;
 		gap: 10px;
 		justify-content: end;
-		button {
-			width: auto;
+
+		@media (max-width: $breakpoint700) {
+			justify-content: start;
+			align-items: end;
+			flex-direction: column;
 		}
 	}
 }

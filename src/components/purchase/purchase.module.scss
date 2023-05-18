@@ -1,2 +1,18 @@
 .purchase {
+	position: relative;
+}
+
+$translate: 20px;
+
+.loader {
+	position: absolute;
+	left: -$translate;
+	top: -$translate;
+	width: calc(100% + $translate * 2);
+	height: calc(100% + $translate * 2);
+	background-color: rgba(230, 230, 230, 0.8);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 10;
 }

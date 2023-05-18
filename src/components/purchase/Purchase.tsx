@@ -2,15 +2,16 @@ import { FC } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { fetchPurchase, purchaseSlice } from '../../redux/purchase/purchaseSlice';
 import Modal from '../_UI/modal/Modal';
-import styles from './purchase.module.scss';
 import ChangeAddress from '../change-address/ChangeAddress';
 import Button from '../_UI/button/Button';
+import Loader from '../_UI/loader/Loader';
+import styles from './purchase.module.scss';
 
 const Purchase: FC = () => {
 	const dispatch = useAppDispatch();
 	const { hidePurchase } = purchaseSlice.actions;
 
-	const { show, devices } = useAppSelector((state) => state.purchase);
+	const { show, devices, isLoading } = useAppSelector((state) => state.purchase);
 
 	const hideModal = () => {
 		dispatch(hidePurchase());
@@ -33,6 +34,11 @@ const Purchase: FC = () => {
 				</ul>
 				<ChangeAddress />
 				<Button onClick={sendPurchase} label='Подтвердить заказ' />
+				{isLoading && (
+					<div className={styles.loader}>
+						<Loader />
+					</div>
+				)}
 			</form>
 		</Modal>
 	);
