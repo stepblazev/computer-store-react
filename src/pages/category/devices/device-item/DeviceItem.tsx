@@ -7,6 +7,7 @@ import DeviceToCart from '../../../../components/device/device-to-cart/DeviceToC
 import { useAppSelector } from '../../../../hooks/redux';
 import CartRemove from '../../../../components/device/cart-remove/CartRemove';
 import styles from './device-item.module.scss';
+import Rating from '../../../../components/rating/Rating';
 
 type DeviceItemProps = {
 	device: IDevice;
@@ -31,8 +32,11 @@ const DeviceItem: FC<DeviceItemProps> = ({ device }) => {
 						<span className={styles.item__titleText}>{device.title}</span>
 						<DeviceQuantity quantity={device.quantity} />
 					</span>
-					{device.quantity > 0 && <span>{device.price} руб.</span>}
+					{device.quantity > 0 && (
+						<span className={styles.item__titlePrice}>{device.price} руб.</span>
+					)}
 				</h3>
+				<Rating rating={Number(device.rating)} ratingCount={Number(device.rating_count)} />
 				<p className={styles.item__desc}>{device.properties}</p>
 				{device.quantity > 0 && (
 					<div className={styles.item__cart}>

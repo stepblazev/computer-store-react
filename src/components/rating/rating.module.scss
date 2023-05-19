@@ -1,0 +1,20 @@
+$starSize: 15px;
+$starColor: gold;
+
+.rating {
+	display: flex;
+	align-items: center;
+	gap: 3px;
+
+	&__content {
+		position: relative;
+		display: flex;
+		gap: 3px;
+
+		svg {
+			width: $starSize;
+			height: $starSize;
+			fill: $starColor;
+		}
+	}
+}

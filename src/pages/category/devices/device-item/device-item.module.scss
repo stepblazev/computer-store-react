@@ -12,14 +12,21 @@ $imgSize: 120px;
 	transition: all 0.2s ease;
 	border-bottom: 1px solid lightgray;
 
+	@media (max-width: $breakpoint700) {
+		flex-direction: column;
+		justify-content: center;
+	}
+
 	&__image {
 		padding: 5px;
 		min-width: $imgSize;
 		max-width: $imgSize;
 		min-height: $imgSize;
 		max-height: $imgSize;
+		width: $imgSize;
+		height: $imgSize;
 		background-color: white;
-
+		align-self: center;
 		img {
 			width: 100%;
 			height: 100%;
@@ -31,12 +38,29 @@ $imgSize: 120px;
 		flex-grow: 1;
 		display: flex;
 		flex-direction: column;
+		@media (max-width: $breakpoint700) {
+			align-items: center;
+		}
 	}
 	&__title {
 		display: flex;
 		justify-content: space-between;
+		text-align: center;
 		&Text {
 			margin-right: 10px;
+			@media (max-width: $breakpoint700) {
+				display: block;
+			}
+		}
+		&Price {
+			@media (max-width: $breakpoint700) {
+				margin: 10px;
+				font-size: 20px;
+				margin-bottom: 5px;
+			}
+		}
+		@media (max-width: $breakpoint700) {
+			flex-direction: column;
 		}
 	}
 	&__desc {

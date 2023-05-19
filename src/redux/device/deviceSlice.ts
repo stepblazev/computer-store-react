@@ -38,8 +38,8 @@ export const devicesSlice = createSlice({
 			state.error = action.payload;
 		},
 		resetDevices(state) {
-			state.devices = [];
-			state.total = 0;
+			// state.devices = [];
+			// state.total = 0;
 		},
 	},
 });
