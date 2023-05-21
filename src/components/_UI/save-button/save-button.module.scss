@@ -1,0 +1,17 @@
+@import '../../../styles/variables';
+
+.save {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+
+	svg {
+		height: 20px;
+		width: 20px;
+		fill: $primary;
+	}
+	span {
+		color: $primary;
+		font-weight: 500;
+	}
+}

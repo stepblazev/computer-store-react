@@ -1,5 +1,13 @@
 .purchase {
 	position: relative;
+	&__title {
+		font-size: 24px;
+		margin-bottom: 10px;
+	}
+	&__list {
+		min-width: 320px;
+		margin: 20px 0;
+	}
 }
 
 $translate: 20px;
