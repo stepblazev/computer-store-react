@@ -4,12 +4,4 @@
 	width: 100%;
 	&__content {
 	}
-	&__account {
-		display: flex;
-		flex-direction: column;
-		gap: 10px;
-		&Logout {
-			align-self: end;
-		}
-	}
 }

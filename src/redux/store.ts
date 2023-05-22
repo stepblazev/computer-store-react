@@ -6,6 +6,7 @@ import { filterSlice } from './filter/filterSlice';
 import { devicesSlice } from './device/deviceSlice';
 import { cartSlice } from './cart/cartSlice';
 import { purchaseSlice } from './purchase/purchaseSlice';
+import { accountSlice } from './account/accountSlice';
 
 const rootReducer = combineReducers({
 	auth: authSlice.reducer,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
 	devices: devicesSlice.reducer,
 	cart: cartSlice.reducer,
 	purchase: purchaseSlice.reducer,
+	account: accountSlice.reducer,
 });
 
 export const setupStore = () => {

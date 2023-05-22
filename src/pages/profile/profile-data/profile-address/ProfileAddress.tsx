@@ -1,12 +1,12 @@
 import { FC, useState, useEffect, ChangeEvent } from 'react';
-import useFetching from '../../hooks/useFetching';
-import useDebounce from '../../hooks/useDebounce';
-import { IAddress } from '../../models/addressModels';
-import AddressService from '../../http/services/AddressService';
-import styles from './change-address.module.scss';
+import useFetching from '../../../../hooks/useFetching';
+import useDebounce from '../../../../hooks/useDebounce';
+import { IAddress } from '../../../../models/addressModels';
+import AddressService from '../../../../http/services/AddressService';
+import styles from './profile-address.module.scss';
 
 // FIXME доработать
-const ChangeAddress: FC = () => {
+const ProfileAddress: FC = () => {
 	const [query, setQuery] = useState<string>('');
 	const [addresses, setAddresses] = useState<IAddress[]>([]);
 
@@ -43,4 +43,4 @@ const ChangeAddress: FC = () => {
 	);
 };
 
-export default ChangeAddress;
+export default ProfileAddress;

@@ -7,7 +7,7 @@ import DeviceToCart from '../../../../components/device/device-to-cart/DeviceToC
 import { useAppSelector } from '../../../../hooks/redux';
 import CartRemove from '../../../../components/device/cart-remove/CartRemove';
 import styles from './device-item.module.scss';
-import Rating from '../../../../components/rating/Rating';
+import Rating from '../../../../components/device/rating/Rating';
 
 type DeviceItemProps = {
 	device: IDevice;

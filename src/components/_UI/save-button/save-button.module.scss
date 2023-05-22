@@ -1,17 +1,19 @@
 @import '../../../styles/variables';
 
+$svgSize: 30px;
+
 .save {
 	display: flex;
 	align-items: center;
 	gap: 5px;
 
 	svg {
-		height: 20px;
-		width: 20px;
+		height: $svgSize;
+		width: $svgSize;
 		fill: $primary;
 	}
 	span {
 		color: $primary;
-		font-weight: 500;
+		font-weight: 700;
 	}
 }
