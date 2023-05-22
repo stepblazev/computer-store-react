@@ -4,6 +4,22 @@
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
+	&__content {
+		display: flex;
+		gap: 20px;
+
+		&Name {
+		}
+
+		&Address {
+			flex-grow: 1;
+		}
+
+		@media (max-width: $breakpoint700) {
+			flex-direction: column;
+		}
+	}
+
 	&__logout {
 		align-self: end;
 		display: flex;

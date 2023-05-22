@@ -1,44 +1,31 @@
-import { FC, useState, useEffect, ChangeEvent } from 'react';
-import useFetching from '../../../../hooks/useFetching';
-import useDebounce from '../../../../hooks/useDebounce';
-import { IAddress } from '../../../../models/addressModels';
-import AddressService from '../../../../http/services/AddressService';
+import { FC, ChangeEvent, MouseEvent } from 'react';
+import Input from '../../../../components/_UI/input/Input';
+import { useAppDispatch, useAppSelector } from '../../../../hooks/redux';
+import { accountSlice } from '../../../../redux/account/accountSlice';
+import AddressList from './address-list/AddressList';
 import styles from './profile-address.module.scss';
 
-// FIXME доработать
 const ProfileAddress: FC = () => {
-	const [query, setQuery] = useState<string>('');
-	const [addresses, setAddresses] = useState<IAddress[]>([]);
+	const dispatch = useAppDispatch();
+	const { setAddress } = accountSlice.actions;
 
-	const debounceQuery = useDebounce(query, 1000);
+	const { address, showSave } = useAppSelector((state) => state.account);
 
-	const [fetchAddress, isLoading, error] = useFetching(async () => {
-		const response = await AddressService.getAddress(query);
-		setAddresses(response.data.suggestions);
-	});
-
-	useEffect(() => {
-		fetchAddress();
-	}, [debounceQuery]);
+	const clickHandler = (e: MouseEvent<HTMLElement>) => {
+		const target = e.target as HTMLLIElement;
+		dispatch(setAddress(target.textContent ?? ''));
+	};
 
 	return (
 		<div className={styles.address}>
-			<input
-				type='text'
-				value={query}
-				onChange={(e: ChangeEvent<HTMLInputElement>) => setQuery(e.target.value)}
+			<Input
+				placeholder='Ваш адрес'
+				value={address ?? ''}
+				onChange={(e: ChangeEvent<HTMLInputElement>) =>
+					dispatch(setAddress(e.target.value))
+				}
 			/>
-			{addresses.length > 0 && (
-				<ul>
-					{addresses.map((address) => (
-						<li key={address.value}>
-							{address.data.city_type}. {address.data.city},{' '}
-							{address.data.street_type}. {address.data.street}{' '}
-							{address.data.house ? `, д. ${address.data.house}` : ''}
-						</li>
-					))}
-				</ul>
-			)}
+			{showSave && <AddressList query={address ?? ''} onClick={clickHandler} />}
 		</div>
 	);
 };

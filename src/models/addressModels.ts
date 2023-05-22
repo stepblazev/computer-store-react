@@ -18,6 +18,10 @@ export interface IAddress {
 		street_type_full: string;
 		street: string;
 		house: string;
+		house_type: string;
+		flat_type: string;
+		flat_type_full: string;
+		flat: string;
 	};
 }
 

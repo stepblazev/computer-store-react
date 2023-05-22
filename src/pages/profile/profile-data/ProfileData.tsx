@@ -24,10 +24,14 @@ const ProfileData: FC = () => {
 				{isLoading ? (
 					<Loader />
 				) : (
-					<Fragment>
-						<ProfileName />
-						<ChangeAddress />
-					</Fragment>
+					<div className={styles.data__content}>
+						<div className={styles.data__contentName}>
+							<ProfileName />
+						</div>
+						<div className={styles.data__contentAddress}>
+							<ChangeAddress />
+						</div>
+					</div>
 				)}
 				<div className={styles.data__logout}>
 					<ProfileSave />
