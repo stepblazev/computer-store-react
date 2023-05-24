@@ -5,7 +5,7 @@ import AuthService from '../../http/services/AuthService';
 import { AxiosError } from 'axios';
 import { ErrorResponse } from '../../models/axiosModels';
 import { notificationSlice } from '../notifications/notificationSlice';
-import { loginSuccess } from '../../warnings/authWarnings';
+import { loginSuccess, logoutWarning } from '../../warnings/authWarnings';
 
 interface AuthState {
 	email: string | null;
@@ -87,4 +87,5 @@ export const logoutUser = () => async (dispatch: AppDispatch) => {
 	await AuthService.logout();
 	localStorage.removeItem('token');
 	dispatch(authSlice.actions.logoutUser());
+	dispatch(notificationSlice.actions.addNotification(logoutWarning));
 };

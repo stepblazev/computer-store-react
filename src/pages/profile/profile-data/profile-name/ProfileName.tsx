@@ -16,7 +16,7 @@ const ProfileName: FC = () => {
 
 	return (
 		<div className={styles.name}>
-			<Input value={name ?? ''} onChange={handler} placeholder='Ваше имя' />
+			<Input value={name ?? ''} onChange={handler} placeholder='Имя' />
 		</div>
 	);
 };

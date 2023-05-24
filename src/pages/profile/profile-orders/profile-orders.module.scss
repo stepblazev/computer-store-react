@@ -1,0 +1,8 @@
+$errorColor: rgb(255, 76, 76);
+
+.orders {
+	overflow: hidden;
+	&__error {
+		color: $errorColor;
+	}
+}

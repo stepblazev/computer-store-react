@@ -11,3 +11,9 @@ export const authWarning: INotificationProps = {
 	message: 'Для доступа к корзине необходимо войти в аккаунт',
 	type: NotificationTypes.ERROR,
 };
+
+export const logoutWarning: INotificationProps = {
+	title: 'Выход из аккаунта',
+	message: 'Вы вышли из аккаунта',
+	type: NotificationTypes.INFO,
+};

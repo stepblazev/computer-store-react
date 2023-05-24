@@ -19,7 +19,7 @@ const ProfileAddress: FC = () => {
 	return (
 		<div className={styles.address}>
 			<Input
-				placeholder='Ваш адрес'
+				placeholder='Адрес'
 				value={address ?? ''}
 				onChange={(e: ChangeEvent<HTMLInputElement>) =>
 					dispatch(setAddress(e.target.value))

@@ -2,6 +2,7 @@ import { FC, ReactNode, MouseEvent } from 'react';
 import { RiCloseCircleFill as CloseSVG } from 'react-icons/ri';
 import styles from './modal.module.scss';
 import SlideIn, { SlideInDirections } from '../../../animations/SlideIn';
+import { createPortal } from 'react-dom';
 
 type ModalProps = {
 	state: boolean;
@@ -20,7 +21,7 @@ const Modal: FC<ModalProps> = ({ children, state, hide }) => {
 		e.stopPropagation();
 	};
 
-	return (
+	return createPortal(
 		<div className={styles.modal} onClick={hideHandle}>
 			<SlideIn direction={SlideInDirections.TOP}>
 				<div className={styles.modal__content} onClick={insideHandle}>
@@ -30,7 +31,8 @@ const Modal: FC<ModalProps> = ({ children, state, hide }) => {
 					</button>
 				</div>
 			</SlideIn>
-		</div>
+		</div>,
+		document.body
 	);
 };
 
