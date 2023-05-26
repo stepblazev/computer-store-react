@@ -8,6 +8,7 @@ import { useAppSelector } from '../../../../hooks/redux';
 import CartRemove from '../../../../components/device/cart-remove/CartRemove';
 import styles from './device-item.module.scss';
 import Rating from '../../../../components/device/rating/Rating';
+import { Link } from 'react-router-dom';
 
 type DeviceItemProps = {
 	device: IDevice;
@@ -20,16 +21,18 @@ const DeviceItem: FC<DeviceItemProps> = ({ device }) => {
 
 	return (
 		<div className={styles.item}>
-			<div className={styles.item__image}>
+			<Link to={`/device/${device.id}`} className={styles.item__image}>
 				<img
 					src={device.preview ? `${API_URL}/${device.preview}` : noimages}
 					alt='Нет изображения'
 				/>
-			</div>
+			</Link>
 			<div className={styles.item__content}>
 				<h3 className={styles.item__title}>
 					<span>
-						<span className={styles.item__titleText}>{device.title}</span>
+						<Link to={`/device/${device.id}`} className={styles.item__titleText}>
+							{device.title}
+						</Link>
 						<DeviceQuantity quantity={device.quantity} />
 					</span>
 					{device.quantity > 0 && (

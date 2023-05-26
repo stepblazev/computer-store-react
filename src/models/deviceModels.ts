@@ -26,3 +26,23 @@ export type IDevicesResponse = {
 	devices: IDevice[];
 	total: number;
 };
+
+export interface IDeviceProperty {
+	name: string;
+	value: string;
+}
+
+export interface IDeviceFull {
+	id: number;
+	title: string;
+	price: number;
+	type: string;
+	brand: string;
+	quantity: number;
+	description: string;
+	properties: IDeviceProperty[];
+	images: IImage[];
+	rating: number | null;
+	rating_count: number;
+	warranty: number;
+}

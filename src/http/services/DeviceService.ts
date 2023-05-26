@@ -1,7 +1,7 @@
 import { AxiosResponse } from 'axios';
 import api from '..';
 import { IFilter, IGetDeviceParams, OrderTypes } from '../../models/filterModels';
-import { IDevicesResponse } from '../../models/deviceModels';
+import { IDeviceFull, IDevicesResponse } from '../../models/deviceModels';
 import { IPropertiesResponse } from '../../models/filterModels';
 
 export default class DeviceService {
@@ -16,6 +16,10 @@ export default class DeviceService {
 		return api.get<IPropertiesResponse>(`/device/properties`, {
 			params: { type },
 		});
+	}
+
+	static async getSingle(id: string | number): Promise<AxiosResponse<IDeviceFull>> {
+		return api.get<IDeviceFull>(`/device/${id}`);
 	}
 
 	static async getDevices(

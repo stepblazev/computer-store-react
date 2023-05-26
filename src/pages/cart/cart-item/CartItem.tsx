@@ -7,9 +7,9 @@ import CartRemove from '../../../components/device/cart-remove/CartRemove';
 import DeviceQuantity from '../../../components/device/device-quantity/DeivceQuantity';
 import { useAppDispatch } from '../../../hooks/redux';
 import { purchaseSlice } from '../../../redux/purchase/purchaseSlice';
-import Button from '../../../components/_UI/button/Button';
-import styles from './cart-item.module.scss';
 import CartPurchase from '../../../components/device/cart-purchase/CartPurchase';
+import { Link } from 'react-router-dom';
+import styles from './cart-item.module.scss';
 
 type CartItemProps = {
 	device: ICartDevice;
@@ -27,14 +27,18 @@ const CartItem: FC<CartItemProps> = ({ device }) => {
 	return (
 		<li className={styles.item}>
 			<div className={styles.item__image}>
-				<img
-					src={device.preview ? `${API_URL}/${device.preview}` : noimages}
-					alt='Нет изображения'
-				/>
+				<Link to={`/device/${device.id}`}>
+					<img
+						src={device.preview ? `${API_URL}/${device.preview}` : noimages}
+						alt='Нет изображения'
+					/>
+				</Link>
 			</div>
 			<div className={styles.item__content}>
 				<h3 className={styles.item__title}>
-					<span className={styles.item__titleText}>{device.title}</span>
+					<Link to={`/device/${device.id}`} className={styles.item__titleText}>
+						{device.title}
+					</Link>
 					<span className={styles.item__price}>{device.price} руб.</span>
 				</h3>
 				<DeviceQuantity quantity={device.quantity} />

@@ -1,0 +1,53 @@
+@import '../../../styles/variables';
+
+$previewSize: 80px;
+$fullSize: 350px;
+$spacing: 10px;
+
+.images {
+	padding-right: $spacing;
+	padding-bottom: $spacing;
+	border-right: 1px solid lightgray;
+	border-bottom: 1px solid lightgray;
+	display: flex;
+	flex-direction: column;
+
+	.images__preview {
+		margin-top: 5px;
+		display: flex;
+		gap: 5px;
+		flex-wrap: wrap;
+
+		li {
+			padding: 5px;
+			border-radius: 5px;
+			border: 1px solid whitesmoke;
+			width: $previewSize;
+			height: $previewSize;
+			cursor: pointer;
+
+			img {
+				object-fit: contain;
+				object-position: center;
+				height: 100%;
+				width: 100%;
+			}
+		}
+
+		&Current {
+			border-color: $primary !important;
+		}
+	}
+
+	.images__full {
+		height: $fullSize;
+		width: $fullSize;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+			object-position: center;
+		}
+	}
+}

@@ -8,6 +8,7 @@ import Registration from '../pages/registration/Registration';
 import Category from '../pages/category/Category';
 import Cart from '../pages/cart/Cart';
 import Profile from '../pages/profile/Profile';
+import Device from '../pages/device/Device';
 
 type RouteProps = BaseRouteProps & {
 	element: React.ReactNode;
@@ -18,14 +19,16 @@ const publicRoutes: RouteProps[] = [
 	{ path: '/login', element: <Login /> },
 	{ path: '/registration', element: <Registration /> },
 	{ path: '/device', element: <Category /> },
+	{ path: '/device/:id', element: <Device /> },
 ];
 
 const privateRoutes: RouteProps[] = [
 	{ path: '/', element: <Home /> },
-	{ path: '/logout', element: <Logout /> },
-	{ path: '/device', element: <Category /> },
 	{ path: '/cart', element: <Cart /> },
 	{ path: '/profile', element: <Profile /> },
+	{ path: '/logout', element: <Logout /> },
+	{ path: '/device', element: <Category /> },
+	{ path: '/device/:id', element: <Device /> },
 ];
 
 const Router: FC = () => {

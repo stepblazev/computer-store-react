@@ -1,0 +1,38 @@
+.device {
+	width: 100%;
+
+	&__redirect {
+		display: flex;
+		align-items: center;
+		gap: 5px;
+		margin: 10px 0 20px;
+		color: lightgray !important;
+		svg {
+			fill: lightgray;
+		}
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	&__content {
+	}
+
+	&__description {
+		display: flex;
+		gap: 20px;
+
+		&Image {
+			position: sticky;
+			top: 0;
+		}
+
+		&Title {
+			flex-grow: 1;
+			h1 {
+				font-size: 24px;
+				font-weight: 400;
+			}
+		}
+	}
+}
