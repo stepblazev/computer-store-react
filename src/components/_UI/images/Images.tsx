@@ -1,8 +1,12 @@
-import { FC, useState } from 'react';
-import styles from './images.module.scss';
+import { FC, useState, MouseEvent } from 'react';
 import { IImage } from '../../../models/deviceModels';
 import { API_URL } from '../../../_config';
 import SlideIn, { SlideInDirections } from '../../../animations/SlideIn';
+import {
+	FaRegArrowAltCircleRight as RightSVG,
+	FaRegArrowAltCircleLeft as LeftSVG,
+} from 'react-icons/fa';
+import styles from './images.module.scss';
 
 type ImagesProps = {
 	images: IImage[];
@@ -11,16 +15,33 @@ type ImagesProps = {
 const Images: FC<ImagesProps> = ({ images }) => {
 	if (!images.length) return null;
 
-	const [current, setCurrent] = useState<IImage>(images[0]);
+	const [current, setCurrent] = useState<number>(0);
+
+	const leftHandler = (e: MouseEvent<HTMLButtonElement>) => {
+		setCurrent((prev) => prev - 1);
+	};
+
+	const rightHandler = (e: MouseEvent<HTMLButtonElement>) => {
+		setCurrent((prev) => prev + 1);
+	};
 
 	return (
 		<div className={styles.images}>
 			<SlideIn direction={SlideInDirections.BOTTOM}>
 				<div className={styles.images__full}>
-					<img src={`${API_URL}/${current.url_full}`} alt='full' />
+					<img src={`${API_URL}/${images[current].url_full}`} alt='full' />
+					{current > 0 && (
+						<button className={styles.images__fullLeft} onClick={leftHandler}>
+							<LeftSVG />
+						</button>
+					)}
+					{current < images.length - 1 && (
+						<button className={styles.images__fullRight} onClick={rightHandler}>
+							<RightSVG />
+						</button>
+					)}
 				</div>
 			</SlideIn>
-
 			{images.length > 1 && (
 				<ul className={styles.images__preview}>
 					{images.map((image, index) => (
@@ -31,11 +52,11 @@ const Images: FC<ImagesProps> = ({ images }) => {
 						>
 							<li
 								className={
-									image.url_full === current.url_full
+									image.url_full === images[current].url_full
 										? styles.images__previewCurrent
 										: ''
 								}
-								onMouseEnter={() => setCurrent(image)}
+								onClick={() => setCurrent(index)}
 							>
 								<img src={`${API_URL}/${image.url_preview}`} alt='preview' />
 							</li>

@@ -1,0 +1,75 @@
+@import '../../../styles/variables';
+
+$spacing: 10px;
+
+.description {
+	display: flex;
+	gap: 20px;
+
+	@media (max-width: $breakpoint700) {
+		flex-direction: column;
+	}
+
+	&__image {
+		position: sticky;
+		top: 0;
+	}
+
+	&__info {
+		flex-grow: 1;
+	}
+
+	&__title {
+		margin-bottom: $spacing;
+		font-size: 24px;
+		font-weight: 400;
+		@include lineHeight(24);
+	}
+
+	&__desc {
+		margin-bottom: $spacing;
+		text-align: justify;
+		&::first-letter {
+			text-transform: uppercase;
+		}
+	}
+
+	&__rating {
+		display: flex;
+		gap: 10px;
+	}
+
+	&__table {
+		h2 {
+			padding: 5px;
+			font-weight: 400;
+			display: flex;
+			justify-content: end;
+			gap: 5px;
+
+			svg {
+				fill: $dark;
+			}
+		}
+		table {
+			width: 100%;
+			border: 1px solid lightgray;
+			border-collapse: collapse;
+			th {
+				background-color: $primary;
+				color: white;
+			}
+			td:nth-child(2) {
+				font-weight: 700;
+			}
+		}
+		&Cell {
+			text-align: left;
+			padding: 5px 10px;
+
+			&::first-letter {
+				text-transform: uppercase;
+			}
+		}
+	}
+}

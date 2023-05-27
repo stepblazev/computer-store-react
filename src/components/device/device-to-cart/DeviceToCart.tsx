@@ -1,14 +1,14 @@
 import { FC, MouseEvent } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
 import { addToCart } from '../../../redux/cart/cartSlice';
-import { IDevice } from '../../../models/deviceModels';
+import { IDevice, IDeviceFull } from '../../../models/deviceModels';
 import { FaShoppingCart as CartSVG } from 'react-icons/fa';
 import styles from './device-to-cart.module.scss';
 import { notificationSlice } from '../../../redux/notifications/notificationSlice';
 import { authWarning } from '../../../warnings/authWarnings';
 
 type DeviceToCartProps = {
-	device: IDevice;
+	device: IDevice | IDeviceFull;
 };
 
 const DeviceToCart: FC<DeviceToCartProps> = ({ device }) => {
