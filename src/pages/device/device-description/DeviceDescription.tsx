@@ -49,16 +49,20 @@ const DeviceDescription: FC<DeviceDescriptionProps> = ({ device }) => {
 						Список характеристик
 					</h2>
 					<table>
-						<tr>
-							<th className={styles.description__tableCell}>Название</th>
-							<th className={styles.description__tableCell}>Значение</th>
-						</tr>
-						{device.properties.map((prop) => (
-							<tr key={prop.name}>
-								<td className={styles.description__tableCell}>{prop.name}</td>
-								<td className={styles.description__tableCell}>{prop.value}</td>
+						<thead>
+							<tr>
+								<th className={styles.description__tableCell}>Название</th>
+								<th className={styles.description__tableCell}>Значение</th>
 							</tr>
-						))}
+						</thead>
+						<tbody>
+							{device.properties.map((prop) => (
+								<tr key={prop.name}>
+									<td className={styles.description__tableCell}>{prop.name}</td>
+									<td className={styles.description__tableCell}>{prop.value}</td>
+								</tr>
+							))}
+						</tbody>
 					</table>
 				</div>
 			</div>

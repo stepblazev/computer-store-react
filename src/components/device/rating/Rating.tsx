@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react';
+import { FC } from 'react';
 import {
 	ImStarFull as StarSVG,
 	ImStarHalf as SemiStarSVG,
@@ -12,6 +12,8 @@ type Rating = {
 };
 
 const Rating: FC<Rating> = ({ rating, ratingCount = 0 }) => {
+	if (ratingCount === 0) return <p className={styles.none}>Нет отзывов</p>;
+
 	const template: any[] = Array(5).fill(0);
 	rating /= 2;
 
