@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { AiOutlineRollback as BackSVG } from 'react-icons/ai';
 import DeviceDescription from './device-description/DeviceDescription';
 import styles from './device.module.scss';
+import DeviceRate from './device-rate/DeviceRate';
 
 const Device: FC = () => {
 	const { id } = useParams();
@@ -35,6 +36,11 @@ const Device: FC = () => {
 						Все товары из категории "{device?.type}"
 					</Link>
 					<DeviceDescription device={device} />
+					<DeviceRate
+						id={Number(id)}
+						rating={device.rating ?? 0}
+						rating_count={device.rating_count ?? 0}
+					/>
 				</>
 			)}
 		</div>

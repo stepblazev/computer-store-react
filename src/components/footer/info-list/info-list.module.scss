@@ -1,0 +1,16 @@
+@import '../../../styles/variables';
+
+.column {
+	&__title {
+		margin-bottom: 5px;
+		@include lineHeight(18);
+		font-size: 18px;
+		color: gray;
+		letter-spacing: 2px;
+	}
+
+	&__text {
+		color: gray;
+		text-align: justify !important;
+	}
+}

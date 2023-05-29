@@ -28,7 +28,10 @@ const DeviceDescription: FC<DeviceDescriptionProps> = ({ device }) => {
 					{device?.title} <DeviceQuantity quantity={device?.quantity ?? 0} />
 				</h1>
 				<p className={styles.description__desc}>{device?.description}</p>
-				<div className={styles.description__rating}>
+				<div className={styles.description__price}>
+					<span className={styles.description__pricePrice}>
+						{device.price.toFixed(2)} руб.
+					</span>
 					{device.quantity > 0 && (
 						<div className={styles.item__cart}>
 							{inCart ? (
@@ -38,11 +41,11 @@ const DeviceDescription: FC<DeviceDescriptionProps> = ({ device }) => {
 							)}
 						</div>
 					)}
-					<Rating
-						rating={Number(device?.rating)}
-						ratingCount={Number(device?.rating_count)}
-					/>
 				</div>
+				<Rating
+					rating={Number(device?.rating)}
+					ratingCount={Number(device?.rating_count)}
+				/>
 				<div className={styles.description__table}>
 					<h2>
 						<ListSVG />

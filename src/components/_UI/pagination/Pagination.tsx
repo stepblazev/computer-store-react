@@ -6,6 +6,7 @@ import styles from './pagination.module.scss';
 type PaginationProps = {
 	total: number;
 	current: number;
+	limit: number;
 	setPage: (page: number) => void;
 };
 
@@ -22,8 +23,8 @@ const getPagesArray = (totalPages: number, current: number): number[] => {
 	return nearPages;
 };
 
-const Pagination: FC<PaginationProps> = ({ total, current, setPage }) => {
-	const totalPages = getPages(total);
+const Pagination: FC<PaginationProps> = ({ total, current, setPage, limit }) => {
+	const totalPages = getPages(total, limit);
 	if (totalPages < 2) return null;
 
 	const nearPages = getPagesArray(totalPages, current);

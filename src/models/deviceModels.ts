@@ -46,3 +46,11 @@ export interface IDeviceFull {
 	rating_count: number;
 	warranty: number;
 }
+
+export interface IRate {
+	id: number;
+	rate: number;
+	created_at: string;
+	message: string;
+	owner: string;
+}

@@ -1,0 +1,19 @@
+.list {
+	margin-bottom: 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+
+	&__item {
+		padding-bottom: 10px;
+		border-bottom: 1px solid lightgray;
+
+		&Title {
+			margin-bottom: 10px;
+			display: flex;
+			justify-content: space-between;
+		}
+		&Message {
+		}
+	}
+}

@@ -1,0 +1,14 @@
+$starSize: 15px;
+$starColor: gold;
+
+.stars {
+	position: relative;
+	display: flex;
+	gap: 3px;
+
+	svg {
+		width: $starSize;
+		height: $starSize;
+		fill: $starColor;
+	}
+}

@@ -1,12 +1,61 @@
 @import '../../styles/variables';
 
 .footer {
-	padding: 30px 0;
+	padding-top: 30px;
 	background-color: $dark;
 
-	h1 {
-		text-align: center;
-		font-size: 40px;
-		color: $primary;
+	&__content {
+		width: 100%;
+
+		&Row {
+			display: flex;
+			justify-content: space-between;
+			gap: 50px;
+
+			&:last-child {
+				padding: 20px 0;
+				border-top: 1px solid gray;
+				p {
+					width: 100%;
+					text-align: right;
+					color: gray;
+					font-weight: 700;
+					font-size: 24px;
+					@include lineHeight(24);
+				}
+			}
+		}
+
+		&Links {
+			margin-bottom: 20px;
+			width: 100%;
+			display: flex;
+			justify-content: end;
+			gap: 10px;
+			li {
+				a {
+					padding: 10px;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					border: 2px solid gray;
+					border-radius: 50%;
+					transition: all 0.2s ease;
+					svg {
+						width: 25px;
+						height: 25px;
+						fill: gray;
+						transition: all 0.2s ease;
+					}
+					&:hover {
+						transform: translateY(-5px);
+						border-color: lightgray;
+						svg {
+							fill: lightgray;
+						}
+					}
+				}
+			}
+		}
 	}
 }

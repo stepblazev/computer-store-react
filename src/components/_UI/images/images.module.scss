@@ -8,12 +8,13 @@ $spacing: 10px;
 	padding-right: $spacing;
 	padding-bottom: $spacing;
 	border-right: 1px solid lightgray;
-	border-bottom: 1px solid lightgray;
+	// border-bottom: 1px solid lightgray;
 	display: flex;
 	flex-direction: column;
 
 	@media (max-width: $breakpoint700) {
 		border-right: unset;
+		border-bottom: 1px solid lightgray;
 		align-items: center;
 	}
 

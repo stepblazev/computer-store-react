@@ -3,6 +3,7 @@
 $spacing: 10px;
 
 .description {
+	margin-bottom: 20px;
 	display: flex;
 	gap: 20px;
 
@@ -34,10 +35,16 @@ $spacing: 10px;
 		}
 	}
 
-	&__rating {
+	&__price {
+		margin-bottom: 10px;
 		display: flex;
 		align-items: center;
 		gap: 10px;
+
+		&Price {
+			margin-right: 10px;
+			font-size: 24px;
+		}
 	}
 
 	&__table {
