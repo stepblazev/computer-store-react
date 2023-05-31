@@ -10,7 +10,7 @@ const Group: FC<GroupProps> = ({ label, children }) => {
 	return (
 		<div className={styles.group}>
 			<h2 className={styles.group__label}>{label}</h2>
-			{children}
+			<div className={styles.group__content}>{children}</div>
 		</div>
 	);
 };

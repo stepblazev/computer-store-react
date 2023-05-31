@@ -1,15 +1,17 @@
 .group {
 	margin-top: 20px;
-	position: relative;
 	border: 1px solid lightgray;
 	border-radius: 5px;
 	padding: 20px;
-	padding-top: 30px;
 	&__label {
-		position: absolute;
-		top: -10px;
-		left: 20px;
+		position: relative;
+		display: inline;
+		top: -30px;
+		left: 0px;
 		background-color: white;
 		font-size: 24px;
+	}
+	&__content {
+		margin-top: -20px;
 	}
 }

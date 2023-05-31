@@ -14,8 +14,8 @@ const OrderList: FC<OrderListProps> = ({ orders }) => {
 	return (
 		<ul className={styles.list}>
 			{orders.map((order, index) => (
-				<SlideIn direction={SlideInDirections.TOP} delay={index * 100}>
-					<OrderItem key={order.id} order={order} />
+				<SlideIn key={order.id} direction={SlideInDirections.TOP} delay={index * 100}>
+					<OrderItem order={order} />
 				</SlideIn>
 			))}
 		</ul>

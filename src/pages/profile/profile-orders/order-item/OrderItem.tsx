@@ -33,7 +33,7 @@ const OrderItem: FC<OrderItemProps> = ({ order }) => {
 				<h5>Заказ №{order.id}</h5>
 				<ul>
 					{order.devices.map((name) => (
-						<li>{name}</li>
+						<li key={name}>{name}</li>
 					))}
 				</ul>
 			</Modal>

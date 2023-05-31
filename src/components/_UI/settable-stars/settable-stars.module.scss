@@ -1,0 +1,25 @@
+$starSize: 40px;
+$starColor: gold;
+
+.stars {
+	display: inline-block;
+	&__container {
+		display: inline-flex !important;
+		align-items: center;
+		gap: 5px;
+		cursor: pointer;
+
+		svg {
+			height: $starSize;
+			width: $starSize;
+			fill: $starColor;
+			transition: all 0.2s ease;
+			&:hover {
+				transform: scale(1.1);
+			}
+			&:active {
+				transform: scale(0.9);
+			}
+		}
+	}
+}
