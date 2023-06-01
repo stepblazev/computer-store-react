@@ -6,6 +6,7 @@ import RateList from '../rate-list/RateList';
 import styles from './device-rate.module.scss';
 import Pagination from '../../../components/_UI/pagination/Pagination';
 import { RATE_LIMIT } from '../../../_config';
+import Loader from '../../../components/_UI/loader/Loader';
 
 type DeviceRateProps = {
 	id: number;
@@ -30,12 +31,23 @@ const DeviceRate: FC<DeviceRateProps> = ({ id, rating, rating_count }) => {
 
 	return (
 		<div className={styles.rate}>
-			<p className={styles.rate__title}>
-				Отзывы ({rating_count})
-				<span className={styles.rate__titleValue}>{rating.toFixed(1)} из 5</span>
-			</p>
-			<RateList rates={rates} />
-			<Pagination total={rating_count} current={page} setPage={setPage} limit={RATE_LIMIT} />
+			{isLoading ? (
+				<Loader />
+			) : (
+				<>
+					<p className={styles.rate__title}>
+						Отзывы ({rating_count})
+						<span className={styles.rate__titleValue}>{rating.toFixed(1)} из 5</span>
+					</p>
+					<RateList rates={rates} />
+					<Pagination
+						total={rating_count}
+						current={page}
+						setPage={setPage}
+						limit={RATE_LIMIT}
+					/>
+				</>
+			)}
 		</div>
 	);
 };

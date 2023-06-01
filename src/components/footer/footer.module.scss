@@ -22,7 +22,16 @@
 					font-weight: 700;
 					font-size: 24px;
 					@include lineHeight(24);
+					@media (max-width: $breakpoint700) {
+						font-size: 20px !important;
+						@include lineHeight(20);
+					}
 				}
+			}
+
+			@media (max-width: $breakpoint700) {
+				justify-content: start;
+				flex-wrap: wrap;
 			}
 		}
 
@@ -32,6 +41,10 @@
 			display: flex;
 			justify-content: end;
 			gap: 10px;
+
+			@media (max-width: $breakpoint700) {
+				margin-top: 20px;
+			}
 			li {
 				a {
 					padding: 10px;

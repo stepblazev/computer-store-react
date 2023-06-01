@@ -4,7 +4,7 @@ import { AppDispatch } from '../store';
 import CartService from '../../http/services/СartService';
 import { notificationSlice } from '../notifications/notificationSlice';
 import { purchaseSuccess } from '../../warnings/cartWarnings';
-import { cartSlice, fetchCart } from '../cart/cartSlice';
+import { fetchCart } from '../cart/cartSlice';
 import { AxiosError } from 'axios';
 import { ErrorResponse } from '../../models/axiosModels';
 

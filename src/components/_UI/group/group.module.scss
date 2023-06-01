@@ -4,6 +4,7 @@
 	border-radius: 5px;
 	padding: 20px;
 	&__label {
+		user-select: none;
 		position: relative;
 		display: inline;
 		top: -30px;

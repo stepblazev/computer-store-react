@@ -9,7 +9,6 @@
 	}
 
 	&__message {
-		margin-bottom: 10px;
 		padding: 5px 7px;
 		resize: none;
 		width: 100% !important;
@@ -19,6 +18,12 @@
 			border-color: $dark;
 			outline: none;
 		}
+	}
+
+	&__limit {
+		margin-bottom: 10px;
+		font-size: 12px;
+		color: lightgray;
 	}
 
 	&__buttons {

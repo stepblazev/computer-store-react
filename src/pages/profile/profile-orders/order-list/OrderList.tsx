@@ -9,7 +9,7 @@ type OrderListProps = {
 };
 
 const OrderList: FC<OrderListProps> = ({ orders }) => {
-	if (orders.length === 0) return null;
+	if (orders.length === 0) return <i>Вы пока не сделали ни одного заказа</i>;
 
 	return (
 		<ul className={styles.list}>
