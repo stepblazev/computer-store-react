@@ -1,0 +1,41 @@
+@import '../../../styles/variables';
+
+.banner {
+	margin-bottom: 40px;
+	display: flex;
+	gap: 30px;
+
+	&__banner {
+		flex-grow: 1;
+	}
+
+	&__components {
+		min-width: 290px;
+		padding: 0 10px;
+		display: inline-flex;
+		flex-direction: column;
+		border: 1px solid lightgray;
+		border-top: unset;
+		background-color: rgb(252, 252, 252);
+		li {
+			padding: 5px;
+			letter-spacing: 3px;
+			font-weight: 500;
+			border-bottom: 1px solid lightgray;
+			cursor: pointer;
+
+			&:last-child {
+				border: unset;
+			}
+			a {
+				display: block;
+				transition: all 0.2s ease;
+
+				&:hover {
+					color: $primary;
+					transform: scale(1.05);
+				}
+			}
+		}
+	}
+}

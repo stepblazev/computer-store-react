@@ -3,9 +3,9 @@ import { IoClose as CloseSVG } from 'react-icons/io5';
 import { createPortal } from 'react-dom';
 import { FC, useState, MouseEvent } from 'react';
 import { Link } from 'react-router-dom';
-import { navLinks } from '../../navLinks';
-import styles from './burger.module.scss';
+import { BurgerLinks } from '../../navLinks';
 import Logo from '../logo/Logo';
+import styles from './burger.module.scss';
 
 function stopPropagation(e: MouseEvent<HTMLDivElement>): void {
 	e.stopPropagation();
@@ -33,8 +33,8 @@ const Burger: FC = () => {
 						<CloseSVG className={styles.burger__menuClose} onClick={toggleBurger} />
 						<Logo />
 						<ul>
-							{navLinks.map((link) => (
-								<li key={link.endpoint} onClick={toggleBurger}>
+							{BurgerLinks.map((link) => (
+								<li key={link.label} onClick={toggleBurger}>
 									<Link to={link.endpoint}>{link.label}</Link>
 								</li>
 							))}

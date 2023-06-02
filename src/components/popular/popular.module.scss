@@ -1,0 +1,42 @@
+$imgSize: 140px;
+
+.popular {
+	&__title {
+		font-size: 20px;
+		margin-bottom: 20px;
+	}
+
+	&__item {
+		padding-right: 20px;
+		&Image {
+			display: block;
+			margin-bottom: 10px;
+			width: $imgSize;
+			height: $imgSize;
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: contain;
+				object-position: center;
+			}
+		}
+		&Type {
+			font-size: 12px;
+			display: block;
+			&:hover {
+				text-decoration: underline;
+			}
+			&::first-letter {
+				text-transform: uppercase;
+			}
+		}
+		&Title {
+			font-weight: 700;
+		}
+		&Rating {
+			display: flex;
+			align-items: center;
+			gap: 5px;
+		}
+	}
+}

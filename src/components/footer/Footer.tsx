@@ -9,26 +9,22 @@ import {
 	SlSocialVkontakte as VkSVG,
 	SlSocialFacebook as FacebookSVG,
 } from 'react-icons/sl';
+import { INavLink } from '../header/navLinks';
 
-export interface IFooterLink {
-	link: string;
-	label: string;
-}
-
-const CatalogLinks: IFooterLink[] = [
-	{ link: '/device?type=процессор', label: 'Процессоры' },
-	{ link: '/device?type=видеокарта', label: 'Видеокарты' },
-	{ link: '/device?type=жесткий диск', label: 'Жесткие диски' },
-	{ link: '/device?type=блок питания', label: 'Блоки питания' },
-	{ link: '/device?type=корпус', label: 'Корпуса' },
+const CatalogLinks: INavLink[] = [
+	{ endpoint: '/device?type=процессор', label: 'Процессоры' },
+	{ endpoint: '/device?type=видеокарта', label: 'Видеокарты' },
+	{ endpoint: '/device?type=жесткий диск', label: 'Жесткие диски' },
+	{ endpoint: '/device?type=блок питания', label: 'Блоки питания' },
+	{ endpoint: '/device?type=корпус', label: 'Корпуса' },
 ];
 
-const UserLinks: IFooterLink[] = [
-	{ link: '/profile', label: 'Профиль' },
-	{ link: '/cart', label: 'Корзина' },
-	{ link: '/profile', label: 'Заказы' },
-	{ link: '/', label: 'Каталог' },
-	{ link: '/', label: 'Наш блог' },
+const UserLinks: INavLink[] = [
+	{ endpoint: '/profile', label: 'Профиль' },
+	{ endpoint: '/cart', label: 'Корзина' },
+	{ endpoint: '/profile', label: 'Заказы' },
+	{ endpoint: '/', label: 'Каталог' },
+	{ endpoint: '/', label: 'Наш блог' },
 ];
 
 const Footer: FC = () => {

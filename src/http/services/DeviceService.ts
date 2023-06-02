@@ -1,7 +1,7 @@
 import { AxiosResponse } from 'axios';
 import api from '..';
 import { IFilter, IGetDeviceParams, OrderTypes } from '../../models/filterModels';
-import { IDeviceFull, IDevicesResponse } from '../../models/deviceModels';
+import { IDevice, IDeviceFull, IDevicesResponse } from '../../models/deviceModels';
 import { IPropertiesResponse } from '../../models/filterModels';
 
 export default class DeviceService {
@@ -34,6 +34,16 @@ export default class DeviceService {
 			price: `${filter.price.from}-${filter.price.to}`,
 			_order: filter.order,
 			_page: filter.page,
+		};
+		return api.get<IDevicesResponse>(`/device`, {
+			params: filters,
+		});
+	}
+
+	static async getPopular(): Promise<AxiosResponse<IDevicesResponse>> {
+		const filters: IGetDeviceParams = {
+			_order: OrderTypes.QUANTITY,
+			_page: 1,
 		};
 		return api.get<IDevicesResponse>(`/device`, {
 			params: filters,

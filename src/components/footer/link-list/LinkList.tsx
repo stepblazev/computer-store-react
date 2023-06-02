@@ -1,11 +1,11 @@
 import { FC } from 'react';
-import { IFooterLink } from '../Footer';
 import { Link } from 'react-router-dom';
 import styles from './link-list.module.scss';
+import { INavLink } from '../../header/navLinks';
 
 type LinkList = {
 	title: string;
-	links: IFooterLink[];
+	links: INavLink[];
 };
 
 const LinkList: FC<LinkList> = ({ title, links }) => {
@@ -15,7 +15,7 @@ const LinkList: FC<LinkList> = ({ title, links }) => {
 			<ul className={styles.column__list}>
 				{links.map((link, index) => (
 					<li key={index}>
-						<Link to={link.link}>{link.label}</Link>
+						<Link to={link.endpoint}>{link.label}</Link>
 					</li>
 				))}
 			</ul>

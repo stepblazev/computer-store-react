@@ -1,12 +1,25 @@
-interface INavLink {
+export interface INavLink {
 	label: string;
 	endpoint: string;
 }
 
-// FIXME исправить ссылки
-export const navLinks: INavLink[] = [
+export const NavLinks: INavLink[] = [
 	{ label: 'Главная', endpoint: '/' },
-	{ label: 'Процессоры', endpoint: '/device?type=процессор' },
-	{ label: 'Видеокарты', endpoint: '/device?type=видеокарта' },
-	{ label: 'О Нас', endpoint: '/about' },
+	{ label: 'Компьютеры', endpoint: '/device?type=компьютер' },
+	{ label: 'Ноутбуки', endpoint: '/device?type=ноутбук' },
+	{ label: 'Мониторы', endpoint: '/device?type=монитор' },
 ];
+
+export const ComponentLinks: INavLink[] = [
+	{ endpoint: '/device?type=процессор', label: 'Процессоры' },
+	{ endpoint: '/device?type=видеокарта', label: 'Видеокарты' },
+	{ endpoint: '/device?type=материнские платы', label: 'Материнская плата' },
+	{ endpoint: '/device?type=оперативная память', label: 'Оперативная память' },
+	{ endpoint: '/device?type=система охлаждения', label: 'Системы охлаждения' },
+	{ endpoint: '/device?type=жесткий диск', label: 'Жесткие диски' },
+	{ endpoint: '/device?type=SSD', label: 'SSD' },
+	{ endpoint: '/device?type=корпус', label: 'Корпуса' },
+	{ endpoint: '/device?type=блок питания', label: 'Блоки питания' },
+];
+
+export const BurgerLinks: INavLink[] = [...NavLinks, ...ComponentLinks];

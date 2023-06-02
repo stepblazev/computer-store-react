@@ -9,7 +9,7 @@ import Logo from './components/logo/Logo';
 import Profile from './components/profile/Profile';
 import SlideIn, { SlideInDirections } from '../../animations/SlideIn';
 import Burger from './components/burger/Burger';
-import { navLinks } from './navLinks';
+import { NavLinks } from './navLinks';
 import styles from './header.module.scss';
 
 const Header: FC = () => {
@@ -60,7 +60,7 @@ const Header: FC = () => {
 					</SlideIn>
 					<SlideIn direction={SlideInDirections.RIGHT} delay={300}>
 						<ul className={styles.header__thirdNav}>
-							{navLinks.map((link) => (
+							{NavLinks.map((link) => (
 								<li key={link.endpoint}>
 									<Link to={link.endpoint}>{link.label}</Link>
 								</li>
