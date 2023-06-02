@@ -1,6 +1,11 @@
+@import '../../styles/variables';
+
 $imgSize: 140px;
 
 .popular {
+	margin-bottom: 40px;
+	margin-top: 20px;
+
 	&__title {
 		font-size: 20px;
 		margin-bottom: 20px;
@@ -8,6 +13,9 @@ $imgSize: 140px;
 
 	&__item {
 		padding-right: 20px;
+		display: flex !important;
+		align-items: center;
+		flex-direction: column;
 		&Image {
 			display: block;
 			margin-bottom: 10px;
@@ -32,11 +40,13 @@ $imgSize: 140px;
 		}
 		&Title {
 			font-weight: 700;
+			text-align: center;
 		}
 		&Rating {
-			display: flex;
-			align-items: center;
-			gap: 5px;
+			margin-bottom: 5px;
+		}
+		&Price {
+			font-size: 18px;
 		}
 	}
 }

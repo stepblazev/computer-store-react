@@ -53,29 +53,23 @@ const RateForm: FC<RateFormProps> = ({ device }) => {
 	return (
 		<form className={styles.form}>
 			<Group label={exists ? 'Ваш отзыв ' : 'Напишите отзыв'}>
-				{isLoading ? (
-					<Loader />
-				) : (
-					<>
-						<div className={styles.form__stars}>
-							<SettableStars rating={rate} setRating={rateHandler} />
-						</div>
-						<textarea
-							value={message}
-							onChange={messageHandler}
-							maxLength={RATE_SYMBOL_LIMIT}
-							className={styles.form__message}
-							placeholder='Ваше мнение о товаре'
-						/>
-						<span className={styles.form__limit}>
-							Максимальная длина {RATE_SYMBOL_LIMIT} символов
-						</span>
-						<div className={styles.form__buttons}>
-							{showSave && <Button label='Сохранить' onClick={saveHandler} />}
-							{exists && <Button label='Удалить' onClick={deleteHandler} />}
-						</div>
-					</>
-				)}
+				<div className={styles.form__stars}>
+					<SettableStars rating={rate} setRating={rateHandler} />
+				</div>
+				<textarea
+					value={message}
+					onChange={messageHandler}
+					maxLength={RATE_SYMBOL_LIMIT}
+					className={styles.form__message}
+					placeholder='Ваше мнение о товаре'
+				/>
+				<span className={styles.form__limit}>
+					Максимальная длина {RATE_SYMBOL_LIMIT} символов
+				</span>
+				<div className={styles.form__buttons}>
+					{showSave && <Button label='Сохранить' onClick={saveHandler} />}
+					{exists && <Button label='Удалить' onClick={deleteHandler} />}
+				</div>
 			</Group>
 		</form>
 	);

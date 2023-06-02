@@ -2,6 +2,7 @@ import { FC } from 'react';
 import HomeBanner from './home-banner/HomeBanner';
 import styles from './home.module.scss';
 import Popular from '../../components/popular/Popular';
+import HomeAbout from './home-about/HomeAbout';
 
 const Home: FC = () => {
 	return (
@@ -9,6 +10,7 @@ const Home: FC = () => {
 			<div className={styles.home__content}>
 				<HomeBanner />
 				<Popular />
+				<HomeAbout />
 			</div>
 		</div>
 	);

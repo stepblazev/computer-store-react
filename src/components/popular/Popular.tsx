@@ -12,6 +12,8 @@ import SlideIn, { SlideInDirections } from '../../animations/SlideIn';
 import { NextArrow, PrevArrow } from './arrows/Arrows';
 
 const Popular: FC = () => {
+	const [count, setCount] = useState<number>(5);
+
 	const [devices, setDevices] = useState<IDevice[]>([]);
 	const [fetchDevices, isLoading, error] = useFetching(async () => {
 		const response = await DeviceService.getPopular();
@@ -20,6 +22,15 @@ const Popular: FC = () => {
 
 	useEffect(() => {
 		fetchDevices();
+		const handleResize = () => {
+			const windowWidth = window.innerWidth;
+			setCount(Math.min(Math.floor(windowWidth / 200), 5));
+		};
+		handleResize();
+		window.addEventListener('resize', handleResize);
+		return () => {
+			window.removeEventListener('resize', handleResize);
+		};
 	}, []);
 
 	return devices.length === 0 ? null : (
@@ -30,12 +41,11 @@ const Popular: FC = () => {
 					<Loader />
 				) : (
 					<Slider
-						dots={true}
+						dots={count > 1}
 						infinite={true}
 						speed={500}
-						slidesToShow={5}
+						slidesToShow={count}
 						slidesToScroll={1}
-						accessibility={true}
 						autoplay={true}
 						autoplaySpeed={3000}
 						// prevArrow={<PrevArrow />}
@@ -67,9 +77,7 @@ const Popular: FC = () => {
 										ratingCount={Number(device.rating_count)}
 									/>
 								</div>
-								<span className={styles.popular__itemPrice}>
-									{device.price} руб.
-								</span>
+								<p className={styles.popular__itemPrice}>{device.price} руб.</p>
 							</div>
 						))}
 					</Slider>

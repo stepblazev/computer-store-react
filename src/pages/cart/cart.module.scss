@@ -1,10 +1,8 @@
 @import '../../styles/variables';
 
 .cart {
-	margin-bottom: 20px;
-
+	width: 100%;
 	&__content {
-		width: 100%;
 		display: flex;
 
 		@media (max-width: $breakpoint900) {

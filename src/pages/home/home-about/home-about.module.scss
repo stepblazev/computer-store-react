@@ -1,0 +1,16 @@
+.about {
+	margin-bottom: 20px;
+	&__title {
+		font-size: 20px;
+		margin-bottom: 20px;
+	}
+	&__content {
+		display: flex;
+		flex-direction: column;
+		gap: 15px;
+
+		p {
+			text-align: justify;
+		}
+	}
+}

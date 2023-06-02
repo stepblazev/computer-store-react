@@ -6,7 +6,7 @@ const CartHeader: FC = () => {
 	const { devices } = useAppSelector((state) => state.cart);
 
 	return (
-		<div className={[styles.header, 'container'].join(' ')}>
+		<div className={styles.header}>
 			<h1 className={styles.header__title} data-amount={devices.length}>
 				Ваша корзина
 			</h1>

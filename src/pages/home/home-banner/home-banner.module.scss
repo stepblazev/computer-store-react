@@ -7,6 +7,9 @@
 
 	&__banner {
 		flex-grow: 1;
+		@media (max-width: $breakpoint700) {
+			display: none;
+		}
 	}
 
 	&__components {
@@ -17,6 +20,11 @@
 		border: 1px solid lightgray;
 		border-top: unset;
 		background-color: rgb(252, 252, 252);
+		@media (max-width: $breakpoint700) {
+			margin-top: 20px;
+			width: 100%;
+			border: 1px solid lightgray;
+		}
 		li {
 			padding: 5px;
 			letter-spacing: 3px;

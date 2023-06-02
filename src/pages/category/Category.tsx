@@ -4,6 +4,7 @@ import styles from './category.module.scss';
 import Filter from './filter/Filter';
 import Devices from './devices/Devices';
 import CategoryHeader from './category-header/CategoryHeader';
+import Popular from '../../components/popular/Popular';
 
 const Category: FC = () => {
 	const location = useLocation();
@@ -17,6 +18,7 @@ const Category: FC = () => {
 				<Filter type={type} />
 				<Devices type={type} />
 			</div>
+			<Popular />
 		</div>
 	);
 };

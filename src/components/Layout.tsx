@@ -3,6 +3,7 @@ import Notifications from './notifications/Notifications';
 import Header from './header/Header';
 import Footer from './footer/Footer';
 import Purchase from './purchase/Purchase';
+import Popular from './popular/Popular';
 
 type layoutProps = {
 	children: React.ReactNode;

@@ -1,0 +1,32 @@
+@import '../../../styles/variables';
+
+$svgSize: 30px;
+
+.arrow {
+	height: $svgSize;
+	width: $svgSize;
+	position: absolute;
+	bottom: -20px;
+	right: 0;
+	z-index: 10;
+	svg {
+		height: $svgSize;
+		width: $svgSize;
+		fill: rgb(235, 235, 235);
+	}
+	&:hover {
+		svg {
+			fill: $primary;
+		}
+	}
+	&:active {
+		svg {
+			fill: $darkprimary;
+		}
+	}
+}
+
+.prev {
+	right: 40px;
+	transform: rotate(180deg);
+}

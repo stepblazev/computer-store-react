@@ -9,6 +9,7 @@ import DeviceDescription from './device-description/DeviceDescription';
 import styles from './device.module.scss';
 import DeviceRate from './device-rate/DeviceRate';
 import RateForm from './rate-form/RateForm';
+import Popular from '../../components/popular/Popular';
 
 const Device: FC = () => {
 	const { id } = useParams();
@@ -21,11 +22,10 @@ const Device: FC = () => {
 	});
 
 	useEffect(() => {
-		fetchDevice();
 		window.scrollTo({
 			top: 0,
-			behavior: 'smooth',
 		});
+		fetchDevice();
 	}, [id]);
 
 	return (
@@ -45,6 +45,7 @@ const Device: FC = () => {
 					<RateForm device={device} />
 				</>
 			)}
+			<Popular />
 		</div>
 	);
 };
