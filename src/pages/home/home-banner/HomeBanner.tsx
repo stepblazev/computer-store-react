@@ -3,6 +3,16 @@ import { Link } from 'react-router-dom';
 import { ComponentLinks } from '../../../components/header/navLinks';
 import styles from './home-banner.module.scss';
 import Banner from '../../../components/_UI/banner/Banner';
+import ImageSlider, { ISliderItem } from '../../../components/_UI/slider/Slider';
+import slide_1 from '../../../assets/slider-1.png';
+import slide_2 from '../../../assets/slider-2.png';
+import slide_3 from '../../../assets/slider-3.png';
+
+const sliderItems: ISliderItem[] = [
+	{ img: slide_1, url: '/device?type=монитор' },
+	{ img: slide_2, url: '/device?type=компьютер' },
+	{ img: slide_3, url: '/device?type=ноутбук' },
+];
 
 const HomeBanner: FC = () => {
 	return (
@@ -15,7 +25,7 @@ const HomeBanner: FC = () => {
 				))}
 			</ul>
 			<div className={styles.banner__banner}>
-				<Banner />
+				<ImageSlider items={sliderItems} />
 			</div>
 		</div>
 	);

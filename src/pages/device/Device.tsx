@@ -43,9 +43,9 @@ const Device: FC = () => {
 						rating_count={device.rating_count ?? 0}
 					/>
 					<RateForm device={device} />
+					<Popular />
 				</>
 			)}
-			<Popular />
 		</div>
 	);
 };

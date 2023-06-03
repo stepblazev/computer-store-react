@@ -6,7 +6,6 @@ const HomeAbout: FC = () => {
 		<div className={styles.about}>
 			<h2 className={styles.about__title}>Информация о нас</h2>
 			<div className={styles.about__content}>
-				<p>Добро пожаловать в Technomall!</p>
 				<p>
 					Мы команда энтузиастов, предлагающая широкий выбор комплектующих к компьютерам,
 					готовых сборок, ноутбуков, мониторов и многого другого. Мы стремимся обеспечить
@@ -41,7 +40,6 @@ const HomeAbout: FC = () => {
 					Спасибо, что выбрали Technomall. Мы надеемся, что наши продукты и услуги
 					превзойдут ваши ожидания!
 				</p>
-				<p>С уважением, Команда Technomall</p>
 			</div>
 		</div>
 	);

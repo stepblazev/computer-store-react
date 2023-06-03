@@ -28,7 +28,6 @@ const Devices: FC<DevicesProps> = ({ type }) => {
 	useEffect(() => {
 		window.scrollTo({
 			top: 0,
-			behavior: 'smooth',
 		});
 		dispatch(fetchDevices(type, filter));
 		setDelay(600);

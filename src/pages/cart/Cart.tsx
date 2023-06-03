@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import CartHeader from './cart-header/CartHeader';
 import styles from './cart.module.scss';
 import CartList from './cart-list/CartList';
@@ -9,6 +9,12 @@ import Popular from '../../components/popular/Popular';
 
 const Cart: FC = () => {
 	const { devices } = useAppSelector((state) => state.cart);
+
+	useEffect(() => {
+		window.scrollTo({
+			top: 0,
+		});
+	}, []);
 
 	return (
 		<div className={[styles.cart, 'container'].join(' ')}>
