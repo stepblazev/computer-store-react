@@ -9,6 +9,7 @@ import Category from '../pages/category/Category';
 import Cart from '../pages/cart/Cart';
 import Profile from '../pages/profile/Profile';
 import Device from '../pages/device/Device';
+import Admin from '../pages/admin/Admin';
 
 type RouteProps = BaseRouteProps & {
 	element: React.ReactNode;
@@ -29,6 +30,7 @@ const privateRoutes: RouteProps[] = [
 	{ path: '/logout', element: <Logout /> },
 	{ path: '/device', element: <Category /> },
 	{ path: '/device/:id', element: <Device /> },
+	{ path: '/admin', element: <Admin /> },
 ];
 
 const Router: FC = () => {

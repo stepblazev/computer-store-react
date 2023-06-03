@@ -25,6 +25,7 @@ const UserLinks: INavLink[] = [
 	{ endpoint: '/profile', label: 'Заказы' },
 	{ endpoint: '/', label: 'Каталог' },
 	{ endpoint: '/', label: 'Наш блог' },
+	{ endpoint: '/admin', label: 'Admin' },
 ];
 
 const Footer: FC = () => {
@@ -33,7 +34,7 @@ const Footer: FC = () => {
 			<div className={[styles.footer__content, 'container'].join(' ')}>
 				<div className={styles.footer__contentRow}>
 					<LinkList title='Каталог' links={CatalogLinks} />
-					<LinkList title='Клиенту' links={UserLinks} />
+					<LinkList title='Общее' links={UserLinks} />
 					<InfoList
 						title='Контакты'
 						text='Адрес: 222307, Молодечно, ул. В.Гостинец, 13, оф. 41. E-mail: fgl@technomall.by. Указанные контакты также являются контактами для связи по вопросам обращения покупателей о нарушении их прав. Номер телефона работников местных исполнительных и распорядительных органов по месту государственной регистрации ООО «The Future Gadget Lab», уполномоченных рассматривать обращения покупателей: +375 44 710 24 41.'

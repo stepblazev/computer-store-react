@@ -18,4 +18,8 @@ export default class AuthService {
 	static async logout(): Promise<AxiosResponse<any>> {
 		return api.post<any>('/logout');
 	}
+
+	static async admin(): Promise<AxiosResponse<boolean>> {
+		return api.get<boolean>('/admin');
+	}
 }

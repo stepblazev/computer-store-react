@@ -23,6 +23,7 @@ const ImageSlider: FC<SliderProps> = ({ items }) => {
 				adaptiveHeight={false}
 				autoplay={true}
 				autoplaySpeed={3000}
+				arrows={false}
 			>
 				{items.map((item) => (
 					<div key={item.img} className={styles.slider__item}>
