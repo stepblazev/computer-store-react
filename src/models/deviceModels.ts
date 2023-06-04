@@ -54,3 +54,8 @@ export interface IRate {
 	message: string;
 	owner: string;
 }
+
+export interface IType {
+	id: number;
+	name: string;
+}

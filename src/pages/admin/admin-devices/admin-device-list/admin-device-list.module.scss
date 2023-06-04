@@ -1,0 +1,12 @@
+.list {
+	padding: 0 5px;
+
+	&__item {
+		padding: 5px;
+		display: flex;
+		cursor: pointer;
+		img {
+			width: 100px;
+		}
+	}
+}

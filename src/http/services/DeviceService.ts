@@ -1,7 +1,7 @@
 import { AxiosResponse } from 'axios';
 import api from '..';
 import { IFilter, IGetDeviceParams, OrderTypes } from '../../models/filterModels';
-import { IDevice, IDeviceFull, IDevicesResponse } from '../../models/deviceModels';
+import { IDevice, IDeviceFull, IDevicesResponse, IType } from '../../models/deviceModels';
 import { IPropertiesResponse } from '../../models/filterModels';
 
 export default class DeviceService {

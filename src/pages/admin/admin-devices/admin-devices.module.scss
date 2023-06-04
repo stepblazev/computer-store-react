@@ -1,0 +1,22 @@
+.devices {
+	display: flex;
+
+	&__content {
+		flex-grow: 1;
+	}
+}
+
+.filter {
+	padding-left: 5px;
+	padding-right: 5px;
+	input {
+		padding: 5px;
+		width: 100%;
+		border: 1px solid lightgray;
+
+		&:focus {
+			border-color: gray;
+			outline: none;
+		}
+	}
+}

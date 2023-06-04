@@ -1,4 +1,4 @@
-import { FC, useState, MouseEvent } from 'react';
+import { FC, useState, MouseEvent, useEffect } from 'react';
 import { ImStarFull as StarSVG, ImStarEmpty as EmptyStarSVG } from 'react-icons/im';
 import styles from './settable-stars.module.scss';
 
@@ -18,6 +18,10 @@ const SettableStars: FC<SettableStarsProps> = ({ min = 0, max = 5, rating, setRa
 		const newCurrent = Math.ceil((max - min) * (mouseX / containerWidth));
 		setCurrent(newCurrent);
 	};
+
+	useEffect(() => {
+		if (!rating) setCurrent(min);
+	}, [rating]);
 
 	const handleMouseLeave = (e: MouseEvent<HTMLDivElement>) => {
 		if (!rating) setCurrent(min);

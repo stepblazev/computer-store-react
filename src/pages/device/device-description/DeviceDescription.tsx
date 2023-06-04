@@ -65,6 +65,12 @@ const DeviceDescription: FC<DeviceDescriptionProps> = ({ device }) => {
 									<td className={styles.description__tableCell}>{prop.value}</td>
 								</tr>
 							))}
+							<tr>
+								<td className={styles.description__tableCell}>Гарантия</td>
+								<td className={styles.description__tableCell}>
+									{device.warranty} месяцев
+								</td>
+							</tr>
 						</tbody>
 					</table>
 				</div>

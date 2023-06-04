@@ -2,6 +2,7 @@ import { FC, useState, useEffect } from 'react';
 import AuthService from '../../http/services/AuthService';
 import { VscEyeClosed as CrossSVG } from 'react-icons/vsc';
 import styles from './admin.module.scss';
+import AdminContent from './admin-content/AdminContent';
 
 const Admin: FC = () => {
 	const [access, setAcceess] = useState<boolean>(false);
@@ -11,7 +12,7 @@ const Admin: FC = () => {
 
 		const fetchAccess = async () => {
 			await AuthService.admin();
-			setAcceess(false);
+			setAcceess(true);
 		};
 
 		fetchAccess().catch(() => {
@@ -23,12 +24,12 @@ const Admin: FC = () => {
 		<div className={[styles.admin, 'container'].join(' ')}>
 			<h1>
 				{access ? (
-					<div className={styles.admin__content}></div>
+					<AdminContent />
 				) : (
-					<h1 className={styles.false}>
+					<div className={styles.false}>
 						<CrossSVG />
 						<span>У вас недостаточно прав</span>
-					</h1>
+					</div>
 				)}
 			</h1>
 		</div>

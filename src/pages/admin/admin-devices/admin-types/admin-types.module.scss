@@ -1,0 +1,25 @@
+.types {
+	align-self: start;
+	min-width: 200px;
+	max-width: 200px;
+	border: 1px solid lightgray;
+	&__add {
+		padding: 5px;
+		background-color: whitesmoke;
+	}
+
+	&__list {
+		li {
+			padding: 10px 20px;
+			font-weight: 400;
+			text-align: center;
+			background-color: whitesmoke;
+			user-select: none;
+			cursor: pointer;
+		}
+		&Active {
+			text-decoration: underline;
+			background-color: white !important;
+		}
+	}
+}
