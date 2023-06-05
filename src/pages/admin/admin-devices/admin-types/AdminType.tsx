@@ -23,7 +23,7 @@ const AdminTypes: FC<AdminTypesProps> = ({ type, setType }) => {
 	}, []);
 
 	const addHandler = async () => {
-		const value = prompt('Введите новый тип:');
+		const value = prompt('Введите новый тип:', 'Название типа');
 		if (!value) return;
 
 		if (value.length > 2) {

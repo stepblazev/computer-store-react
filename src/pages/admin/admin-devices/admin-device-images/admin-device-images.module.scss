@@ -1,0 +1,46 @@
+$imageSize: 100px;
+
+.images {
+	h2 {
+		font-size: 16px;
+		margin-bottom: 10px;
+	}
+
+	&__content {
+		display: flex;
+		gap: 10px;
+	}
+
+	&__add {
+		padding: 5px;
+		align-self: start;
+		border: 1px solid lightgray;
+	}
+
+	&__item {
+		padding: 10px;
+		border: 1px solid lightgray;
+		img {
+			margin-bottom: 10px;
+			width: $imageSize;
+			height: $imageSize;
+			object-fit: contain;
+			object-position: center;
+		}
+	}
+}
+
+.add {
+	&__content {
+		label {
+			max-width: 300px;
+			text-align: center;
+			margin-bottom: 10px;
+			padding: 10px;
+			display: block;
+			border-radius: 5px;
+			border: 1px solid lightgray;
+			cursor: pointer;
+		}
+	}
+}

@@ -10,11 +10,13 @@ import { OrderTypes } from '../../../models/filterModels';
 import useDebounce from '../../../hooks/useDebounce';
 import AdminDeviceList from './admin-device-list/AdminDeviceList';
 import Button from '../../../components/_UI/button/Button';
+import Loader from '../../../components/_UI/loader/Loader';
+import AdminDeviceFull from './admin-device-full/AdminDeviceFull';
 
 const AdminDevices: FC = () => {
 	const dispatch = useAppDispatch();
 
-	const { devices, total } = useAppSelector((state) => state.devices);
+	const { devices, total, isLoading } = useAppSelector((state) => state.devices);
 
 	const [deviceId, setDeviceId] = useState<number | null>(null);
 
@@ -24,8 +26,7 @@ const AdminDevices: FC = () => {
 
 	const debounceSearch = useDebounce(search, 700);
 
-	useEffect(() => {
-		window.scrollTo({ top: 0 });
+	const updateDevices = () => {
 		dispatch(
 			fetchDevices(type, {
 				search,
@@ -36,6 +37,11 @@ const AdminDevices: FC = () => {
 				page,
 			})
 		);
+	};
+
+	useEffect(() => {
+		window.scrollTo({ top: 0 });
+		updateDevices();
 	}, [type, page, debounceSearch]);
 
 	useEffect(() => {
@@ -49,9 +55,7 @@ const AdminDevices: FC = () => {
 	return (
 		<div className={styles.devices}>
 			{deviceId ? (
-				<div>
-					<Button label='Вернутья назад' onClick={() => setDeviceId(null)} />
-				</div>
+				<AdminDeviceFull id={deviceId} back={() => setDeviceId(null)} />
 			) : (
 				<>
 					<AdminTypes type={type} setType={setType} />
@@ -66,13 +70,23 @@ const AdminDevices: FC = () => {
 								}
 							/>
 						</div>
-						<AdminDeviceList setDevice={setDeviceId} devices={devices} />
-						<Pagination
-							total={total}
-							current={page}
-							setPage={setPage}
-							limit={DEVICE_LIMIT}
-						/>
+						{isLoading ? (
+							<Loader />
+						) : (
+							<>
+								<AdminDeviceList
+									fetchDevices={updateDevices}
+									setDevice={setDeviceId}
+									devices={devices}
+								/>
+								<Pagination
+									total={total}
+									current={page}
+									setPage={setPage}
+									limit={DEVICE_LIMIT}
+								/>
+							</>
+						)}
 					</div>
 				</>
 			)}

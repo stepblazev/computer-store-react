@@ -1,0 +1,16 @@
+$editColor: rgb(76, 103, 255);
+
+.edit {
+	padding: 5px 0;
+	display: flex;
+	align-items: center;
+	gap: 3px;
+
+	svg {
+		fill: $editColor;
+	}
+	span {
+		font-weight: 500;
+		color: $editColor;
+	}
+}
