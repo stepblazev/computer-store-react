@@ -1,14 +1,10 @@
 $imageSize: 100px;
 
 .images {
-	h2 {
-		font-size: 16px;
-		margin-bottom: 10px;
-	}
-
 	&__content {
 		display: flex;
 		gap: 10px;
+		flex-wrap: wrap;
 	}
 
 	&__add {

@@ -4,6 +4,7 @@ import { API_URL } from '../../../../_config';
 import Button from '../../../../components/_UI/button/Button';
 import styles from './admin-device-images.module.scss';
 import Modal from '../../../../components/_UI/modal/Modal';
+import Group from '../../../../components/_UI/group/Group';
 
 type AdminDeviceImagesProps = {
 	images: IImage[];
@@ -48,51 +49,55 @@ const AdminDeviceImages: FC<AdminDeviceImagesProps> = ({ images, deleteHandler, 
 	};
 
 	return (
-		<div className={styles.images}>
-			<h2>Изображения [{images.length} шт.]</h2>
-			<div className={styles.images__content}>
-				{images.map((image, index) => (
-					<div key={index} className={styles.images__item}>
-						<img src={`${API_URL}/${image.url_full}`} alt='IMAGE' />
-						<Button label='Удалить' onClick={() => deleteHandler(image.url_full)} />
-					</div>
-				))}
-				<button className={styles.images__add} onClick={() => setAddModal(true)}>
-					Добавить
-				</button>
-			</div>
-			<Modal
-				state={addModal}
-				hide={() => {
-					setImage(null);
-					setAddModal(false);
-				}}
-			>
-				<div className={styles.add}>
-					<div className={styles.add__content}>
-						<label
-							htmlFor='image-input'
-							onDrop={handleDrop}
-							onDragOver={(e) => e.preventDefault()}
-						>
-							{image ? (
-								<img src={image} alt='Uploaded' />
-							) : (
-								<p>Перетащите изображение сюда или кликните, чтобы выбрать файл.</p>
-							)}
-						</label>
-						<input
-							id='image-input'
-							type='file'
-							accept='image/*'
-							onChange={handleImageChange}
-							style={{ display: 'none' }}
-						/>
-					</div>
-					<Button onClick={saveHandler} label='Сохранить' />
+		<Group label={`Изображения [${images.length} шт.]`}>
+			<div className={styles.images}>
+				<div className={styles.images__content}>
+					{images.map((image, index) => (
+						<div key={index} className={styles.images__item}>
+							<img src={`${API_URL}/${image.url_full}`} alt='IMAGE' />
+							<Button label='Удалить' onClick={() => deleteHandler(image.url_full)} />
+						</div>
+					))}
+					<button className={styles.images__add} onClick={() => setAddModal(true)}>
+						Добавить
+					</button>
 				</div>
-			</Modal>
-		</div>
+				<Modal
+					state={addModal}
+					hide={() => {
+						setImage(null);
+						setAddModal(false);
+					}}
+				>
+					<div className={styles.add}>
+						<div className={styles.add__content}>
+							<label
+								htmlFor='image-input'
+								onDrop={handleDrop}
+								onDragOver={(e) => e.preventDefault()}
+							>
+								{image ? (
+									<img src={image} alt='Uploaded' />
+								) : (
+									<p>
+										Перетащите изображение сюда или кликните, чтобы выбрать
+										файл.
+									</p>
+								)}
+							</label>
+							<input
+								id='image-input'
+								type='file'
+								accept='image/*'
+								onChange={handleImageChange}
+								style={{ display: 'none' }}
+							/>
+						</div>
+						<Button onClick={saveHandler} label='Сохранить' />
+					</div>
+				</Modal>
+			</div>
+		</Group>
 	);
 };
 
