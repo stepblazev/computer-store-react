@@ -6,8 +6,9 @@ import DeviceQuantity from '../../../components/device/device-quantity/DeivceQua
 import Rating from '../../../components/device/rating/Rating';
 import CartRemove from '../../../components/device/cart-remove/CartRemove';
 import DeviceToCart from '../../../components/device/device-to-cart/DeviceToCart';
-import styles from './device-description.module.scss';
 import { useAppSelector } from '../../../hooks/redux';
+import noImage from '../../../assets/noimage.png';
+import styles from './device-description.module.scss';
 
 type DeviceDescriptionProps = {
 	device: IDeviceFull;

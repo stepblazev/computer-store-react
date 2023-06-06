@@ -31,7 +31,7 @@ const Search: FC = () => {
 	return (
 		<div className={styles.search}>
 			<input
-				type='text'
+				type='search'
 				value={search}
 				onChange={searchHandler}
 				placeholder='Поиск по каталогу. Например intel, geforce и т.д.'

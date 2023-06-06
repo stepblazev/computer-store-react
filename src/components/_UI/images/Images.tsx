@@ -6,6 +6,7 @@ import {
 	FaRegArrowAltCircleRight as RightSVG,
 	FaRegArrowAltCircleLeft as LeftSVG,
 } from 'react-icons/fa';
+import noImage from '../../../assets/noimage.png';
 import styles from './images.module.scss';
 
 type ImagesProps = {
@@ -13,8 +14,6 @@ type ImagesProps = {
 };
 
 const Images: FC<ImagesProps> = ({ images }) => {
-	if (!images.length) return null;
-
 	const [current, setCurrent] = useState<number>(0);
 
 	const leftHandler = (e: MouseEvent<HTMLButtonElement>) => {
@@ -27,21 +26,27 @@ const Images: FC<ImagesProps> = ({ images }) => {
 
 	return (
 		<div className={styles.images}>
-			<SlideIn direction={SlideInDirections.BOTTOM}>
+			{images.length > 0 ? (
+				<SlideIn direction={SlideInDirections.BOTTOM}>
+					<div className={styles.images__full}>
+						<img src={`${API_URL}/${images[current].url_full}`} alt='full' />
+						{current > 0 && (
+							<button className={styles.images__fullLeft} onClick={leftHandler}>
+								<LeftSVG />
+							</button>
+						)}
+						{current < images.length - 1 && (
+							<button className={styles.images__fullRight} onClick={rightHandler}>
+								<RightSVG />
+							</button>
+						)}
+					</div>
+				</SlideIn>
+			) : (
 				<div className={styles.images__full}>
-					<img src={`${API_URL}/${images[current].url_full}`} alt='full' />
-					{current > 0 && (
-						<button className={styles.images__fullLeft} onClick={leftHandler}>
-							<LeftSVG />
-						</button>
-					)}
-					{current < images.length - 1 && (
-						<button className={styles.images__fullRight} onClick={rightHandler}>
-							<RightSVG />
-						</button>
-					)}
+					<img src={noImage} alt='full' />
 				</div>
-			</SlideIn>
+			)}
 			{images.length > 1 && (
 				<ul className={styles.images__preview}>
 					{images.map((image, index) => (

@@ -1,3 +1,5 @@
+@import '../../../../styles/variables';
+
 .types {
 	align-self: start;
 	min-width: 200px;
@@ -10,16 +12,28 @@
 
 	&__list {
 		li {
-			padding: 10px 20px;
+			padding: 10px;
 			font-weight: 400;
-			text-align: center;
 			background-color: whitesmoke;
 			user-select: none;
 			cursor: pointer;
+			display: flex;
+			justify-content: space-between;
+		}
+
+		&Delete {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			svg {
+				fill: lightgray;
+			}
 		}
 		&Active {
-			text-decoration: underline;
 			background-color: white !important;
+			svg {
+				fill: $primary;
+			}
 		}
 	}
 }

@@ -8,6 +8,7 @@ import { API_URL } from '../../_config';
 import { Link } from 'react-router-dom';
 import Loader from '../_UI/loader/Loader';
 import Rating from '../device/rating/Rating';
+import noImage from '../../assets/noimage.png';
 
 const Popular: FC = () => {
 	const [count, setCount] = useState<number>(5);
@@ -53,7 +54,10 @@ const Popular: FC = () => {
 					{devices.map((device) => (
 						<div key={device.id} className={styles.popular__item}>
 							<Link to={`/device/${device.id}`} className={styles.popular__itemImage}>
-								<img src={`${API_URL}/${device.preview}`} alt='IMAGE' />
+								<img
+									src={device.preview ? `${API_URL}/${device.preview}` : noImage}
+									alt='IMAGE'
+								/>
 							</Link>
 							<Link
 								to={`/device?type=${device.type}`}

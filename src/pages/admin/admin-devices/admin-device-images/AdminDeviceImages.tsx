@@ -1,4 +1,4 @@
-import { FC, useState, ChangeEvent } from 'react';
+import { FC, useState, ChangeEvent, DragEvent } from 'react';
 import { IImage } from '../../../../models/deviceModels';
 import { API_URL } from '../../../../_config';
 import Button from '../../../../components/_UI/button/Button';
@@ -7,7 +7,7 @@ import Modal from '../../../../components/_UI/modal/Modal';
 
 type AdminDeviceImagesProps = {
 	images: IImage[];
-	deleteHandler: () => any;
+	deleteHandler: (image: string) => any;
 	addHandler: (data: string) => any;
 };
 
@@ -27,10 +27,24 @@ const AdminDeviceImages: FC<AdminDeviceImagesProps> = ({ images, deleteHandler, 
 		}
 	};
 
+	const handleDrop = (event: DragEvent<HTMLLabelElement>) => {
+		event.preventDefault();
+		const file = event.dataTransfer.files[0];
+		if (file) {
+			const reader = new FileReader();
+			reader.onload = () => {
+				const imageData = reader.result as string;
+				setImage(imageData);
+			};
+			reader.readAsDataURL(file);
+		}
+	};
+
 	const saveHandler = () => {
 		if (!image) return;
 		addHandler(image);
 		setAddModal(false);
+		setImage(null);
 	};
 
 	return (
@@ -40,7 +54,7 @@ const AdminDeviceImages: FC<AdminDeviceImagesProps> = ({ images, deleteHandler, 
 				{images.map((image, index) => (
 					<div key={index} className={styles.images__item}>
 						<img src={`${API_URL}/${image.url_full}`} alt='IMAGE' />
-						<Button label='Удалить' />
+						<Button label='Удалить' onClick={() => deleteHandler(image.url_full)} />
 					</div>
 				))}
 				<button className={styles.images__add} onClick={() => setAddModal(true)}>
@@ -56,7 +70,11 @@ const AdminDeviceImages: FC<AdminDeviceImagesProps> = ({ images, deleteHandler, 
 			>
 				<div className={styles.add}>
 					<div className={styles.add__content}>
-						<label htmlFor='image-input'>
+						<label
+							htmlFor='image-input'
+							onDrop={handleDrop}
+							onDragOver={(e) => e.preventDefault()}
+						>
 							{image ? (
 								<img src={image} alt='Uploaded' />
 							) : (

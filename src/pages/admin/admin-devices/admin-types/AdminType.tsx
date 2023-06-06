@@ -5,6 +5,7 @@ import Loader from '../../../../components/_UI/loader/Loader';
 import { IType } from '../../../../models/deviceModels';
 import Button from '../../../../components/_UI/button/Button';
 import AdminService from '../../../../http/services/AdminService';
+import { MdDelete } from 'react-icons/md';
 
 type AdminTypesProps = {
 	type: string;
@@ -34,6 +35,14 @@ const AdminTypes: FC<AdminTypesProps> = ({ type, setType }) => {
 		}
 	};
 
+	const deleteHandler = async (type: string) => {
+		if (confirm('Удалить данный тип? Все товары данного типа будут удалены.')) {
+			await AdminService.deleteType(type);
+			fetchTypes();
+			setType('');
+		}
+	};
+
 	return (
 		<div className={styles.types}>
 			<div className={styles.types__add}>
@@ -52,10 +61,16 @@ const AdminTypes: FC<AdminTypesProps> = ({ type, setType }) => {
 					{types.map((t) => (
 						<li
 							key={t.id}
-							onClick={() => setType(t.name)}
+							onMouseDown={() => setType(t.name)}
 							className={type === t.name ? styles.types__listActive : ''}
 						>
-							{t.name}
+							<span className={styles.types__listName}>{t.name}</span>
+							<button
+								className={styles.types__listDelete}
+								onClick={() => deleteHandler(t.name)}
+							>
+								<MdDelete />
+							</button>
 						</li>
 					))}
 				</ul>

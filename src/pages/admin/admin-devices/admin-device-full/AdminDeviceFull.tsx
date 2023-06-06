@@ -31,6 +31,13 @@ const AdminDeviceFull: FC<AdminDeviceFullProps> = ({ id, back }) => {
 		fetchDevice();
 	};
 
+	const deleteImage = async (image: string) => {
+		if (confirm('Удалить изображение?')) {
+			await AdminService.deleteImage(id, image);
+			fetchDevice();
+		}
+	};
+
 	return (
 		<div className={styles.full}>
 			<div className={styles.full__back}>
@@ -42,7 +49,7 @@ const AdminDeviceFull: FC<AdminDeviceFullProps> = ({ id, back }) => {
 				<>
 					<AdminDeviceImages
 						images={device?.images ?? []}
-						deleteHandler={() => 1}
+						deleteHandler={deleteImage}
 						addHandler={postImage}
 					/>
 					<div className={styles.full__content}>

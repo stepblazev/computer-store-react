@@ -1,7 +1,5 @@
 import { ChangeEvent, FC, useEffect, useState } from 'react';
-import styles from './admin-devices.module.scss';
 import AdminTypes from './admin-types/AdminType';
-import DeviceList from '../../category/devices/device-list/DeviceList';
 import Pagination from '../../../components/_UI/pagination/Pagination';
 import { DEVICE_LIMIT } from '../../../_config';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
@@ -9,9 +7,9 @@ import { fetchDevices } from '../../../redux/device/deviceSlice';
 import { OrderTypes } from '../../../models/filterModels';
 import useDebounce from '../../../hooks/useDebounce';
 import AdminDeviceList from './admin-device-list/AdminDeviceList';
-import Button from '../../../components/_UI/button/Button';
 import Loader from '../../../components/_UI/loader/Loader';
 import AdminDeviceFull from './admin-device-full/AdminDeviceFull';
+import styles from './admin-devices.module.scss';
 
 const AdminDevices: FC = () => {
 	const dispatch = useAppDispatch();
@@ -62,7 +60,7 @@ const AdminDevices: FC = () => {
 					<div className={styles.devices__content}>
 						<div className={styles.filter}>
 							<input
-								type='text'
+								type='search'
 								placeholder='Поиск по названию или ID'
 								value={search}
 								onChange={(e: ChangeEvent<HTMLInputElement>) =>
