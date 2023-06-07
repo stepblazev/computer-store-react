@@ -5,10 +5,11 @@ import Button from '../../../../components/_UI/button/Button';
 import styles from './admin-device-images.module.scss';
 import Modal from '../../../../components/_UI/modal/Modal';
 import Group from '../../../../components/_UI/group/Group';
+import { BsImage as ImageSVG } from 'react-icons/bs';
 
 type AdminDeviceImagesProps = {
 	images: IImage[];
-	deleteHandler: (image: string) => any;
+	deleteHandler: (full: string, preview: string) => any;
 	addHandler: (data: string) => any;
 };
 
@@ -55,7 +56,10 @@ const AdminDeviceImages: FC<AdminDeviceImagesProps> = ({ images, deleteHandler, 
 					{images.map((image, index) => (
 						<div key={index} className={styles.images__item}>
 							<img src={`${API_URL}/${image.url_full}`} alt='IMAGE' />
-							<Button label='Удалить' onClick={() => deleteHandler(image.url_full)} />
+							<Button
+								label='Удалить'
+								onClick={() => deleteHandler(image.url_full, image.url_preview)}
+							/>
 						</div>
 					))}
 					<button className={styles.images__add} onClick={() => setAddModal(true)}>
@@ -79,10 +83,13 @@ const AdminDeviceImages: FC<AdminDeviceImagesProps> = ({ images, deleteHandler, 
 								{image ? (
 									<img src={image} alt='Uploaded' />
 								) : (
-									<p>
-										Перетащите изображение сюда или кликните, чтобы выбрать
-										файл.
-									</p>
+									<div className={styles.drop}>
+										<ImageSVG />
+										<span>
+											Перетащите изображение сюда или кликните, чтобы выбрать
+											файл.
+										</span>
+									</div>
 								)}
 							</label>
 							<input

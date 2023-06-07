@@ -7,7 +7,6 @@ import Rating from '../../../components/device/rating/Rating';
 import CartRemove from '../../../components/device/cart-remove/CartRemove';
 import DeviceToCart from '../../../components/device/device-to-cart/DeviceToCart';
 import { useAppSelector } from '../../../hooks/redux';
-import noImage from '../../../assets/noimage.png';
 import styles from './device-description.module.scss';
 
 type DeviceDescriptionProps = {
@@ -60,6 +59,14 @@ const DeviceDescription: FC<DeviceDescriptionProps> = ({ device }) => {
 							</tr>
 						</thead>
 						<tbody>
+							<tr>
+								<td className={styles.description__tableCell}>Тип</td>
+								<td className={styles.description__tableCell}>{device.type}</td>
+							</tr>
+							<tr>
+								<td className={styles.description__tableCell}>Производитель</td>
+								<td className={styles.description__tableCell}>{device.brand}</td>
+							</tr>
 							{device.properties.map((prop) => (
 								<tr key={prop.name}>
 									<td className={styles.description__tableCell}>{prop.name}</td>

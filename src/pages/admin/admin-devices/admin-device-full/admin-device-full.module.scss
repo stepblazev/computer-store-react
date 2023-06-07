@@ -1,5 +1,6 @@
 .full {
 	width: 100%;
+
 	&__back {
 		margin-bottom: 30px;
 		display: flex;
@@ -18,42 +19,39 @@
 	}
 
 	&__content {
+		position: relative;
 		display: flex;
 		flex-direction: column;
 		gap: 20px;
-		&Field {
-			font-size: 16px;
-			font-weight: 400;
-		}
 
-		&Name {
-			width: 100%;
+		&Field {
 			display: flex;
 			align-items: center;
 			gap: 10px;
-			input {
-				width: 400px;
-			}
-		}
-		&Price {
-			input {
-				width: 100px;
-			}
-		}
 
-		input {
-			padding: 5px;
-			border: 1px solid lightgray;
-			&:focus {
-				border-color: gray;
-				outline: none;
+			& > span {
+				width: 160px;
+			}
+
+			input {
+				padding: 5px;
+				border: 1px solid lightgray;
+				border-radius: 5px;
+				&:focus {
+					border-color: gray;
+					outline: none;
+				}
 			}
 		}
 	}
 
 	&__controls {
+		position: absolute;
+		bottom: 0;
+		right: 0;
 		display: flex;
 		justify-content: end;
+		flex-direction: column;
 		gap: 10px;
 		button {
 			width: 200px;

@@ -13,6 +13,7 @@ import { Link } from 'react-router-dom';
 import AdminDeviceType from '../admin-device-type/AdminDeviceType';
 import { ISelectorOption } from '../../../../components/_UI/selector/Selector';
 import AdminDeviceBrand from '../admin-device-brand/AdminDeviceBrand';
+import AdminDeviceProperties from '../admin-device-properties/AdminDeviceProperties';
 
 type AdminDeviceFullProps = {
 	id: number;
@@ -37,9 +38,9 @@ const AdminDeviceFull: FC<AdminDeviceFullProps> = ({ id, back }) => {
 		fetchDevice();
 	};
 
-	const deleteImage = async (image: string) => {
+	const deleteImage = async (full: string, preview: string) => {
 		if (confirm('Удалить изображение?')) {
-			await AdminService.deleteImage(id, image);
+			await AdminService.deleteImage(id, full, preview);
 			fetchDevice();
 		}
 	};
@@ -53,8 +54,16 @@ const AdminDeviceFull: FC<AdminDeviceFullProps> = ({ id, back }) => {
 
 	const saveDeviceHandler = async () => {
 		const allow = confirm('Сохранить изменения?');
+		if (!allow || !device) return;
+		await AdminService.putDevice(device);
+		setShowSave(false);
+	};
+
+	const resetDeviceHandler = async () => {
+		const allow = confirm('Сбросить изменения?');
 		if (!allow) return;
-		await AdminService.deleteDevice(id);
+		fetchDevice();
+		setShowSave(false);
 	};
 
 	return (
@@ -76,8 +85,8 @@ const AdminDeviceFull: FC<AdminDeviceFullProps> = ({ id, back }) => {
 					/>
 					<Group label='Описание'>
 						<div className={styles.full__content}>
-							<div className={styles.full__contentName}>
-								<span className={styles.full__contentField}>Название: </span>
+							<div className={styles.full__contentField}>
+								<span>Название: </span>
 								<input
 									placeholder='Название'
 									value={device?.title}
@@ -85,7 +94,11 @@ const AdminDeviceFull: FC<AdminDeviceFullProps> = ({ id, back }) => {
 										setDevice({ ...device!, title: e.target.value });
 										setShowSave(true);
 									}}
+									style={{ width: '500px' }}
 								/>
+							</div>
+							<div className={styles.full__contentField}>
+								<span>Тип: </span>
 								<AdminDeviceType
 									type={device?.type ?? ''}
 									setType={(option: ISelectorOption<string>) => {
@@ -94,8 +107,8 @@ const AdminDeviceFull: FC<AdminDeviceFullProps> = ({ id, back }) => {
 									}}
 								/>
 							</div>
-							<div className={styles.full__contentName}>
-								<span className={styles.full__contentField}>Производитель: </span>
+							<div className={styles.full__contentField}>
+								<span>Производитель: </span>
 								<AdminDeviceBrand
 									type={device?.type ?? ''}
 									brand={device?.brand ?? ''}
@@ -105,10 +118,11 @@ const AdminDeviceFull: FC<AdminDeviceFullProps> = ({ id, back }) => {
 									}}
 								/>
 							</div>
-							<div className={styles.full__contentPrice}>
-								<span className={styles.full__contentField}>Цена: </span>
+							<div className={styles.full__contentField}>
+								<span>Цена: </span>
 								<input
 									type='number'
+									min={0}
 									placeholder='Цена'
 									value={device?.price.toString()}
 									onChange={(e: ChangeEvent<HTMLInputElement>) => {
@@ -118,11 +132,25 @@ const AdminDeviceFull: FC<AdminDeviceFullProps> = ({ id, back }) => {
 										});
 										setShowSave(true);
 									}}
+									style={{ width: '100px' }}
 								/>
-								<span className={styles.full__contentField}>руб.</span>
+								<span>руб.</span>
 							</div>
-							<div className={styles.full__contentPrice}>
-								<span className={styles.full__contentField}>Количество: </span>
+							<div className={styles.full__contentField}>
+								<span>Гарантия: </span>
+								<Counter
+									from={0}
+									to={999}
+									current={device?.warranty ?? 0}
+									onChange={(newValue: number) => {
+										setDevice({ ...device!, warranty: newValue });
+										setShowSave(true);
+									}}
+								/>
+								месяцев
+							</div>
+							<div className={styles.full__contentField}>
+								<span>Количество: </span>
 								<Counter
 									from={0}
 									to={999}
@@ -132,17 +160,31 @@ const AdminDeviceFull: FC<AdminDeviceFullProps> = ({ id, back }) => {
 										setShowSave(true);
 									}}
 								/>
+								штук
 							</div>
-						</div>
-						<div className={styles.full__controls}>
-							{showSave && (
-								<Button label='Сохранить изменения' onClick={saveDeviceHandler} />
-							)}
-							<Button label='Удалить товар' onClick={deleteDeviceHandler} />
+
+							<div className={styles.full__controls}>
+								{showSave && (
+									<>
+										<Button
+											label='Сохранить изменения'
+											onClick={saveDeviceHandler}
+										/>
+										<Button
+											label='Сбросить изменения'
+											onClick={resetDeviceHandler}
+										/>
+									</>
+								)}
+								<Button label='Удалить товар' onClick={deleteDeviceHandler} />
+							</div>
 						</div>
 					</Group>
 					<Group label='Характеристики'>
-						<i>В разработке...</i>
+						<AdminDeviceProperties
+							id={device?.id ?? 0}
+							properties={device?.properties ?? []}
+						/>
 					</Group>
 				</>
 			)}
