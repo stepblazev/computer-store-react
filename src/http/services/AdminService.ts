@@ -1,8 +1,13 @@
 import { AxiosResponse } from 'axios';
 import { IType } from '../../models/deviceModels';
 import api from '..';
+import { IBrand } from '../../models/filterModels';
 
 export default class AdminService {
+	static async getBrands(type: string, template: string): Promise<AxiosResponse<IBrand[]>> {
+		return api.get<IBrand[]>(`/brands?type=${type}&template=${template}`);
+	}
+
 	static async getTypes(): Promise<AxiosResponse<IType[]>> {
 		return api.get<IType[]>(`/types`);
 	}

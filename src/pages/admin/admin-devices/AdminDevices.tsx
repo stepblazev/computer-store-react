@@ -53,7 +53,13 @@ const AdminDevices: FC = () => {
 	return (
 		<div className={styles.devices}>
 			{deviceId ? (
-				<AdminDeviceFull id={deviceId} back={() => setDeviceId(null)} />
+				<AdminDeviceFull
+					id={deviceId}
+					back={() => {
+						setDeviceId(null);
+						updateDevices();
+					}}
+				/>
 			) : (
 				<>
 					<AdminTypes type={type} setType={setType} />

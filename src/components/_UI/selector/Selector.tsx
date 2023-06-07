@@ -8,6 +8,7 @@ export interface ISelectorOption<T> {
 }
 
 type SelectorProps = {
+	isSearchable?: boolean;
 	value?: any;
 	defaultValue?: any;
 	options: ISelectorOption<any>[];
@@ -15,7 +16,14 @@ type SelectorProps = {
 	onChange: (value: any) => void;
 };
 
-const Selector: FC<SelectorProps> = ({ value, defaultValue, options, placeholder, onChange }) => {
+const Selector: FC<SelectorProps> = ({
+	isSearchable = false,
+	value,
+	defaultValue,
+	options,
+	placeholder,
+	onChange,
+}) => {
 	return (
 		<Select
 			className='selector'
@@ -24,8 +32,9 @@ const Selector: FC<SelectorProps> = ({ value, defaultValue, options, placeholder
 			defaultValue={defaultValue}
 			value={value}
 			placeholder={placeholder}
-			isSearchable={false}
+			isSearchable={isSearchable}
 			onChange={onChange}
+			noOptionsMessage={() => <p style={{ fontWeight: 400 }}>Нет результатов</p>}
 		/>
 	);
 };
