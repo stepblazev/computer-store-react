@@ -12,7 +12,8 @@ $spacing: 10px;
 	}
 
 	&__image {
-		position: sticky;
+		align-self: start;
+		position: sticky !important;
 		top: 0;
 		@media (max-width: $breakpoint700) {
 			position: static;

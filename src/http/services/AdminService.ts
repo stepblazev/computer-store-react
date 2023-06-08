@@ -65,7 +65,16 @@ export default class AdminService {
 		);
 	}
 
-	static async postProperty(property: string, value: string): Promise<AxiosResponse<any>> {
-		return api.post<any>(`/property`, { property, value });
+	static async postProperty(
+		id: number,
+		property: string,
+		value: string,
+		type: string
+	): Promise<AxiosResponse<any>> {
+		return api.post<any>(`/device/${id}/property`, { property, value, type });
+	}
+
+	static async deleteProperty(id: number, property: string): Promise<AxiosResponse<any>> {
+		return api.delete<any>(`/device/${id}/property?property=${property}`);
 	}
 }

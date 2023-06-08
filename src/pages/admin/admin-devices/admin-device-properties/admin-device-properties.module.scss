@@ -20,23 +20,19 @@
 	}
 }
 
-.table {
-	width: 100%;
-	border: 1px solid lightgray;
-	border-collapse: collapse;
-	th {
-		background-color: $primary;
-		color: white;
-	}
-	td:nth-child(2) {
-		font-weight: 700;
-	}
-	&__cell {
-		text-align: left;
-		padding: 5px 10px;
+.property {
+	margin-bottom: 10px;
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	border-left: 2px solid lightgray;
+	padding-left: 15px;
 
-		&::first-letter {
-			text-transform: uppercase;
-		}
+	button {
+		padding: 5px;
+		border: 2px solid red;
+		border-radius: 3px;
+		color: red;
+		font-weight: 700;
 	}
 }

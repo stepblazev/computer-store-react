@@ -9,13 +9,28 @@ import AdminService from '../../../../http/services/AdminService';
 
 type AdminDevicePropertiesProps = {
 	device: IDeviceFull | null;
-	setDevice: (newValue: any) => any;
+	fetchDevice: () => any;
 };
 
-const AdminDeviceProperties: FC<AdminDevicePropertiesProps> = ({ device, setDevice }) => {
+const AdminDeviceProperties: FC<AdminDevicePropertiesProps> = ({ device, fetchDevice }) => {
 	const [current, setCurrent] = useState<IPropertyValue>({ name: '', value: '' });
 
-	const addHandler = (e: MouseEvent<HTMLButtonElement>) => {};
+	const addHandler = async (e: MouseEvent<HTMLButtonElement>) => {
+		if (!device) return;
+		await AdminService.postProperty(
+			device.id,
+			current.name.trim(),
+			current.value.trim(),
+			device.type
+		);
+		fetchDevice();
+	};
+
+	const deleteHandler = async (property: string) => {
+		if (!device || !confirm('Удалить параметр?')) return;
+		await AdminService.deleteProperty(device.id, property);
+		fetchDevice();
+	};
 
 	if (!device) return null;
 
@@ -45,13 +60,15 @@ const AdminDeviceProperties: FC<AdminDevicePropertiesProps> = ({ device, setDevi
 					</>
 				)}
 			</div>
-			{device.properties.map((prop) => (
-				<div key={prop.name}>
-					<span className={styles.table__cell}>{prop.name}</span>
-					<input type='text' value={prop.value} />
-					<button>Удалить</button>
-				</div>
-			))}
+			<div>
+				{device.properties.map((prop) => (
+					<div key={prop.name} className={styles.property}>
+						<b style={{ minWidth: '300px' }}>{prop.name}</b>
+						<span style={{ minWidth: '200px' }}>{prop.value}</span>
+						<button onClick={() => deleteHandler(prop.name)}>Удалить</button>
+					</div>
+				))}
+			</div>
 		</div>
 	);
 };
