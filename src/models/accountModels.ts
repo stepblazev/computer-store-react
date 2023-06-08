@@ -1,3 +1,5 @@
+import { IDeviceFull, IDeviceOrder } from './deviceModels';
+
 export interface IAccountResponse {
 	id: number;
 	email: string;
@@ -10,7 +12,8 @@ export interface IOrder {
 	total_price: number;
 	created_at: string;
 	completed: boolean;
-	devices: string[];
+	devices_short: string[];
+	devices_long: IDeviceOrder[];
 	quantity: number;
 }
 

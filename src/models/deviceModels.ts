@@ -59,3 +59,16 @@ export interface IType {
 	id: number;
 	name: string;
 }
+
+export interface IDeviceOrder {
+	id: number;
+	title: string;
+	price: string;
+	type: string;
+	brand: string;
+	quantity: number;
+	rating: string | number | null;
+	rating_count: string | number | null;
+	warranty: string | number;
+	images: IImage[];
+}

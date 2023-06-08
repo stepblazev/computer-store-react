@@ -19,7 +19,15 @@ const ProfileOrders: FC = () => {
 	}, []);
 
 	return (
-		<Group label='Список заказов'>
+		<Group
+			label={
+				orders.length
+					? `Список заказов (${orders
+							.reduce((acc, val) => acc + val.total_price, 0)
+							.toFixed(2)} руб.)`
+					: 'Список заказов'
+			}
+		>
 			<div className={styles.orders}>
 				<OrderList orders={orders} />
 				{isLoading && <Loader />}
