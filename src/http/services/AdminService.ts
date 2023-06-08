@@ -4,6 +4,13 @@ import api from '..';
 import { IBrand } from '../../models/filterModels';
 
 export default class AdminService {
+	static async postDevice(name: string, type: string): Promise<AxiosResponse<number>> {
+		return api.post<number>(`/device`, {
+			name,
+			type,
+		});
+	}
+
 	static async getBrands(type: string, template: string): Promise<AxiosResponse<IBrand[]>> {
 		return api.get<IBrand[]>(`/brands?type=${type}&template=${template}`);
 	}

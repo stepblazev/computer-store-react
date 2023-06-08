@@ -8,12 +8,12 @@ import Counter from '../../../../components/_UI/counter/Counter';
 import Group from '../../../../components/_UI/group/Group';
 import AdminDeviceImages from '../admin-device-images/AdminDeviceImages';
 import AdminService from '../../../../http/services/AdminService';
-import styles from './admin-device-full.module.scss';
 import { Link } from 'react-router-dom';
 import AdminDeviceType from '../admin-device-type/AdminDeviceType';
 import { ISelectorOption } from '../../../../components/_UI/selector/Selector';
 import AdminDeviceBrand from '../admin-device-brand/AdminDeviceBrand';
 import AdminDeviceProperties from '../admin-device-properties/AdminDeviceProperties';
+import styles from './admin-device-full.module.scss';
 
 type AdminDeviceFullProps = {
 	id: number;
@@ -65,6 +65,7 @@ const AdminDeviceFull: FC<AdminDeviceFullProps> = ({ id, back }) => {
 		fetchDevice();
 		setShowSave(false);
 	};
+	console.log(device);
 
 	return (
 		<div className={styles.full}>

@@ -4,7 +4,7 @@ import { IDeviceFull } from '../../models/deviceModels';
 import useFetching from '../../hooks/useFetching';
 import DeviceService from '../../http/services/DeviceService';
 import { Link } from 'react-router-dom';
-import { AiOutlineRollback as BackSVG } from 'react-icons/ai';
+import { BiArrowBack as BackSVG } from 'react-icons/bi';
 import DeviceDescription from './device-description/DeviceDescription';
 import styles from './device.module.scss';
 import DeviceRate from './device-rate/DeviceRate';

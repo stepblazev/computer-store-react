@@ -10,12 +10,13 @@ import AdminDeviceList from './admin-device-list/AdminDeviceList';
 import Loader from '../../../components/_UI/loader/Loader';
 import AdminDeviceFull from './admin-device-full/AdminDeviceFull';
 import styles from './admin-devices.module.scss';
+import Button from '../../../components/_UI/button/Button';
+import AdminService from '../../../http/services/AdminService';
 
 const AdminDevices: FC = () => {
 	const dispatch = useAppDispatch();
 
 	const { devices, total, isLoading } = useAppSelector((state) => state.devices);
-
 	const [deviceId, setDeviceId] = useState<number | null>(null);
 
 	const [type, setType] = useState<string>('');
@@ -50,6 +51,16 @@ const AdminDevices: FC = () => {
 		window.scrollTo({ top: 0 });
 	}, [deviceId]);
 
+	const postHandler = async () => {
+		const name: string | null = prompt('Введите название: ');
+		if (!name) return;
+		const response = await AdminService.postDevice(name, type);
+		const id = response.data;
+		console.log(id);
+
+		setDeviceId(id);
+	};
+
 	return (
 		<div className={styles.devices}>
 			{deviceId ? (
@@ -73,6 +84,9 @@ const AdminDevices: FC = () => {
 									setSearch(e.target.value)
 								}
 							/>
+							{Boolean(type.length) && (
+								<Button label='Добавить' onClick={postHandler} />
+							)}
 						</div>
 						{isLoading ? (
 							<Loader />

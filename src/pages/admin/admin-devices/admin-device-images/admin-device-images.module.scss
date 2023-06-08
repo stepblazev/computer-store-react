@@ -7,12 +7,6 @@ $imageSize: 100px;
 		flex-wrap: wrap;
 	}
 
-	&__add {
-		padding: 5px;
-		align-self: start;
-		border: 1px solid lightgray;
-	}
-
 	&__item {
 		padding: 10px;
 		border: 1px solid lightgray;
@@ -22,6 +16,14 @@ $imageSize: 100px;
 			height: $imageSize;
 			object-fit: contain;
 			object-position: center;
+		}
+		button {
+			width: 100%;
+			padding: 5px;
+			border: 2px solid red;
+			border-radius: 3px;
+			color: red;
+			font-weight: 700;
 		}
 	}
 }

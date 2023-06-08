@@ -34,7 +34,7 @@ const Pagination: FC<PaginationProps> = ({ total, current, setPage, limit }) => 
 			{current > 2 && (
 				<>
 					<PaginationItem page={1} onClick={() => setPage(1)} />
-					{current > 3 && <span>....</span>}
+					{current > 2 && <span>....</span>}
 				</>
 			)}
 			{nearPages.map((page) => (

@@ -56,15 +56,14 @@ const AdminDeviceImages: FC<AdminDeviceImagesProps> = ({ images, deleteHandler, 
 					{images.map((image, index) => (
 						<div key={index} className={styles.images__item}>
 							<img src={`${API_URL}/${image.url_full}`} alt='IMAGE' />
-							<Button
-								label='Удалить'
+							<button
 								onClick={() => deleteHandler(image.url_full, image.url_preview)}
-							/>
+							>
+								Удалить
+							</button>
 						</div>
 					))}
-					<button className={styles.images__add} onClick={() => setAddModal(true)}>
-						Добавить
-					</button>
+					<Button label='Добавить' onClick={() => setAddModal(true)} />
 				</div>
 				<Modal
 					state={addModal}

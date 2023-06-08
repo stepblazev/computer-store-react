@@ -16,7 +16,8 @@ $spacing: 10px;
 		position: sticky !important;
 		top: 0;
 		@media (max-width: $breakpoint700) {
-			position: static;
+			position: static !important;
+			align-self: center !important;
 		}
 	}
 

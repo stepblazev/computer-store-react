@@ -7,7 +7,6 @@ const tabs: ITab[] = [
 	{ label: 'Товары', Component: <AdminDevices /> },
 	{ label: 'Заказы', Component: <>Вкладка 2</> },
 	{ label: 'Клиенты', Component: <>Вкладка 3</> },
-	{ label: 'Отзывы', Component: <>Вкладка 4</> },
 ];
 
 const AdminContent: FC = () => {

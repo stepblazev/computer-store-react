@@ -67,7 +67,8 @@
 	}
 
 	&__description {
-		text-align: justify;
+		height: 40px;
+		overflow: hidden;
 		&::first-letter {
 			text-transform: uppercase;
 		}
