@@ -11,14 +11,7 @@
 
 		input {
 			width: 300px;
-			padding: 5px;
-			border: 1px solid lightgray;
 			margin-right: 10px;
-
-			&:focus {
-				border-color: gray;
-				outline: none;
-			}
 		}
 
 		button {

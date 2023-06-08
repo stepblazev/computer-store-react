@@ -181,10 +181,7 @@ const AdminDeviceFull: FC<AdminDeviceFullProps> = ({ id, back }) => {
 						</div>
 					</Group>
 					<Group label='Характеристики'>
-						<AdminDeviceProperties
-							id={device?.id ?? 0}
-							properties={device?.properties ?? []}
-						/>
+						<AdminDeviceProperties setDevice={setDevice} device={device ?? null} />
 					</Group>
 				</>
 			)}

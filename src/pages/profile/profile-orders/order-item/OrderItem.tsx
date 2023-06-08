@@ -27,8 +27,13 @@ const OrderItem: FC<OrderItemProps> = ({ order }) => {
 				<span className={styles.item__titleId} onClick={showDevices}>
 					Заказ №{order.id} от {getDateFromSQLString(order.created_at)}
 				</span>
-				<span className={styles.item__titleStatus}>
-					{order.completed ? 'Выполнен' : 'В процессе'}
+				<span
+					className={styles.item__titleStatus}
+					style={{
+						color: order.completed ? 'mediumseagreen' : 'deepskyblue',
+					}}
+				>
+					{order.completed ? 'Завершен' : 'В процессе'}
 				</span>
 			</h4>
 			<ul>
@@ -41,7 +46,14 @@ const OrderItem: FC<OrderItemProps> = ({ order }) => {
 					<h5 className={styles.modal__title}>Заказ №{order.id}</h5>
 					<Group label='Данные'>
 						<p>
-							Статус: <b>{order.completed ? 'Завершен' : 'В процессе'}</b>
+							Статус:{' '}
+							<b
+								style={{
+									color: order.completed ? 'mediumseagreen' : 'deepskyblue',
+								}}
+							>
+								{order.completed ? 'Завершен' : 'В процессе'}
+							</b>
 						</p>
 						<p>
 							Дата заказа: <b>{getDateFromSQLString(order.created_at)}</b>

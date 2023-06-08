@@ -72,3 +72,12 @@ export interface IDeviceOrder {
 	warranty: string | number;
 	images: IImage[];
 }
+
+export interface IPropertyName {
+	id: number;
+	name: string;
+}
+
+export interface IPropertyValue {
+	value: string;
+}

@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import { IDeviceFull, IType } from '../../models/deviceModels';
+import { IDeviceFull, IPropertyName, IPropertyValue, IType } from '../../models/deviceModels';
 import api from '..';
 import { IBrand } from '../../models/filterModels';
 
@@ -47,5 +47,25 @@ export default class AdminService {
 		preview: string
 	): Promise<AxiosResponse<any>> {
 		return api.delete<any>(`/device/${id}/image?full=${full}&preview=${preview}`);
+	}
+
+	static async getProperties(
+		type: string,
+		template: string
+	): Promise<AxiosResponse<IPropertyName[]>> {
+		return api.get<IPropertyName[]>(`/property?type=${type}&template=${template}`);
+	}
+
+	static async getValues(
+		property: string,
+		template: string
+	): Promise<AxiosResponse<IPropertyValue[]>> {
+		return api.get<IPropertyValue[]>(
+			`/property/value?property=${property}&template=${template}`
+		);
+	}
+
+	static async postProperty(property: string, value: string): Promise<AxiosResponse<any>> {
+		return api.post<any>(`/property`, { property, value });
 	}
 }
