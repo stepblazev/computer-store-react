@@ -12,6 +12,7 @@ import {
 } from '../../models/filterModels';
 import { AppDispatch } from '../store';
 import DeviceService from '../../http/services/DeviceService';
+import { DEVICE_PRICE } from '../../_config';
 
 interface FilterState {
 	filter: IFilter;
@@ -26,7 +27,7 @@ const initialState: FilterState = {
 		search: '',
 		price: {
 			from: 0,
-			to: 3000,
+			to: DEVICE_PRICE,
 		},
 		brands: [],
 		properties: {},
@@ -104,7 +105,7 @@ export const filterSlice = createSlice({
 				search: '',
 				price: {
 					from: 0,
-					to: 3000,
+					to: DEVICE_PRICE,
 				},
 				brands: [],
 				properties: {},

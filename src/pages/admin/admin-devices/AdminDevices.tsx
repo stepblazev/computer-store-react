@@ -1,7 +1,7 @@
 import { ChangeEvent, FC, useEffect, useState } from 'react';
 import AdminTypes from './admin-types/AdminType';
 import Pagination from '../../../components/_UI/pagination/Pagination';
-import { DEVICE_LIMIT } from '../../../_config';
+import { DEVICE_LIMIT, DEVICE_PRICE } from '../../../_config';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
 import { fetchDevices } from '../../../redux/device/deviceSlice';
 import { OrderTypes } from '../../../models/filterModels';
@@ -29,7 +29,7 @@ const AdminDevices: FC = () => {
 		dispatch(
 			fetchDevices(type, {
 				search,
-				price: { from: 0, to: 3000 },
+				price: { from: 0, to: DEVICE_PRICE },
 				brands: [],
 				properties: {},
 				order: OrderTypes.QUANTITY,

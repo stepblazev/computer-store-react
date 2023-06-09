@@ -3,6 +3,7 @@ import Range from '../../../../components/_UI/range/Range';
 import { useAppSelector, useAppDispatch } from '../../../../hooks/redux';
 import { filterSlice } from '../../../../redux/filter/filterSlice';
 import styles from '../filter.module.scss';
+import { DEVICE_PRICE } from '../../../../_config';
 
 const PriceChanger: FC = () => {
 	const dispatch = useAppDispatch();
@@ -20,7 +21,7 @@ const PriceChanger: FC = () => {
 			<Range
 				label={`От ${price.from} до ${price.to} руб.`}
 				min={0}
-				max={3000}
+				max={DEVICE_PRICE}
 				values={[price.from, price.to]}
 				onChange={onChange}
 			/>

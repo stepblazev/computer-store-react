@@ -18,3 +18,10 @@ export const purchaseSuccess: INotificationProps = {
 	type: NotificationTypes.SUCCESS,
 	duration: 7000,
 };
+
+export const purchaseFail: INotificationProps = {
+	title: 'Оформление заказа',
+	message: 'Укажите адрес для оформления заказа',
+	type: NotificationTypes.INFO,
+	duration: 7000,
+};

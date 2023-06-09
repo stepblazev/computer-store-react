@@ -30,7 +30,7 @@ const OrderItem: FC<OrderItemProps> = ({ order }) => {
 				<span
 					className={styles.item__titleStatus}
 					style={{
-						color: order.completed ? 'mediumseagreen' : 'deepskyblue',
+						color: order.completed ? 'mediumseagreen' : 'gray',
 					}}
 				>
 					{order.completed ? 'Завершен' : 'В процессе'}
@@ -49,7 +49,7 @@ const OrderItem: FC<OrderItemProps> = ({ order }) => {
 							Статус:{' '}
 							<b
 								style={{
-									color: order.completed ? 'mediumseagreen' : 'deepskyblue',
+									color: order.completed ? 'mediumseagreen' : 'gray',
 								}}
 							>
 								{order.completed ? 'Завершен' : 'В процессе'}
