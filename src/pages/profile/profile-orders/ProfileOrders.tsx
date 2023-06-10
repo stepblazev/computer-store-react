@@ -23,7 +23,7 @@ const ProfileOrders: FC = () => {
 			label={
 				orders.length
 					? `Список заказов (${orders
-							.reduce((acc, val) => acc + val.total_price, 0)
+							.reduce((acc, val) => acc + (val.canceled ? 0 : val.total_price), 0)
 							.toFixed(2)} руб.)`
 					: 'Список заказов'
 			}

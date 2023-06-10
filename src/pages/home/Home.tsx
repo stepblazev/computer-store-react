@@ -9,7 +9,9 @@ const Home: FC = () => {
 		<div className={[styles.home, 'container'].join(' ')}>
 			<div className={styles.home__content}>
 				<HomeBanner />
-				<Popular />
+				<div className={styles.home__popular}>
+					<Popular />
+				</div>
 				<HomeAbout />
 			</div>
 		</div>

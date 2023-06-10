@@ -32,7 +32,7 @@ const Popular: FC = () => {
 		};
 	}, []);
 
-	return devices.length === 0 ? null : (
+	return (
 		<div className={styles.popular}>
 			<h2 className={styles.popular__title}>Популярные товары</h2>
 			{isLoading ? (

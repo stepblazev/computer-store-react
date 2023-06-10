@@ -6,7 +6,6 @@ import noImage from '../../../../assets/noimage.png';
 import styles from './order-item.module.scss';
 import Group from '../../../../components/_UI/group/Group';
 import { API_URL } from '../../../../_config';
-import DeviceRate from '../../../device/device-rate/DeviceRate';
 import Rating from '../../../../components/device/rating/Rating';
 import { Link } from 'react-router-dom';
 
@@ -33,7 +32,7 @@ const OrderItem: FC<OrderItemProps> = ({ order }) => {
 						color: order.completed ? 'mediumseagreen' : 'gray',
 					}}
 				>
-					{order.completed ? 'Завершен' : 'В процессе'}
+					{order.completed ? 'Завершен' : order.canceled ? 'Отменен' : 'В процессе'}
 				</span>
 			</h4>
 			<ul>
@@ -52,7 +51,11 @@ const OrderItem: FC<OrderItemProps> = ({ order }) => {
 									color: order.completed ? 'mediumseagreen' : 'gray',
 								}}
 							>
-								{order.completed ? 'Завершен' : 'В процессе'}
+								{order.completed
+									? 'Завершен'
+									: order.canceled
+									? 'Отменен'
+									: 'В процессе'}
 							</b>
 						</p>
 						<p>

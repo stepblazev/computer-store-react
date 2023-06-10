@@ -12,6 +12,7 @@ export interface IOrder {
 	total_price: number;
 	created_at: string;
 	completed: boolean;
+	canceled: boolean;
 	devices_short: string[];
 	devices_long: IDeviceOrder[];
 	quantity: number;

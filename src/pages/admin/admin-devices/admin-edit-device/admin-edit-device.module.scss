@@ -1,4 +1,4 @@
-$editColor: rgb(76, 103, 255);
+$editColor: rgb(90, 90, 90);
 
 .edit {
 	padding: 5px 0;
@@ -10,7 +10,7 @@ $editColor: rgb(76, 103, 255);
 		fill: $editColor;
 	}
 	span {
-		font-weight: 500;
+		font-weight: 700;
 		color: $editColor;
 	}
 }

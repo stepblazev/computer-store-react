@@ -1,8 +1,20 @@
+@import '../../../styles/variables';
+
 .about {
 	margin-bottom: 20px;
 	&__title {
+		position: relative;
 		font-size: 20px;
-		margin-bottom: 20px;
+		margin-bottom: 30px;
+		&::after {
+			content: '';
+			width: 60px;
+			height: 5px;
+			background-color: $primary;
+			position: absolute;
+			bottom: -15px;
+			left: 0;
+		}
 	}
 	&__content {
 		display: flex;
