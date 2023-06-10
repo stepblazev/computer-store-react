@@ -1,0 +1,23 @@
+.item {
+	padding: 10px;
+	border-bottom: 1px solid lightgray;
+	user-select: none;
+	cursor: pointer;
+
+	&__title {
+		margin-bottom: 10px;
+		display: flex;
+		justify-content: space-between;
+
+		&Status {
+		}
+	}
+
+	&__client {
+		margin-bottom: 10px;
+	}
+
+	&__list {
+		font-weight: 400;
+	}
+}

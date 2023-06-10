@@ -2,6 +2,7 @@ import { AxiosResponse } from 'axios';
 import { IDeviceFull, IPropertyName, IPropertyValue, IType } from '../../models/deviceModels';
 import api from '..';
 import { IBrand } from '../../models/filterModels';
+import { IAdminOrder } from '../../models/accountModels';
 
 export default class AdminService {
 	static async postDevice(name: string, type: string): Promise<AxiosResponse<number>> {
@@ -84,4 +85,19 @@ export default class AdminService {
 	static async deleteProperty(id: number, property: string): Promise<AxiosResponse<any>> {
 		return api.delete<any>(`/device/${id}/property?property=${property}`);
 	}
+
+	static async getOrders(
+		search: string,
+		page: number,
+		show: ShowOrders
+	): Promise<AxiosResponse<IAdminOrder[]>> {
+		return api.get<IAdminOrder[]>(`/admin/orders?search=${search}&page=${page}&show=${show}`);
+	}
+}
+
+export enum ShowOrders {
+	ALL = 'ALL',
+	ACTIVE = 'ACTIVE',
+	COMPLETED = 'COMPLETED',
+	CANCELED = 'CANCELED',
 }

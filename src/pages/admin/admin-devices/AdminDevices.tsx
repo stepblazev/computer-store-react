@@ -78,7 +78,7 @@ const AdminDevices: FC = () => {
 						<div className={styles.filter}>
 							<input
 								type='search'
-								placeholder='Поиск по названию или ID'
+								placeholder='Поиск по названию или ID товара'
 								value={search}
 								onChange={(e: ChangeEvent<HTMLInputElement>) =>
 									setSearch(e.target.value)

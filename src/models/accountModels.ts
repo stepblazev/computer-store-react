@@ -21,3 +21,14 @@ export interface IOrder {
 export interface IOrderResponse {
 	orders: IOrder[];
 }
+
+export interface IAdminOrder {
+	id: number;
+	total_price: number;
+	created_at: string;
+	completed: boolean;
+	canceled: boolean;
+	devices: string[];
+	quantity: number;
+	email: string;
+}

@@ -1,2 +1,19 @@
 .orders {
+	&__filter {
+		margin-bottom: 10px;
+		display: flex;
+		gap: 10px;
+		input {
+			flex-grow: 1;
+			padding: 5px;
+			border: 1px solid lightgray;
+
+			clear: right;
+
+			&:focus {
+				border-color: gray;
+				outline: none;
+			}
+		}
+	}
 }

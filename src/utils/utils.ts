@@ -8,10 +8,19 @@ export function getPages(total: number, limit: number): number {
 	return Math.ceil(total / limit);
 }
 
+export function addLeadingZero(value: number): string {
+	return value < 10 ? `0${value}` : value.toString();
+}
+
 export function getDateFromSQLString(stringDate: string): string {
-	const date = stringDate.split('T')[0];
-	const arrayDate = date.split('-');
-	return `${arrayDate[2]}.${arrayDate[1]}.${arrayDate[0]}`;
+	const dateTime = new Date(stringDate);
+	const day = addLeadingZero(dateTime.getDate());
+	const month = addLeadingZero(dateTime.getMonth() + 1);
+	const year = dateTime.getFullYear();
+	const hours = addLeadingZero(dateTime.getHours());
+	const minutes = addLeadingZero(dateTime.getMinutes());
+
+	return `${day}.${month}.${year} (${hours}:${minutes})`;
 }
 
 export function formatQuantity(quantity: number): string {
