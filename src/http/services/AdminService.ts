@@ -2,7 +2,7 @@ import { AxiosResponse } from 'axios';
 import { IDeviceFull, IPropertyName, IPropertyValue, IType } from '../../models/deviceModels';
 import api from '..';
 import { IBrand } from '../../models/filterModels';
-import { IAdminOrder } from '../../models/accountModels';
+import { IAdminOrder, IAdminOrderResponse } from '../../models/accountModels';
 
 export default class AdminService {
 	static async postDevice(name: string, type: string): Promise<AxiosResponse<number>> {
@@ -90,8 +90,18 @@ export default class AdminService {
 		search: string,
 		page: number,
 		show: ShowOrders
-	): Promise<AxiosResponse<IAdminOrder[]>> {
-		return api.get<IAdminOrder[]>(`/admin/orders?search=${search}&page=${page}&show=${show}`);
+	): Promise<AxiosResponse<IAdminOrderResponse>> {
+		return api.get<IAdminOrderResponse>(
+			`/admin/orders?search=${search}&page=${page}&show=${show}`
+		);
+	}
+
+	static async cancelOrder(id: number): Promise<AxiosResponse<any>> {
+		return api.put<any>(`/admin/orders/${id}/cancel`);
+	}
+
+	static async completeOrder(id: number): Promise<AxiosResponse<any>> {
+		return api.put<any>(`/admin/orders/${id}/complete`);
 	}
 }
 

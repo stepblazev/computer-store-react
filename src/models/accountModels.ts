@@ -22,13 +22,11 @@ export interface IOrderResponse {
 	orders: IOrder[];
 }
 
-export interface IAdminOrder {
-	id: number;
-	total_price: number;
-	created_at: string;
-	completed: boolean;
-	canceled: boolean;
-	devices: string[];
-	quantity: number;
+export interface IAdminOrder extends IOrder {
 	email: string;
+}
+
+export interface IAdminOrderResponse {
+	orders: IAdminOrder[];
+	total: number;
 }
