@@ -56,8 +56,6 @@ const AdminDevices: FC = () => {
 		if (!name) return;
 		const response = await AdminService.postDevice(name, type);
 		const id = response.data;
-		console.log(id);
-
 		setDeviceId(id);
 	};
 

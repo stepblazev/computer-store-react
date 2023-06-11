@@ -5,7 +5,7 @@ $fullSize: 300px;
 $spacing: 10px;
 
 .images {
-	max-width: $fullSize + $spacing;
+	width: $fullSize + $spacing;
 	padding-right: $spacing;
 	padding-bottom: $spacing;
 	border-right: 1px solid lightgray;

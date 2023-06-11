@@ -1,6 +1,6 @@
 import { FC, useEffect, MouseEvent } from 'react';
 import { useAppSelector, useAppDispatch } from '../../../hooks/redux';
-import { fetchFilter } from '../../../redux/filter/filterSlice';
+import { fetchFilter, filterSlice } from '../../../redux/filter/filterSlice';
 import Button from '../../../components/_UI/button/Button';
 import Property from './property/Property';
 import Brands from './brands/Brands';
@@ -14,10 +14,14 @@ type FilterProps = {
 
 const Filter: FC<FilterProps> = ({ type }) => {
 	const dispatch = useAppDispatch();
+	const { resetFilter } = filterSlice.actions;
 	const { brands, properties, isLoading } = useAppSelector((state) => state.filter);
 
 	useEffect(() => {
 		dispatch(fetchFilter(type));
+		return () => {
+			dispatch(resetFilter());
+		};
 	}, [type]);
 
 	const resetHandler = (e: MouseEvent<HTMLButtonElement>) => {

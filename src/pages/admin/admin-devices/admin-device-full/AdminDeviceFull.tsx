@@ -65,7 +65,6 @@ const AdminDeviceFull: FC<AdminDeviceFullProps> = ({ id, back }) => {
 		fetchDevice();
 		setShowSave(false);
 	};
-	console.log(device);
 
 	return (
 		<div className={styles.full}>

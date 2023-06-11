@@ -21,11 +21,6 @@ const PropertyValue: FC<PropertyValueProps> = ({ property, value, setValue }) =>
 	});
 
 	useEffect(() => {
-		if (value.length === 0) {
-			setShowList(false);
-			setValues([]);
-			return;
-		}
 		fetchValues();
 	}, [value]);
 
@@ -34,9 +29,24 @@ const PropertyValue: FC<PropertyValueProps> = ({ property, value, setValue }) =>
 		setShowList(true);
 	};
 
+	const focusHandler = () => {
+		setShowList(true);
+		fetchValues();
+	};
+
+	const blurHandler = () => {
+		// setShowList(false);
+	};
+
 	return (
 		<div style={{ position: 'relative' }}>
-			<Input placeholder='Значение' value={value} onChange={changeHandler} />
+			<Input
+				placeholder='Значение'
+				value={value}
+				onChange={changeHandler}
+				onFocus={focusHandler}
+				onBlur={blurHandler}
+			/>
 			{showList && !isLoading && (
 				<DropDown
 					values={values.map((val) => val.value)}
