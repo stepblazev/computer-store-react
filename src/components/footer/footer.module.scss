@@ -13,14 +13,13 @@
 			gap: 50px;
 
 			&:last-child {
-				padding: 20px 0;
+				padding: 10px 0;
 				border-top: 1px solid gray;
 				p {
 					width: 100%;
 					text-align: right;
 					color: gray;
-					font-weight: 700;
-					font-size: 24px;
+					font-weight: 400;
 					@include lineHeight(24);
 					@media (max-width: $breakpoint700) {
 						font-size: 20px !important;
@@ -51,12 +50,12 @@
 					display: flex;
 					align-items: center;
 					justify-content: center;
-					border: 2px solid gray;
+					border: 1px solid gray;
 					border-radius: 50%;
 					transition: all 0.2s ease;
 					svg {
-						width: 25px;
-						height: 25px;
+						width: 20px;
+						height: 20px;
 						fill: gray;
 						transition: all 0.2s ease;
 					}
