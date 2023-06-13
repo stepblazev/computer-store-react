@@ -95,6 +95,9 @@ const AdminOrderItem: FC<AdminOrderItemProps> = ({ order, setSearch, fetchOrders
 							</b>
 						</p>
 						<p>
+							Адрес доставки: <b>{order.address}</b>
+						</p>
+						<p>
 							Количество: <b>{formatQuantity(order.quantity)}</b>
 						</p>
 						<p>

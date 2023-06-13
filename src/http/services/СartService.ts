@@ -25,9 +25,13 @@ export default class CartService {
 		return api.delete<any>(`/cart/${deviceId}`);
 	}
 
-	static async postPurchase(devices: ICartDevice[]): Promise<AxiosResponse<any>> {
+	static async postPurchase(
+		devices: ICartDevice[],
+		address: string
+	): Promise<AxiosResponse<any>> {
 		return api.post<any>(`/purchase`, {
 			devices,
+			address,
 		});
 	}
 }

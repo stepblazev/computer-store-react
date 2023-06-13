@@ -13,6 +13,7 @@ export interface IOrder {
 	created_at: string;
 	completed: boolean;
 	canceled: boolean;
+	address: string;
 	devices_short: string[];
 	devices_long: IDeviceOrder[];
 	quantity: number;

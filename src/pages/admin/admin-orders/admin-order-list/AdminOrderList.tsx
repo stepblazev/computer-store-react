@@ -15,7 +15,12 @@ const AdminOrderList: FC<AdminOrderListProps> = ({ orders, setSearch, fetchOrder
 	return (
 		<ul className={styles.list}>
 			{orders.map((order) => (
-				<AdminOrderItem setSearch={setSearch} order={order} fetchOrders={fetchOrders} />
+				<AdminOrderItem
+					key={order.id}
+					setSearch={setSearch}
+					order={order}
+					fetchOrders={fetchOrders}
+				/>
 			))}
 		</ul>
 	);

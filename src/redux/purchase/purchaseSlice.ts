@@ -48,17 +48,18 @@ export const purchaseSlice = createSlice({
 	},
 });
 
-export const fetchPurchase = (devices: ICartDevice[]) => async (dispatch: AppDispatch) => {
-	try {
-		dispatch(purchaseSlice.actions.fetchPurchase());
-		await CartService.postPurchase(devices);
-		dispatch(purchaseSlice.actions.hidePurchase());
-		dispatch(purchaseSlice.actions.fetchPurchaseSuccess());
-		dispatch(notificationSlice.actions.addNotification(purchaseSuccess));
-		dispatch(fetchCart());
-	} catch (error) {
-		const err = error as AxiosError<ErrorResponse>;
-		const message = err.response?.data.message as string;
-		dispatch(purchaseSlice.actions.fetchPurchaseError(message));
-	}
-};
+export const fetchPurchase =
+	(devices: ICartDevice[], address: string) => async (dispatch: AppDispatch) => {
+		try {
+			dispatch(purchaseSlice.actions.fetchPurchase());
+			await CartService.postPurchase(devices, address);
+			dispatch(purchaseSlice.actions.hidePurchase());
+			dispatch(purchaseSlice.actions.fetchPurchaseSuccess());
+			dispatch(notificationSlice.actions.addNotification(purchaseSuccess));
+			dispatch(fetchCart());
+		} catch (error) {
+			const err = error as AxiosError<ErrorResponse>;
+			const message = err.response?.data.message as string;
+			dispatch(purchaseSlice.actions.fetchPurchaseError(message));
+		}
+	};

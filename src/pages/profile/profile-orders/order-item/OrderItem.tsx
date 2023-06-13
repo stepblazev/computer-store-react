@@ -62,10 +62,13 @@ const OrderItem: FC<OrderItemProps> = ({ order }) => {
 							Дата заказа: <b>{getDateFromSQLString(order.created_at)}</b>
 						</p>
 						<p>
+							Адрес доставки: <b>{order.address}</b>
+						</p>
+						<p>
 							Количество: <b>{formatQuantity(order.quantity)}</b>
 						</p>
 						<p>
-							Общая стоимость: <b>{order.total_price} руб.</b>
+							Общая стоимость: <b>{order.total_price.toFixed(2)} руб.</b>
 						</p>
 					</Group>
 					<Group label='Товары'>

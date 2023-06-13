@@ -8,6 +8,7 @@ import ProfileAddress from '../../profile/profile-data/profile-address/ProfileAd
 import ProfileSave from '../../profile/profile-data/profile-save/ProfileSave';
 import { notificationSlice } from '../../../redux/notifications/notificationSlice';
 import { purchaseFail } from '../../../warnings/cartWarnings';
+import { fetchAccount, fetchNewData } from '../../../redux/account/accountSlice';
 
 const CartOrder: FC = () => {
 	const dispatch = useAppDispatch();
@@ -15,7 +16,7 @@ const CartOrder: FC = () => {
 	const { addNotification } = notificationSlice.actions;
 
 	const { devices, isLoading } = useAppSelector((state) => state.cart);
-	const { address } = useAppSelector((state) => state.account);
+	const { name, address } = useAppSelector((state) => state.account);
 
 	if (isLoading)
 		return (
@@ -33,8 +34,10 @@ const CartOrder: FC = () => {
 		if (!address || address?.length < 10) {
 			dispatch(addNotification(purchaseFail));
 			return;
+		} else {
+			dispatch(fetchNewData(name ?? '', address));
+			dispatch(showPurchase(devices));
 		}
-		dispatch(showPurchase(devices));
 	};
 
 	return (

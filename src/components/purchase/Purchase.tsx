@@ -5,22 +5,21 @@ import Modal from '../_UI/modal/Modal';
 import Button from '../_UI/button/Button';
 import Loader from '../_UI/loader/Loader';
 import styles from './purchase.module.scss';
-import ProfileAddress from '../../pages/profile/profile-data/profile-address/ProfileAddress';
 import { fetchAccount } from '../../redux/account/accountSlice';
-import ProfileSave from '../../pages/profile/profile-data/profile-save/ProfileSave';
 
 const Purchase: FC = () => {
 	const dispatch = useAppDispatch();
 	const { hidePurchase } = purchaseSlice.actions;
 
 	const { show, devices, isLoading } = useAppSelector((state) => state.purchase);
+	const { address } = useAppSelector((state) => state.account);
 
 	const hideModal = () => {
 		dispatch(hidePurchase());
 	};
 
 	const sendPurchase = () => {
-		dispatch(fetchPurchase(devices));
+		dispatch(fetchPurchase(devices, address ?? ''));
 	};
 
 	useEffect(() => {
