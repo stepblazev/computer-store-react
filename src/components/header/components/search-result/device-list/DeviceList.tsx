@@ -6,6 +6,7 @@ import noimages from '../../../../../assets/noimage.png';
 import DeviceQuantity from '../../../../device/device-quantity/DeivceQuantity';
 import { Link } from 'react-router-dom';
 import styles from './device-list.module.scss';
+import Rating from '../../../../device/rating/Rating';
 
 type DeviceListProps = {
 	devices: IDevice[];
@@ -39,7 +40,11 @@ const DeviceList: FC<DeviceListProps> = ({ devices, hideResults }) => {
 								</span>
 								<span>{Number(device.price).toFixed(2)} руб.</span>
 							</div>
-							<div className={styles.device__description}>{device.properties}</div>
+							<Rating
+								rating={Number(device.rating)}
+								ratingCount={Number(device.rating_count)}
+							/>
+							<div className={styles.device__description}>{device.properties}SR</div>
 						</div>
 					</Link>
 				</li>

@@ -48,8 +48,6 @@ const Popular: FC = () => {
 					autoplaySpeed={3000}
 					arrows={false}
 					swipe={count === 1}
-					// prevArrow={<PrevArrow />}
-					// nextArrow={<NextArrow />}
 				>
 					{devices.map((device) => (
 						<div key={device.id} className={styles.popular__item}>

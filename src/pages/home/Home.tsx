@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import HomeBanner from './home-banner/HomeBanner';
-import styles from './home.module.scss';
 import Popular from '../../components/popular/Popular';
 import HomeAbout from './home-about/HomeAbout';
+import styles from './home.module.scss';
 
 const Home: FC = () => {
 	return (

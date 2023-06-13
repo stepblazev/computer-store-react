@@ -8,6 +8,9 @@
 		justify-content: space-between;
 
 		&Id {
+			font-size: 17px;
+			line-height: 1;
+			color: #0072bc;
 			cursor: pointer;
 			&:hover {
 				text-decoration: underline;

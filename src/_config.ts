@@ -7,3 +7,5 @@ export const RATE_LIMIT = 5;
 export const RATE_SYMBOL_LIMIT = 600;
 
 export const ADMIN_ORDER_LIMIT = 10;
+
+export const IMAGE_ZOOM_SCALE = 2.5;

@@ -11,7 +11,7 @@ const ProfileAddress: FC = () => {
 
 	const [showList, setShowList] = useState<boolean>(false);
 
-	const { address, showSave } = useAppSelector((state) => state.account);
+	const { address } = useAppSelector((state) => state.account);
 
 	const clickHandler = (e: MouseEvent<HTMLElement>) => {
 		const target = e.target as HTMLLIElement;
@@ -26,7 +26,7 @@ const ProfileAddress: FC = () => {
 
 	return (
 		<div className={styles.address}>
-			<Input placeholder='Адрес' value={address ?? ''} onChange={inputHandler} />
+			<Input placeholder='Адрес доставки' value={address ?? ''} onChange={inputHandler} />
 			{showList && <AddressList query={address ?? ''} onClick={clickHandler} />}
 		</div>
 	);

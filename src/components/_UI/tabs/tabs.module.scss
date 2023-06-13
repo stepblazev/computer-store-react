@@ -14,20 +14,13 @@
 		padding: 7px 15px;
 		background-color: whitesmoke;
 		border: 1px solid lightgray;
-		border-top: unset;
 		cursor: pointer;
 		user-select: none;
 		&Active {
 			background-color: white;
-			border-left-color: white;
-			border-right-color: white;
-			border-bottom-color: white;
-			&:first-child {
-				border-left: 1px solid lightgray;
-			}
-			&:last-child {
-				border-right: 1px solid lightgray;
-			}
+
+			border-left: 1px solid lightgray;
+			border-right: 1px solid lightgray;
 		}
 	}
 }

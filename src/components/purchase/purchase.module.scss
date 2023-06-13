@@ -1,5 +1,12 @@
+@import '../../styles/variables';
+
 .purchase {
+	width: 400px;
 	position: relative;
+
+	@media (max-width: $breakpoint700) {
+		width: auto;
+	}
 
 	&__title {
 		font-size: 24px;
@@ -13,7 +20,17 @@
 	}
 
 	&__list {
-		margin: 20px 0;
+		margin: 10px 0;
+	}
+	&__total {
+		margin-bottom: 20px;
+		font-size: 16px;
+	}
+	&__account {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		margin-bottom: 20px;
 	}
 }
 

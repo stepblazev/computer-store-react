@@ -22,7 +22,8 @@ const Admin: FC = () => {
 
 	return (
 		<div className={[styles.admin, 'container'].join(' ')}>
-			<h1>
+			<div>
+				<h1 className={styles.admin__title}>Панель администратора</h1>
 				{access ? (
 					<AdminContent />
 				) : (
@@ -31,7 +32,7 @@ const Admin: FC = () => {
 						<span>У вас недостаточно прав</span>
 					</div>
 				)}
-			</h1>
+			</div>
 		</div>
 	);
 };

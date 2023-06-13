@@ -17,8 +17,6 @@ const AddressList: FC<AddressListProps> = ({ query, onClick }) => {
 
 	const [fetchAddress, isLoading, error] = useFetching(async () => {
 		const response = await AddressService.getAddress(query ?? '');
-		console.log(response.data.suggestions);
-
 		setAddresses(response.data.suggestions);
 	});
 

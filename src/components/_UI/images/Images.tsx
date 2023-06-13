@@ -1,14 +1,12 @@
 import { FC, useState, MouseEvent } from 'react';
 import { IImage } from '../../../models/deviceModels';
-import { API_URL } from '../../../_config';
+import { API_URL, IMAGE_ZOOM_SCALE } from '../../../_config';
 import SlideIn, { SlideInDirections } from '../../../animations/SlideIn';
 import {
 	FaRegArrowAltCircleRight as RightSVG,
 	FaRegArrowAltCircleLeft as LeftSVG,
 } from 'react-icons/fa';
 import noImage from '../../../assets/noimage.png';
-import Modal from '../modal/Modal';
-import Viewer from 'react-viewer';
 import styles from './images.module.scss';
 
 type ImagesProps = {
@@ -27,6 +25,29 @@ const Images: FC<ImagesProps> = ({ images }) => {
 		setCurrent((prev) => prev + 1);
 	};
 
+	const [isHovered, setIsHovered] = useState(false);
+	const [position, setPosition] = useState({ x: 0, y: 0 });
+
+	const handleMouseEnter = (event: MouseEvent<HTMLImageElement>) => {
+		setIsHovered(true);
+		updatePosition(event);
+	};
+
+	const handleMouseLeave = () => {
+		setIsHovered(false);
+	};
+
+	const handleMouseMove = (event: MouseEvent<HTMLImageElement>) => {
+		updatePosition(event);
+	};
+
+	const updatePosition = (event: MouseEvent<HTMLImageElement>) => {
+		const { left, top, width, height } = event.currentTarget.getBoundingClientRect();
+		const x = (event.clientX - left) / width;
+		const y = (event.clientY - top) / height;
+		setPosition({ x, y });
+	};
+
 	return (
 		<div className={styles.images}>
 			{images.length > 0 ? (
@@ -37,6 +58,18 @@ const Images: FC<ImagesProps> = ({ images }) => {
 								onClick={() => setModal(true)}
 								src={`${API_URL}/${images[current].url_full}`}
 								alt='full'
+								style={{
+									position: 'absolute',
+									left: '0',
+									top: '0',
+									width: '100%',
+									height: '100%',
+									transformOrigin: `${position.x * 100}% ${position.y * 100}%`,
+									transform: `scale(${isHovered ? IMAGE_ZOOM_SCALE : 1})`,
+								}}
+								onMouseEnter={handleMouseEnter}
+								onMouseLeave={handleMouseLeave}
+								onMouseMove={handleMouseMove}
 							/>
 							{current > 0 && (
 								<button className={styles.full__left} onClick={leftHandler}>
@@ -50,34 +83,10 @@ const Images: FC<ImagesProps> = ({ images }) => {
 							)}
 						</div>
 					</SlideIn>
-					<Modal state={modal} hide={() => setModal(false)}>
-						<div className={styles.modal}>
-							<img src={`${API_URL}/${images[current].url_full}`} alt='full' />
-						</div>
-					</Modal>
-					{/* <Viewer
-						drag={false}
-						attribute={false}
-						scalable={false}
-						noImgDetails={true}
-						rotatable={false}
-						loop={false}
-						noNavbar={true}
-						showTotal={false}
-						visible={modal}
-						zoomSpeed={1}
-						minScale={1}
-						maxScale={3}
-						disableMouseZoom={true}
-						onClose={() => {
-							setModal(false);
-						}}
-						images={[{ src: `${API_URL}/${images[current].url_full}`, alt: 'ERROR' }]}
-					/> */}
 				</>
 			) : (
-				<div className={styles.images__full}>
-					<img src={noImage} alt='full' />
+				<div className={styles.full}>
+					<img src={noImage} alt='full' style={{ cursor: 'default' }} />
 				</div>
 			)}
 			{images.length > 1 && (

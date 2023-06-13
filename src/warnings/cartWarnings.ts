@@ -13,7 +13,7 @@ export const cartRemoveSuccess: INotificationProps = {
 };
 
 export const purchaseSuccess: INotificationProps = {
-	title: 'Заказ',
+	title: 'Заказ оформлен',
 	message: 'Вы успешно оформили заказ',
 	type: NotificationTypes.SUCCESS,
 	duration: 7000,
@@ -21,7 +21,7 @@ export const purchaseSuccess: INotificationProps = {
 
 export const purchaseFail: INotificationProps = {
 	title: 'Оформление заказа',
-	message: 'Укажите адрес для оформления заказа',
+	message: 'Укажите адрес доставки для оформления заказа',
 	type: NotificationTypes.INFO,
 	duration: 7000,
 };

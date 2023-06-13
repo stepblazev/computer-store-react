@@ -17,6 +17,7 @@ $totalSize: 24px;
 	}
 
 	&__total {
+		margin-bottom: 10px;
 		padding-bottom: 20px;
 		display: flex;
 		justify-content: space-between;
@@ -28,7 +29,14 @@ $totalSize: 24px;
 	}
 
 	&__list {
-		padding: 10px 0;
+		margin-bottom: 20px;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+	}
+
+	&__account {
+		margin-bottom: 10px;
 		display: flex;
 		flex-direction: column;
 		gap: 10px;

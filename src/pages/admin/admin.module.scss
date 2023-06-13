@@ -1,10 +1,15 @@
+$falseColor: rgb(255, 76, 76);
+$falseSvgSize: 60px;
+
 .admin {
 	margin-bottom: 20px;
 	width: 100%;
-}
 
-$falseColor: rgb(255, 76, 76);
-$falseSvgSize: 60px;
+	&__title {
+		font-size: 24px;
+		margin: 10px 0;
+	}
+}
 
 .false {
 	margin-top: 50px;

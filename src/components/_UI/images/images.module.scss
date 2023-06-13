@@ -2,6 +2,7 @@
 
 $previewSize: 65px;
 $fullSize: 300px;
+$zoomSize: 100px;
 $spacing: 10px;
 
 .images {
@@ -58,6 +59,7 @@ $spacing: 10px;
 	position: relative;
 	height: $fullSize;
 	width: $fullSize;
+	overflow: hidden;
 
 	@media (max-width: $breakpoint700) {
 		height: $fullSize - 100px;
@@ -69,18 +71,18 @@ $spacing: 10px;
 		height: 100%;
 		object-fit: contain;
 		object-position: center;
-		cursor: pointer;
+		cursor: zoom-in;
 	}
 
 	&:hover {
 		button {
-			opacity: 1;
+			opacity: 0.5;
 			transform: translateY(-70%);
 		}
 	}
 
 	button {
-		padding: 5px;
+		padding: 15px 5px;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -99,6 +101,7 @@ $spacing: 10px;
 		}
 
 		&:hover {
+			opacity: 1;
 			svg {
 				fill: $primary;
 			}

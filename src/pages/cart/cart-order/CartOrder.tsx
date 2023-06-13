@@ -4,12 +4,18 @@ import Button from '../../../components/_UI/button/Button';
 import Loader from '../../../components/_UI/loader/Loader';
 import styles from './cart-order.module.scss';
 import { purchaseSlice } from '../../../redux/purchase/purchaseSlice';
+import ProfileAddress from '../../profile/profile-data/profile-address/ProfileAddress';
+import ProfileSave from '../../profile/profile-data/profile-save/ProfileSave';
+import { notificationSlice } from '../../../redux/notifications/notificationSlice';
+import { purchaseFail } from '../../../warnings/cartWarnings';
 
 const CartOrder: FC = () => {
 	const dispatch = useAppDispatch();
 	const { showPurchase } = purchaseSlice.actions;
+	const { addNotification } = notificationSlice.actions;
 
 	const { devices, isLoading } = useAppSelector((state) => state.cart);
+	const { address } = useAppSelector((state) => state.account);
 
 	if (isLoading)
 		return (
@@ -24,6 +30,10 @@ const CartOrder: FC = () => {
 	);
 
 	const purchase = (e: MouseEvent<HTMLButtonElement>) => {
+		if (!address || address?.length < 10) {
+			dispatch(addNotification(purchaseFail));
+			return;
+		}
 		dispatch(showPurchase(devices));
 	};
 
@@ -40,6 +50,10 @@ const CartOrder: FC = () => {
 					</li>
 				))}
 			</ul>
+			<div className={styles.order__account}>
+				<ProfileAddress />
+				<ProfileSave />
+			</div>
 			<div className={styles.order__execute}>
 				<Button onClick={purchase} label='Оформить заказ' />
 			</div>

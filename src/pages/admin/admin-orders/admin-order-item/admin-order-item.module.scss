@@ -6,8 +6,15 @@
 
 	&__title {
 		margin-bottom: 10px;
+
 		display: flex;
 		justify-content: space-between;
+
+		&Id {
+			font-size: 17px;
+			line-height: 1;
+			color: #0072bc;
+		}
 
 		&Status {
 			text-transform: uppercase;
