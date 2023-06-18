@@ -28,6 +28,7 @@ const AddressList: FC<AddressListProps> = ({ query, onClick }) => {
 		onClick(e);
 		setAddresses([]);
 	};
+	console.log(addresses);
 
 	return (
 		<ul className={styles.list}>
@@ -38,6 +39,7 @@ const AddressList: FC<AddressListProps> = ({ query, onClick }) => {
 					{address.data.house
 						? `, ${address.data.house_type}. ${address.data.house}`
 						: ''}
+					{address.data.flat ? `, ${address.data.flat_type}. ${address.data.flat}` : ''}
 				</li>
 			))}
 		</ul>

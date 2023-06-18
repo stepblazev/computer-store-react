@@ -55,7 +55,6 @@ const CartOrder: FC = () => {
 			</ul>
 			<div className={styles.order__account}>
 				<ProfileAddress />
-				<ProfileSave />
 			</div>
 			<div className={styles.order__execute}>
 				<Button onClick={purchase} label='Оформить заказ' />
