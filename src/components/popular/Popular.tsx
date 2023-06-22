@@ -64,7 +64,7 @@ const Popular: FC = () => {
 								{device.type}
 							</Link>
 							<Link to={`/device/${device.id}`} className={styles.popular__itemTitle}>
-								{device.title}
+								{device.title || 'Без названия'}
 							</Link>
 							<div className={styles.popular__itemRating}>
 								<Rating

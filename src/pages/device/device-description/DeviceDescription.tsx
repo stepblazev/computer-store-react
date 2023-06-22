@@ -25,7 +25,8 @@ const DeviceDescription: FC<DeviceDescriptionProps> = ({ device }) => {
 			</div>
 			<div className={styles.description__info}>
 				<h1 className={styles.description__title}>
-					{device?.title} <DeviceQuantity quantity={device?.quantity ?? 0} />
+					{device?.title || 'Без названия'}{' '}
+					<DeviceQuantity quantity={device?.quantity ?? 0} />
 				</h1>
 				<p className={styles.description__desc}>{device?.description}</p>
 				<div className={styles.description__price}>

@@ -39,7 +39,7 @@ const Purchase: FC = () => {
 				<ul className={styles.purchase__list}>
 					{devices.map((device) => (
 						<li key={device.id}>
-							{device.title} - {device.amount} шт.
+							{device.title || 'Без названия'} - {device.amount} шт.
 						</li>
 					))}
 				</ul>

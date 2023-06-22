@@ -35,7 +35,9 @@ const DeviceList: FC<DeviceListProps> = ({ devices, hideResults }) => {
 						<div className={styles.device__content}>
 							<div className={styles.device__title}>
 								<span>
-									<span className={styles.device__titleText}>{device.title}</span>
+									<span className={styles.device__titleText}>
+										{device?.title || 'Без названия'}
+									</span>
 									<DeviceQuantity quantity={device.quantity} />
 								</span>
 								<span>{Number(device.price).toFixed(2)} руб.</span>

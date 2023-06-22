@@ -44,7 +44,9 @@ const AdminDeviceList: FC<AdminDeviceListProps> = ({ devices, setDevice, fetchDe
 							/>
 						</div>
 						<div className={styles.list__itemContent}>
-							<p className={styles.list__itemTitle}>{device.title}</p>
+							<p className={styles.list__itemTitle}>
+								{device.title || 'Без названия'}
+							</p>
 							<Rating
 								rating={Number(device.rating)}
 								ratingCount={Number(device.rating_count)}

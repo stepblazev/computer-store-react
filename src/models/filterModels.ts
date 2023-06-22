@@ -37,6 +37,7 @@ export interface IPrice {
 export type IPropertiesResponse = {
 	brands: IBrand[];
 	properties: IProperty[];
+	top_price: number;
 };
 
 export interface IFilter {

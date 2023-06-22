@@ -23,9 +23,11 @@ const Admin: FC = () => {
 	return (
 		<div className={[styles.admin, 'container'].join(' ')}>
 			<div>
-				<h1 className={styles.admin__title}>Панель администратора</h1>
 				{access ? (
-					<AdminContent />
+					<>
+						<h1 className={styles.admin__title}>Панель администратора</h1>
+						<AdminContent />
+					</>
 				) : (
 					<div className={styles.false}>
 						<CrossSVG />

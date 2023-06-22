@@ -37,10 +37,6 @@ export const devicesSlice = createSlice({
 			state.isLoading = false;
 			state.error = action.payload;
 		},
-		resetDevices(state) {
-			// state.devices = [];
-			// state.total = 0;
-		},
 	},
 });
 

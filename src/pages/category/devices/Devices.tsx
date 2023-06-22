@@ -15,17 +15,17 @@ type DevicesProps = {
 
 const Devices: FC<DevicesProps> = ({ type }) => {
 	const dispatch = useAppDispatch();
-	const { resetDevices } = devicesSlice.actions;
 
 	const [delay, setDelay] = useState<number>(600);
 
 	const { devices, isLoading } = useAppSelector((state) => state.devices);
-	const { filter } = useAppSelector((state) => state.filter);
+	const { filter, isLoading: filterIsLoading } = useAppSelector((state) => state.filter);
 
 	// NOTE рефакторинг задержки при изменении фильтров
 	const debounceFilter = useDebounce<IFilter>(filter, delay);
 
 	useEffect(() => {
+		if (filterIsLoading) return;
 		window.scrollTo({
 			top: 0,
 		});
@@ -38,7 +38,6 @@ const Devices: FC<DevicesProps> = ({ type }) => {
 	}, [filter.order, filter.page]);
 
 	useEffect(() => {
-		dispatch(resetDevices());
 		setDelay(0);
 	}, [type]);
 

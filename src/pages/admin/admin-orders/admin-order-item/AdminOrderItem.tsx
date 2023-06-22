@@ -126,7 +126,7 @@ const AdminOrderItem: FC<AdminOrderItemProps> = ({ order, setSearch, fetchOrders
 											to={`/device/${device.id}`}
 											className={styles.modal__listTitle}
 										>
-											{device.title}
+											{device.title || 'Без названия'}
 										</Link>
 										<Rating
 											rating={Number(device.rating)}

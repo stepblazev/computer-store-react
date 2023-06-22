@@ -31,7 +31,7 @@ const DeviceItem: FC<DeviceItemProps> = ({ device }) => {
 				<h3 className={styles.item__title}>
 					<span>
 						<Link to={`/device/${device.id}`} className={styles.item__titleText}>
-							{device.title}
+							{device.title || 'Без названия'}
 						</Link>
 						<DeviceQuantity quantity={device.quantity} />
 					</span>

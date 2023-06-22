@@ -27,7 +27,7 @@ const CartItem: FC<CartItemProps> = ({ device }) => {
 			<div className={styles.item__content}>
 				<h3 className={styles.item__title}>
 					<Link to={`/device/${device.id}`} className={styles.item__titleText}>
-						{device.title}
+						{device.title || 'Без названия'}
 					</Link>
 					<span className={styles.item__price}>{device.price} руб.</span>
 				</h3>
