@@ -44,7 +44,9 @@ const Header: FC = () => {
 			</div>
 			<div className={[styles.header__second, 'container'].join(' ')}>
 				<div className={styles.header__secondDesktop}>
-					<Logo />
+					<Link to={'/'}>
+						<Logo />
+					</Link>
 					<Search />
 					<Cart />
 				</div>

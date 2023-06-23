@@ -1,20 +1,30 @@
+@import '../../../styles/variables';
+
 $svgSize: 60px;
 $color: lightgray;
 
 .empty {
-	margin-top: 50px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	height: 200px;
 	gap: 20px;
 	font-size: 40px;
+	line-height: 1;
 	font-weight: 700;
 	color: $color;
+
+	@media (max-width: $breakpoint700) {
+		margin-top: 0;
+	}
 
 	svg {
 		width: $svgSize;
 		height: $svgSize;
 		fill: $color;
+
+		@media (max-width: $breakpoint700) {
+			display: none;
+		}
 	}
 }
