@@ -8,6 +8,7 @@ import Loader from '../../../components/_UI/loader/Loader';
 import Selector, { ISelectorOption } from '../../../components/_UI/selector/Selector';
 import AdminOrderList from './admin-order-list/AdminOrderList';
 import AdminOrderPagination from './admin-order-pagination/AdminOrderPagination';
+import Button from '../../../components/_UI/button/Button';
 
 const ShowOptions: ISelectorOption<ShowOrders>[] = [
 	{ label: 'все', value: ShowOrders.ALL },
@@ -55,6 +56,15 @@ const AdminOrders: FC = () => {
 					value={ShowOptions.find((opt) => opt.value === show)}
 					onChange={(opt) => setShow(opt.value)}
 				/>
+				<div className={styles.orders__filterRefresh}>
+					<Button
+						label='Обновить'
+						onClick={() => {
+							setPage(() => 1);
+							fetchOrders();
+						}}
+					/>
+				</div>
 			</div>
 
 			{isLoading ? (

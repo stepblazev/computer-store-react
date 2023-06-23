@@ -38,6 +38,7 @@ export type IPropertiesResponse = {
 	brands: IBrand[];
 	properties: IProperty[];
 	top_price: number;
+	low_price: number;
 };
 
 export interface IFilter {

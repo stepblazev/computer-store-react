@@ -19,6 +19,7 @@ interface FilterState {
 	brands: IBrand[];
 	properties: IProperty[];
 	top_price: number;
+	low_price: number;
 	isLoading: boolean;
 	error: string | null;
 }
@@ -39,6 +40,7 @@ const initialState: FilterState = {
 	properties: [],
 	isLoading: false,
 	top_price: 0,
+	low_price: 0,
 	error: null,
 };
 
@@ -50,6 +52,7 @@ export const filterSlice = createSlice({
 			state.brands = [];
 			state.properties = [];
 			state.top_price = 0;
+			state.low_price = 0;
 			state.isLoading = true;
 			state.error = null;
 		},
@@ -57,7 +60,9 @@ export const filterSlice = createSlice({
 			state.brands = action.payload.brands;
 			state.properties = action.payload.properties;
 			state.top_price = action.payload.top_price;
+			state.low_price = action.payload.low_price;
 			state.filter.price.to = action.payload.top_price;
+			state.filter.price.from = action.payload.low_price;
 			state.isLoading = false;
 		},
 		fetchFilterError(state, action: PayloadAction<string>) {
