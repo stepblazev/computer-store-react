@@ -32,7 +32,9 @@ const Header: FC = () => {
 				<div className={styles.header__firstMobile}>
 					<div>
 						<Burger />
-						<Logo />
+						<Link to={'/'}>
+							<Logo />
+						</Link>
 					</div>
 					<div>
 						<Cart />

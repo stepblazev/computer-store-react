@@ -1,4 +1,4 @@
-export const API_URL = 'http://localhost:9090';
+export const API_URL = 'http://192.168.226.30:9090';
 
 export const DEVICE_LIMIT = 10;
 export const DEVICE_PRICE = 4000;

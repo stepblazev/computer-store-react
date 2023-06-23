@@ -25,8 +25,8 @@ const Images: FC<ImagesProps> = ({ images }) => {
 		setCurrent((prev) => prev + 1);
 	};
 
-	const [isHovered, setIsHovered] = useState(false);
-	const [position, setPosition] = useState({ x: 0, y: 0 });
+	const [isHovered, setIsHovered] = useState<boolean>(false);
+	const [position, setPosition] = useState<any>({ x: 0, y: 0 });
 
 	const handleMouseEnter = (event: MouseEvent<HTMLImageElement>) => {
 		setIsHovered(true);
@@ -42,6 +42,11 @@ const Images: FC<ImagesProps> = ({ images }) => {
 	};
 
 	const updatePosition = (event: MouseEvent<HTMLImageElement>) => {
+		if (window.innerWidth < 978) {
+			setPosition({ x: 0, y: 0 });
+			setIsHovered(false);
+			return;
+		}
 		const { left, top, width, height } = event.currentTarget.getBoundingClientRect();
 		const x = (event.clientX - left) / width;
 		const y = (event.clientY - top) / height;

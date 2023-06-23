@@ -1,5 +1,6 @@
-import { HiMenuAlt1 as BurgerSVG } from 'react-icons/hi';
+import { HiMenuAlt1 as BurgerSVG, HiPhone as PhoneSVG } from 'react-icons/hi';
 import { IoClose as CloseSVG } from 'react-icons/io5';
+import { MdMail as MailSVG } from 'react-icons/md';
 import { createPortal } from 'react-dom';
 import { FC, useState, MouseEvent } from 'react';
 import { Link } from 'react-router-dom';
@@ -39,6 +40,16 @@ const Burger: FC = () => {
 								</li>
 							))}
 						</ul>
+						<div className={styles.burger__menuSocials}>
+							<a href='tel:+375447102441' className='svg-link'>
+								<PhoneSVG />
+								+375447102441
+							</a>
+							<a href='mailto:ohvatuki@gmail.com' className='svg-link'>
+								<MailSVG />
+								ohvatuki@gmail.com
+							</a>
+						</div>
 					</nav>
 				</div>,
 				document.body
