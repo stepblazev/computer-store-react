@@ -2,7 +2,6 @@ import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './slider.module.scss';
 import Slider from 'react-slick';
-import Button from '../button/Button';
 
 export interface ISliderItem {
 	img: string;

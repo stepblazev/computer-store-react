@@ -12,7 +12,7 @@ type DeviceListProps = {
 const DeviceList: FC<DeviceListProps> = ({ devices }) => {
 	return (
 		<div className={styles.list}>
-			{Boolean(!devices.length) && <NoMatches label='Поиск не дал результатов...' />}
+			{Boolean(!devices.length) && <NoMatches label='Поиск не дал результатов' />}
 			{devices.map((device, index) => (
 				<SlideIn direction={SlideInDirections.RIGHT} delay={index * 100} key={device.id}>
 					<DeviceItem device={device} />

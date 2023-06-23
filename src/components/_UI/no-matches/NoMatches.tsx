@@ -6,10 +6,10 @@ type NoMatchesProps = {
 	label?: string;
 };
 
-const NoMatches: FC<NoMatchesProps> = ({ label = 'Совпадений не найдено...' }) => {
+const NoMatches: FC<NoMatchesProps> = ({ label = 'Совпадений не найдено' }) => {
 	return (
 		<div className={styles.nomatches}>
-			<NoMatchesSVG />
+			{/* <NoMatchesSVG /> */}
 			<h2 className={styles.nomatches__label}>{label}</h2>
 		</div>
 	);
